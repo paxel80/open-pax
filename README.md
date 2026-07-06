@@ -22,18 +22,26 @@ El humano es **diseñador ex-ante + auditor ex-post**. No está en el lazo.
 ```
 open-pax/
 ├── EXPEDIENTE-MAESTRO.md      # Fuente única de verdad (v3)
+├── README.md
 ├── documentos/                # Análisis y veredictos del Consejo
 │   ├── 06_capacidades-humanas-universales.md    # 316 capacidades en 18 grupos
 │   ├── 08_metodo-implementacion.md              # Clasificación A/R/A+R/N/A
 │   ├── 14_veredicto-consejo-estado-del-arte.md # Paradigma establecido
+│   ├── 15_expediente-cerebropax.md             # Histórico: banco de cerebros
+│   ├── 17_expediente-recursospax.md            # Histórico: gestión de recursos
+│   └── 18_expediente-personalpax.md            # Histórico: área personal
 ├── codigo/                     # Código de despliegue
-│   └── letta/                  # Stack Letta + Telegram bridge
+│   ├── letta/                  # Stack Letta + Telegram bridge
+│   └── cerebropax/             # LiteLLM config + docker-compose + deploy
+├── recursos/                   # Infraestructura + bitácora de APIs
+│   ├── infraestructura/        # Inventario + topología de red
+│   └── bitacora/               # Claves, saldos, APIs LLM
 ├── visual/                     # Reportes HTML imprimibles
 ├── diagramas/                  # Diagramas SVG
-├── recursos/                   # Inventario de infraestructura
-├── cerebropax/                 # Subproyecto: banco de cerebros (LiteLLM)
-├── recursospax/                # Subproyecto: gestión de recursos
-└── personalpax/                # Subproyecto: área personal
+└── sesiones/                   # Bitácoras de sesión
+    ├── cerebropax/
+    ├── recursospax/
+    └── personalpax/
 ```
 
 ## Estado

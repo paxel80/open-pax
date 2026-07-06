@@ -265,7 +265,13 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 | `documentos/12_veredicto-consejo-arquitectura.md` | Veredicto v1 ($0+7.7GB): 2 capas. SUPERSEDEDO |
 | `documentos/13_veredicto-consejo-arquitectura-v2.md` | Veredicto v2 (48GB+$370): 3 capas. SUPERSEDEDO |
 | `documentos/14_veredicto-consejo-estado-del-arte.md` | **Veredicto --full (18 miembros, autonomía): single-agent+autoverify+reversible. OBJETIVO MÁXIMO.** |
+| `documentos/15_expediente-cerebropax.md` | Expediente histórico: banco de cerebros (LiteLLM) — ahora integrado como `codigo/cerebropax/` |
+| `documentos/16_prompts-arranque-cerebropax.md` | Prompts copy-paste para sesiones de cerebropax |
+| `documentos/17_expediente-recursospax.md` | Expediente histórico: gestión de recursos — ahora integrado como `recursos/bitacora/` |
+| `documentos/18_expediente-personalpax.md` | Expediente histórico: área personal — ahora integrado como capacidades del agente |
 | `codigo/letta/` | Stack Letta: Docker Compose + Telegram bridge + setup |
+| `codigo/cerebropax/` | LiteLLM: config.yaml + docker-compose + deploy + test |
+| `recursos/bitacora/` | Bitácora de APIs LLM (claves, saldos, canónicas) |
 | `recursos/infraestructura/01_inventario-infraestructura.md` | Inventario completo de hardware, cuentas, APIs |
 | `recursos/infraestructura/02_topologia-red.svg` | Diagrama de la red |
 | `diagramas/01_panorama-vision-erik.svg` | Visión general: 4 áreas |
@@ -280,15 +286,17 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 | `visual/reporte-recursos-tipo-R.html` | HTML: 74 tipo R con recurso + proveedor |
 | `visual/reporte-frameworks-tipo-AR.html` | HTML: 94 tipo A+R con framework + recurso |
 
-## 🧩 Subproyectos
+## 🧩 Módulos integrados (ex-subproyectos, fusionados en árbol único)
 
-| Subproyecto | Qué es | Estado | Expediente |
+> Los subproyectos `cerebropax`, `recursospax` y `personalpax` fueron **fusionados** en el árbol único de open-pax. Ya no son carpetas separadas — son módulos del sistema.
+
+| Módulo | Era | Ahora vive en | Función |
 |---|---|---|---|
-| **recursospax** | Gestión centralizada de recursos técnicos: APIs, cuentas, tokens, modelos, claves | 🟡 Fase 1 en progreso | `recursospax/EXPEDIENTE-MAESTRO.md` |
-| **cerebropax** | Banco de cerebros (LiteLLM): router único de modelos → componente del núcleo LLM | 🟡 Fase 1 en progreso | `cerebropax/EXPEDIENTE-MAESTRO.md` |
-| **personalpax** | Área 💚 Personal: finanzas + salud mental + agenda + hábitos | 🟡 Fase 0 completa | `personalpax/EXPEDIENTE-MAESTRO.md` |
+| **cerebropax** | Subproyecto | `codigo/cerebropax/` + `documentos/15-16` | Banco de cerebros (LiteLLM): el núcleo LLM del agente |
+| **recursospax** | Subproyecto | `recursos/bitacora/` + `documentos/17` | Gestión de recursos: APIs, cuentas, claves, saldos |
+| **personalpax** | Subproyecto | `documentos/18` + capacidades del agente | Área 💚 Personal: dominio de capacidades del agente |
 
-> **Nota:** Los subproyectos se reorientan al paradigma. cerebropax = el núcleo LLM. recursospax = provisión de recursos. personalpax = dominio de capacidades. El auto-verificador, sandbox y watchdog son componentes nuevos a crear.
+> **Por qué se fusionó:** un proyecto único = una sola fuente de verdad, menos fricción, cero duplicación. El paradigma single-agent+autoverify+reversible no necesita subproyectos separados — necesita componentes integrados.
 
 ---
 

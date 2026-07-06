@@ -1,8 +1,0 @@
-# cerebropax — nunca subir secretos
-.env
-*.env
-!*.env.example
-
-# Logs
-*.log
-litellm_logs/

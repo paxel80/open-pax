@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>open-pax v3 — Estructura visual</title>
+<style>
+*{font-family:'Segoe UI',Arial,sans-serif;box-sizing:border-box}
+body{margin:0;background:#0f172a;color:#e2e8f0;padding:20px}
+h1{text-align:center;color:#f8fafc;font-size:28px;margin:0 0 6px}
+.sub{text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px}
+h2{color:#7dd3fc;font-size:18px;border-bottom:2px solid #1e3a5f;padding-bottom:6px;margin:30px 0 16px}
+
+/* Paradigma */
+.paradigma{background:linear-gradient(135deg,#1e293b,#0f172a);border:2px solid #38bdf8;border-radius:16px;padding:28px;margin:0 auto;max-width:900px;position:relative}
+.paradigma-title{text-align:center;font-size:22px;font-weight:bold;color:#38bdf8;margin-bottom:20px}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.node{background:#1e293b;border:2px solid #334155;border-radius:12px;padding:16px 24px;text-align:center;min-width:280px;max-width:400px;position:relative;z-index:1}
+.node-core{border-color:#38bdf8;background:linear-gradient(135deg,#0c4a6e,#1e293b)}
+.node-core .title{color:#38bdf8;font-weight:bold;font-size:16px}
+.node .title{color:#e2e8f0;font-weight:bold;font-size:14px;margin-bottom:4px}
+.node .desc{color:#94a3b8;font-size:12px;line-height:1.4}
+.arrow{color:#475569;font-size:24px;line-height:1;padding:4px 0}
+.arrow-label{color:#64748b;font-size:11px;font-style:italic}
+
+/* Capas del agente */
+.agent-box{background:#111827;border:2px dashed #374151;border-radius:16px;padding:24px;margin:16px auto;max-width:860px}
+.agent-title{text-align:center;color:#fbbf24;font-weight:bold;font-size:16px;margin-bottom:16px}
+
+/* Componentes grid */
+.components{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:16px 0}
+.comp{background:#1e293b;border-radius:12px;padding:18px;border-left:4px solid #38bdf8}
+.comp.green{border-left-color:#22c55e}
+.comp.yellow{border-left-color:#eab308}
+.comp.red{border-left-color:#ef4444}
+.comp.blue{border-left-color:#3b82f6}
+.comp.purple{border-left-color:#a855f7}
+.comp.orange{border-left-color:#f97316}
+.comp .icon{font-size:24px;margin-bottom:8px}
+.comp .name{color:#f1f5f9;font-weight:bold;font-size:14px;margin-bottom:6px}
+.comp .role{color:#94a3b8;font-size:12px;line-height:1.5}
+.comp .status{display:inline-block;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:bold;margin-top:8px}
+.status-on{background:#064e3b;color:#34d399}
+.status-pending{background:#451a03;color:#fbbf24}
+.status-future{background:#1e1b4b;color:#a78bfa}
+
+/* Nodos infra */
+.nodes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.nodo{background:#1e1b4b;border-radius:10px;padding:14px;text-align:center;border:1px solid #6d28d9}
+.nodo .emoji{font-size:28px}
+.nodo .name{color:#c4b5fd;font-weight:bold;font-size:13px;margin:6px 0 4px}
+.nodo .specs{color:#94a3b8;font-size:11px}
+
+/* Reglas */
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:16px 0}
+.rule{background:#1e293b;border-radius:10px;padding:12px 16px;border-left:3px solid #38bdf8}
+.rule .num{color:#7dd3fc;font-weight:bold;font-size:12px}
+.rule .txt{color:#cbd5e1;font-size:12px;margin-top:4px;line-height:1.4}
+.rule.highlight{border-left-color:#fbbf24;background:#292524}
+.rule.deleted{border-left-color:#ef4444;background:#1c1110;opacity:.7}
+.rule.deleted .txt{text-decoration:line-through;color:#78716c}
+
+/* Frontera */
+.frontier{width:100%;border-collapse:collapse;margin:16px 0}
+.frontier th{background:#1e3a5f;color:#e2e8f0;padding:8px 12px;text-align:left;font-size:12px}
+.frontier td{padding:8px 12px;border-bottom:1px solid #1e293b;font-size:12px;color:#cbd5e1}
+.green-bg{background:rgba(34,197,94,.15);color:#4ade80;font-weight:bold}
+.yellow-bg{background:rgba(234,179,8,.15);color:#facc15;font-weight:bold}
+.red-bg{background:rgba(239,68,68,.15);color:#f87171;font-weight:bold}
+
+/* Hoja de ruta */
+.roadmap{display:flex;flex-direction:column;gap:12px;margin:16px 0}
+.phase{background:#1e293b;border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.phase .badge{padding:4px 12px;border-radius:8px;font-weight:bold;font-size:12px;white-space:nowrap}
+.badge-done{background:#064e3b;color:#34d399}
+.badge-current{background:#451a03;color:#fbbf24}
+.badge-future{background:#1e1b4b;color:#a78bfa}
+.phase .label{color:#e2e8f0;font-size:13px;flex:1}
+.phase .milestone{color:#94a3b8;font-size:11px;font-style:italic}
+
+/* Repo structure tree */
+.tree{background:#111827;border-radius:12px;padding:20px;font-family:'Consolas','Courier New',monospace;font-size:13px;line-height:1.8;color:#94a3b8;overflow-x:auto}
+.tree .dir{color:#7dd3fc;font-weight:bold}
+.tree .file{color:#cbd5e1}
+.tree .comment{color:#64748b;font-style:italic}
+.tree .highlight{color:#fbbf24;font-weight:bold}
+
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:16px 0}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#94a3b8}
+.legend-dot{width:14px;height:14px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<h1>open-pax v3</h1>
+<div class="sub">Agente autónomo de propósito general · Paradigma: single-agent + autoverify + reversible</div>
+
+<!-- ===================== PARADIGMA ===================== -->
+<h2>🎯 El Paradigma (objetivo máximo)</h2>
+
+<div class="paradigma">
+  <div class="paradigma-title">single-agent + autoverify + reversible</div>
+
+  <div class="flow">
+    <!-- Diseñador ex-ante -->
+    <div class="node" style="border-color:#22c55e">
+      <div class="title" style="color:#4ade80">👤 DISEÑADOR EX-ANTE (Erik, una vez)</div>
+      <div class="desc">Define: objetivos · invariantes · perímetros · umbrales<br>NO aprueba cada acción</div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="arrow-label">objetivos + invariantes congelados</div>
+    <div class="arrow">↓</div>
+
+    <!-- Agente autónomo -->
+    <div class="agent-box">
+      <div class="agent-title">🤖 AGENTE AUTÓNOMO</div>
+
+      <div class="flow">
+        <div class="node node-core">
+          <div class="title">🧠 LLM núcleo</div>
+          <div class="desc">Razona + tool-calling (MCP) + memoria legible</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="node" style="border-color:#a855f7">
+          <div class="title" style="color:#c084fc">🔍 AUTO-VERIFICADOR</div>
+          <div class="desc">2º pase adversarial (LLM-judge, modelo distinto)<br>+ tests deterministas (lint, typecheck, dry-run)</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="node" style="border-color:#f97316">
+          <div class="title" style="color:#fb923c">📦 SANDBOX REVERSIBLE</div>
+          <div class="desc">Docker + git checkpoint + dry-run + undo<br>Toda acción es compensable o confinada</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="node" style="border-color:#ef4444">
+          <div class="title" style="color:#f87171">🛑 KILL-SWITCH AUTOMÁTICO</div>
+          <div class="desc">Watchdog por invariantes violadas<br>(presupuesto · blast radius · tasa de error)<br>NO disparado por humanos</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="node" style="border-color:#3b82f6">
+          <div class="title" style="color:#60a5fa">💾 MEMORIA LEGIBLE</div>
+          <div class="desc">Vectorial + estructurada + logs de auditoría<br>El agente lee su historial y se autocorrige</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow">↓</div>
+    <div class="arrow-label">trazas asíncronas</div>
+    <div class="arrow">↓</div>
+
+    <!-- Auditor ex-post -->
+    <div class="node" style="border-color:#22c55e">
+      <div class="title" style="color:#4ade80">👤 AUDITOR EX-POST (Erik, revisa después)</div>
+      <div class="desc">Revisa trazas · ajusta invariantes · recalibra umbrales<br>Reconstruction causal de cualquier decisión</div>
+    </div>
+  </div>
+</div>
+
+<!-- Sustitutos del human-in-loop -->
+<h2>🔧 4 sustitutos mecánicos del human-in-loop</h2>
+<div class="components">
+  <div class="comp purple"><div class="icon">🔍</div><div class="name">Auto-verificador adversarial</div><div class="role">2º LLM con instrucción de refutar la acción propuesta</div></div>
+  <div class="comp orange"><div class="icon">↩️</div><div class="name">Reversibilidad por diseño</div><div class="role">Toda acción es compensable o sandboxed. El error se deshace solo.</div></div>
+  <div class="comp red"><div class="icon">🛑</div><div class="name">Kill-switches automáticos</div><div class="role">Watchdog por invariantes violadas, no por nerviosismo humano</div></div>
+  <div class="comp blue"><div class="icon">🪞</div><div class="name">Memoria como espejo</div><div class="role">El agente lee su historial, detecta divergencia, se autocorrige</div></div>
+</div>
+
+<!-- ===================== COMPONENTES ===================== -->
+<h2>🏗️ Componentes del sistema</h2>
+<div class="components">
+  <div class="comp blue">
+    <div class="icon">🧠</div><div class="name">LLM núcleo</div>
+    <div class="role">Razonamiento + tool-calling. LiteLLM/cerebropax enruta a Qwen3/Llama-4 + APIs (Groq, DeepSeek, GPT-4o-mini, Haiku)</div>
+    <span class="status status-on">🟢 Letta activo (OpenCode Zen)</span>
+  </div>
+  <div class="comp purple">
+    <div class="icon">🔧</div><div class="name">Tool-calling (MCP)</div>
+    <div class="role">Model Context Protocol como estándar de herramientas. Tools reversibles por defecto.</div>
+    <span class="status status-pending">🟡 Pendiente</span>
+  </div>
+  <div class="comp blue">
+    <div class="icon">💾</div><div class="name">Memoria legible</div>
+    <div class="role">pgvector (Letta) + Qdrant + logs estructurados. Audit trail reconstruible causalmente.</div>
+    <span class="status status-on">🟢 pgvector activo</span>
+  </div>
+  <div class="comp purple">
+    <div class="icon">🔍</div><div class="name">Auto-verificador</div>
+    <div class="role">LLM-as-judge (modelo distinto al ejecutor) + eval suite determinista (tests, lint, typecheck, dry-run)</div>
+    <span class="status status-pending">🟡 Pendiente</span>
+  </div>
+  <div class="comp orange">
+    <div class="icon">📦</div><div class="name">Sandbox reversible</div>
+    <div class="role">Docker + git checkpoint + dry-run + undo automático. Acciones irreversibles bloqueadas por defecto.</div>
+    <span class="status status-pending">🟡 Pendiente</span>
+  </div>
+  <div class="comp red">
+    <div class="icon">🛑</div><div class="name">Kill-switch automático</div>
+    <div class="role">Watchdog determinista. Disparado por invariantes (presupuesto, blast radius, tasa de error). NO por humanos.</div>
+    <span class="status status-pending">🟡 Pendiente</span>
+  </div>
+</div>
+
+<!-- ===================== NODOS ===================== -->
+<h2>🌐 Distribución en nodos</h2>
+<div class="nodes">
+  <div class="nodo">
+    <div class="emoji">☁️</div>
+    <div class="name">nube1 (São Paulo)</div>
+    <div class="specs">4 vCPU ARM · 24 GB RAM<br>Letta + pgvector<br>🟢 Desplegado</div>
+  </div>
+  <div class="nodo">
+    <div class="emoji">☁️</div>
+    <div class="name">nube2 (Frankfurt)</div>
+    <div class="specs">4 vCPU ARM · 24 GB RAM<br>LiteLLM + sandbox + watchdog<br>🟡 Pendiente</div>
+  </div>
+  <div class="nodo">
+    <div class="emoji">💻</div>
+    <div class="name">Laptop ASUS</div>
+    <div class="specs">i5-11400H · 7.7 GB · RTX 3050 4GB<br>Qwen3:4b + SD + Whisper<br>🟢 Activa</div>
+  </div>
+  <div class="nodo">
+    <div class="emoji">🖥️</div>
+    <div class="name">2do equipo Tailscale</div>
+    <div class="specs">Ollama + qwen3-abliterated:14b<br>+ embeddings bge-m3<br>🟢 Accesible</div>
+  </div>
+  <div class="nodo">
+    <div class="emoji">📱</div>
+    <div class="name">Xiaomi 14T Pro</div>
+    <div class="specs">Nodo Tailscale<br>Panel de control + notificaciones<br>🟢 Activo</div>
+  </div>
+</div>
+
+<!-- ===================== REGLAS DE ORO ===================== -->
+<h2>🌟 Reglas de Oro v3 (alineadas a autonomía máxima)</h2>
+<div class="rules-grid">
+  <div class="rule highlight"><div class="num">R1</div><div class="txt"><b>Autonomía es el objetivo, no una mejora</b> — sin supervisión humana continua</div></div>
+  <div class="rule"><div class="num">R2</div><div class="txt"><b>Reversibilidad por defecto</b> — toda acción se deshace o se bloquea</div></div>
+  <div class="rule"><div class="num">R3</div><div class="txt"><b>Auto-verificación obligatoria</b> — sin verificador, no hay acción</div></div>
+  <div class="rule"><div class="num">R4</div><div class="txt"><b>Kill-switch por invariantes</b> — no por humanos</div></div>
+  <div class="rule"><div class="num">R5</div><div class="txt"><b>Resultado sobre método</b> — lo que logra autonomía, se usa</div></div>
+  <div class="rule"><div class="num">R6</div><div class="txt"><b>Sin limitantes artificiales</b> — el presupuesto compra modelos, no capas</div></div>
+  <div class="rule"><div class="num">R7</div><div class="txt"><b>Todo sujeto a cambio</b> — excepto el objetivo (autonomía)</div></div>
+  <div class="rule"><div class="num">R8</div><div class="txt"><b>Tú imaginas, el sistema construye</b> — Erik decide, open-pax ejecuta solo</div></div>
+  <div class="rule"><div class="num">R9</div><div class="txt"><b>Tolerancia cero a la amnesia</b> — memoria legible y auditable</div></div>
+  <div class="rule"><div class="num">R10</div><div class="txt"><b>Honestidad radical</b> — semáforos 🟢🟡🔴 siempre</div></div>
+  <div class="rule"><div class="num">R11</div><div class="txt"><b>Diseñado para TDAH</b> — un solo siguiente paso</div></div>
+  <div class="rule deleted"><div class="num">❌ R6-vieja</div><div class="txt">Supervisión humana en lo delicado — ELIMINADA (violaba autonomía)</div></div>
+</div>
+
+<!-- ===================== FRONTERA ===================== -->
+<h2>📊 Frontera de capacidades (estado del arte 2026)</h2>
+<table class="frontier">
+  <tr><th>Capacidad</th><th>Estado</th><th>Autonomía</th><th>Notas</th></tr>
+  <tr><td>Cognición / razonamiento acotado</td><td class="green-bg">🟢 Alta</td><td class="green-bg">Plena</td><td>Fiable en dominios delimitados</td></tr>
+  <tr><td>Comunicación (texto, voz)</td><td class="green-bg">🟢 Alta</td><td class="green-bg">Plena</td><td>TTS/STT maduros</td></tr>
+  <tr><td>Acción digital (tool-calling)</td><td class="green-bg">🟢 Alta</td><td class="green-bg">Plena</td><td>MCP como estándar</td></tr>
+  <tr><td>Memoria (RAG, vectorial)</td><td class="yellow-bg">🟡 Media</td><td class="yellow-bg">Con verificador</td><td>Frágil a escala, requiere poda</td></tr>
+  <tr><td>Percepción multimodal</td><td class="yellow-bg">🟡 Media</td><td class="yellow-bg">Con verificador</td><td>Madura puntual, no continua</td></tr>
+  <tr><td>Creatividad</td><td class="yellow-bg">🟡 Media</td><td class="yellow-bg">Con verificador</td><td>Recombinación, no extrapolación</td></tr>
+  <tr><td>Planificación >5-10 pasos</td><td class="red-bg">🔴 Baja</td><td class="red-bg">Sin autonomía</td><td>Error acumula exponencialmente</td></tr>
+  <tr><td>Acción física general</td><td class="red-bg">🔴 Imposible</td><td class="red-bg">N/A</td><td>Robótica = investigación</td></tr>
+  <tr><td>Juicio ético autónomo</td><td class="red-bg">🔴 Imposible</td><td class="red-bg">N/A</td><td>Simulado, no fundamentado</td></tr>
+  <tr><td>Auto-mejora sin deriva</td><td class="red-bg">🔴 Imposible</td><td class="red-bg">N/A</td><td>Problema abierto</td></tr>
+</table>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(34,197,94,.4)"></div>🟢 Autonomía plena (verificador objetivo)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(234,179,8,.4)"></div>🟡 Autonomía con verificador LLM (puede alucinar)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(239,68,68,.4)"></div>🔴 Sin autonomía — modo asistido</div>
+</div>
+
+<!-- ===================== HOJA DE RUTA ===================== -->
+<h2>🚧 Hoja de ruta</h2>
+<div class="roadmap">
+  <div class="phase">
+    <span class="badge badge-done">✅ Fase 0</span>
+    <span class="label">Fundación: 2 VMs Oracle + Tailscale + Letta desplegado + timeout resuelto</span>
+    <span class="milestone">Completa</span>
+  </div>
+  <div class="phase">
+    <span class="badge badge-current">⏳ Fase 1</span>
+    <span class="label">Núcleo autónomo: LiteLLM + MCP + auto-verificador + sandbox + watchdog</span>
+    <span class="milestone">Hito: tarea autónoma end-to-end sin humano</span>
+  </div>
+  <div class="phase">
+    <span class="badge badge-future">⏳ Fase 2</span>
+    <span class="label">Capacidades autónomas: 10 caps con verificador objetivo + memoria con poda</span>
+    <span class="milestone">Hito: "investiga X y dame el reporte"</span>
+  </div>
+  <div class="phase">
+    <span class="badge badge-future">⏳ Fase 3</span>
+    <span class="label">Profundidad: A+R mixto + voz + salud mental autónoma</span>
+    <span class="milestone">Hito: "gestiona mi agenda esta semana"</span>
+  </div>
+  <div class="phase">
+    <span class="badge badge-future">⏳ Fase 4</span>
+    <span class="label">Percepción: visión multimodal + browser-use como tool reversible</span>
+    <span class="milestone">Hito: "lee esta página y extrae los datos"</span>
+  </div>
+  <div class="phase">
+    <span class="badge badge-future">⏳ Fase 5</span>
+    <span class="label">Hardening antifragil: barbell 90/10 + telemetría + auto-recalibración</span>
+    <span class="milestone">Hito: 30 días sin intervención</span>
+  </div>
+</div>
+
+<!-- ===================== ESTRUCTURA REPO ===================== -->
+<h2>📁 Estructura del repositorio</h2>
+<div class="tree">
+<span class="dir">open-pax/</span>
+├── <span class="highlight">EXPEDIENTE-MAESTRO.md</span>      <span class="comment"># Fuente única de verdad (v3)</span>
+├── <span class="highlight">README.md</span>                  <span class="comment"># Presentación del proyecto</span>
+├── <span class="dir">documentos/</span>                <span class="comment"># Análisis y veredictos</span>
+│   ├── 06_capacidades-humanas-universales.md    <span class="comment"># 316 capacidades en 18 grupos</span>
+│   ├── 07_capacidades-cuerpo-fisico-filtro.md   <span class="comment"># 48 caps que requieren cuerpo</span>
+│   ├── 08_metodo-implementacion.md              <span class="comment"># Clasificación A/R/A+R/N/A</span>
+│   ├── 09_frameworks-tipo-A.md                  <span class="comment"># 91 caps tipo A → framework</span>
+│   ├── 10_recursos-proveedores-tipo-R.md        <span class="comment"># 74 caps tipo R → recurso</span>
+│   ├── 11_frameworks-tipo-AR.md                  <span class="comment"># 94 caps A+R → framework+recurso</span>
+│   ├── 12_veredicto-consejo-arquitectura.md     <span class="comment"># v1 (SUPERSEDEDO)</span>
+│   ├── 13_veredicto-consejo-arquitectura-v2.md  <span class="comment"># v2 (SUPERSEDEDO)</span>
+│   └── <span class="highlight">14_veredicto-consejo-estado-del-arte.md</span>  <span class="comment"># OBJETIVO MÁXIMO</span>
+├── <span class="dir">codigo/</span>
+│   └── <span class="dir">letta/</span>                   <span class="comment"># Stack desplegado</span>
+│       ├── docker-compose.yml
+│       ├── telegram-bridge.py
+│       ├── setup-agent.py
+│       └── deploy.sh
+├── <span class="dir">visual/</span>                     <span class="comment"># Reportes HTML imprimibles</span>
+│   ├── reporte-capacidades-pdf.html
+│   ├── reporte-metodo-implementacion.html
+│   ├── reporte-frameworks-tipo-A.html
+│   ├── reporte-frameworks-tipo-AR.html
+│   └── reporte-recursos-tipo-R.html
+├── <span class="dir">diagramas/</span>                  <span class="comment"># 5 diagramas SVG</span>
+├── <span class="dir">recursos/</span>                   <span class="comment"># Inventario infra</span>
+├── <span class="dir">cerebropax/</span>                 <span class="comment"># Subproyecto: banco de cerebros (LiteLLM)</span>
+├── <span class="dir">recursospax/</span>                <span class="comment"># Subproyecto: gestión de recursos</span>
+├── <span class="dir">personalpax/</span>               <span class="comment"># Subproyecto: área personal</span>
+└── <span class="dir">sesiones/</span>                   <span class="comment"># Bitácoras de sesión</span>
+</div>
+
+<!-- ===================== SUBPROYECTOS ===================== -->
+<h2>🧩 Subproyectos</h2>
+<div class="components">
+  <div class="comp blue">
+    <div class="icon">🧠</div><div class="name">cerebropax</div>
+    <div class="role">Banco de cerebros (LiteLLM). Router único de modelos → componente del núcleo LLM. Enruta local + 2do equipo + APIs.</div>
+    <span class="status status-pending">🟡 Fase 1 en progreso</span>
+  </div>
+  <div class="comp green">
+    <div class="icon">🔧</div><div class="name">recursospax</div>
+    <div class="role">Gestión centralizada de recursos técnicos: APIs, cuentas, tokens, modelos, claves SSH, saldo prepago.</div>
+    <span class="status status-pending">🟡 Fase 1 en progreso</span>
+  </div>
+  <div class="comp purple">
+    <div class="icon">💚</div><div class="name">personalpax</div>
+    <div class="role">Área personal: finanzas + salud mental (TDAH/ACC) + agenda + hábitos. Cuida a Erik por Telegram, 24/7, sin agobiar.</div>
+    <span class="status status-on">🟢 Fase 0 completa</span>
+  </div>
+</div>
+
+<!-- ===================== PRESUPUESTO ===================== -->
+<h2>💰 Presupuesto operativo ($1,500 MXN/sem ≈ $370 USD/mes)</h2>
+<div class="components">
+  <div class="comp green"><div class="icon">🟢</div><div class="name">Tier local: $0</div><div class="role">Qwen3:4b (laptop) + Qwen3:14b (2do equipo Tailscale) + Piper TTS + Whisper STT + SD 1.5</div></div>
+  <div class="comp yellow"><div class="icon">🟡</div><div class="name">Tier API económica: ~$80/mes</div><div class="role">Groq llama-3.3-70b + DeepSeek-V3. 70% de las llamadas.</div></div>
+  <div class="comp red"><div class="icon">🔴</div><div class="name">Tier API premium: ~$200/mes</div><div class="role">GPT-4o-mini + Claude Haiku. Caps críticas (legal, salud).</div></div>
+  <div class="comp blue"><div class="icon">🔵</div><div class="name">Reserva: ~$90/mes</div><div class="role">Buffer para picos de uso o APIs adicionales.</div></div>
+</div>
+
+<!-- ===================== CONSEJO ===================== -->
+<h2>🏛️ Origen del paradigma: Consejo de 18 miembros</h2>
+<div class="components">
+  <div class="comp" style="border-left-color:#fbbf24">
+    <div class="icon">⚖️</div><div class="name">Consejo de High Intelligence</div>
+    <div class="role">18 perspectivas ortogonales · 3 rondas de deliberación · restricción: autonomía máxima</div>
+  </div>
+  <div class="comp green"><div class="icon">📊</div><div class="name">Votación final</div><div class="role"><b>15/16 unánime</b>: single-agent+autoverify+reversible<br>1 disidente: Sun Tzu (workflow como chokepoint)</div></div>
+  <div class="comp purple"><div class="icon">📜</div><div class="name">Veredicto completo</div><div class="role">documentos/14_veredicto-consejo-estado-del-arte.md</div></div>
+</div>
+
+<div style="text-align:center;margin-top:30px;color:#64748b;font-size:11px">
+open-pax v3 · 5-jul-2026 · Paradigma: single-agent + autoverify + reversible · Consejo de 18 miembros<br>
+github.com/paxel80/open-pax
+</div>
+
+</body>
+</html>
