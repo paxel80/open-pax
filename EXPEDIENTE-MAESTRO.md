@@ -220,13 +220,25 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 - [x] Timeout resuelto (migrado a OpenCode Zen big-pickle)
 
 ### Fase 1 — Núcleo autónomo ⏳ ACTUAL
-- [ ] Desplegar LiteLLM/cerebropax en nube2 (router de modelos)
-- [ ] Implementar MCP server con tools reversibles
-- [ ] Implementar auto-verificador (2º LLM adversarial + eval suite)
-- [ ] Implementar sandbox reversible (Docker + git checkpoint + dry-run)
-- [ ] Implementar watchdog con invariantes (presupuesto, blast radius, tasa error)
-- [ ] Conectar Letta → LiteLLM (unificar gateway de modelos)
-- [ ] **Hito:** agente ejecuta una tarea autónoma, se auto-verifica, revierte si falla, reporta resultado a Erik por Telegram — sin intervención humana
+
+> Roadmap de ejecución detallado: `documentos/20_roadmap-fase-1.md` (Consejo quick: Torvalds 1.5× + Musashi + Feynman).
+> Ejecutado por bootstrap-builder (R8): un agente IA construye los componentes, no Erik.
+
+FASE 1A — Cerebro (secuencial, bloqueante)
+- [ ] 1. Desplegar LiteLLM/cerebropax en nube2 → `/v1/models` responde
+- [ ] 2. Cablear Letta→LiteLLM → agente enruta vía cerebropax
+
+FASE 1B — Cuerpo (paralelo, mismo builder)
+- [ ] 3a. Sandbox reversible (git init + cwd restricto)
+- [ ] 3b. Tool MCP `write_file` + `undo` (git reset --hard HEAD~1)
+
+FASE 1C — Juicio mínimo (secuencial tras 1B)
+- [ ] 4. Auto-verificador: subprocess `ruff check` (LLM adversarial → Fase 2)
+
+FASE 1D — Defensa mínima (secuencial tras 1C)
+- [ ] 5. Watchdog mínimo: I5 (0 irreversibles) + logging (I1-I4 → Fase 2)
+
+**Hito Fase 1:** agente ejecuta "crea hola.py" → escribe → ruff → revierte si falla → notifica a Telegram — sin intervención humana, con trazas, sin violar I5.
 
 ### Fase 2 — Capacidades autónomas ⏳
 - [ ] 10 capacidades tipo A con verificador objetivo (código, configs, SQL)
@@ -275,6 +287,7 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 | `documentos/17_expediente-recursospax.md` | Expediente histórico: gestión de recursos — ahora integrado como `recursos/bitacora/` |
 | `documentos/18_expediente-personalpax.md` | Expediente histórico: área personal — ahora integrado como capacidades del agente |
 | `documentos/19_invariantes-operativos.md` | Invariantes numéricos (presupuesto, blast radius, tasa error) + DAG de Fase 1 |
+| `documentos/20_roadmap-fase-1.md` | **Roadmap de ejecución de Fase 1** — orden de los 6 pasos, qué paralelizar, anti-over-engineering |
 | `codigo/letta/` | Stack Letta: Docker Compose + Telegram bridge + setup |
 | `codigo/cerebropax/` | LiteLLM: config.yaml + docker-compose + deploy + test |
 | `recursos/bitacora/` | Bitácora de APIs LLM (claves, saldos, canónicas) |
