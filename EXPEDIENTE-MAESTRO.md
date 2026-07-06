@@ -135,7 +135,7 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 | Recurso | Especificación | Estado |
 |---|---|---|
 | Oracle nube1 (São Paulo) | 4 vCPU ARM, 24 GB RAM | 🟢 Viva, Tailscale, Letta desplegado |
-| Oracle nube2 (Frankfurt) | 4 vCPU ARM, 24 GB RAM | 🟢 Viva, Tailscale, workspace |
+| Oracle nube2 (Frankfurt) | 4 vCPU ARM, 24 GB RAM | 🟢 Viva, Tailscale, LiteLLM desplegado (cerebropax) |
 | Laptop ASUS | i5-11400H, 7.7 GB RAM, RTX 3050 4 GB VRAM | 🟢 Activa |
 | 2do equipo Tailscale | Ollama con qwen3-abliterated:14b + embeddings bge-m3 | 🟢 Accesible |
 | Xiaomi 14T Pro | Nodo Tailscale, panel de control | 🟢 Activo |
@@ -225,7 +225,7 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 > Ejecutado por bootstrap-builder (R8): un agente IA construye los componentes, no Erik.
 
 FASE 1A — Cerebro (secuencial, bloqueante)
-- [ ] 1. Desplegar LiteLLM/cerebropax en nube2 → `/v1/models` responde
+- [x] 1. Desplegar LiteLLM/cerebropax en nube2 → 24 modelos cargados, accesible vía Tailscale ✅
 - [ ] 2. Cablear Letta→LiteLLM → agente enruta vía cerebropax
 
 FASE 1B — Cuerpo (paralelo, mismo builder)
@@ -324,7 +324,7 @@ FASE 1D — Defensa mínima (secuencial tras 1C)
 ## ⚠️ Honestidad (R10)
 
 1. 🟢 **El paradigma está definido** por un Consejo de 18 perspectivas ortogonales (15/16 unánime).
-2. 🟡 **No existe aún** el auto-verificador, el sandbox reversible ni el watchdog — son Fase 1. Los invariantes numéricos están definidos provisionalmente en `documentos/19`.
+2. 🟡 **No existe aún** el auto-verificador, el sandbox reversible ni el watchdog — son Fase 1. Los invariantes numéricos están definidos provisionalmente en `documentos/19`. LiteLLM desplegado en nube2 (24 modelos cargados), pero las claves cloud API están invalidadas — necesitan regeneración (problema de `recursospax`). Solo Ollama local funciona como modelo real de momento.
 3. 🟡 **La autonomía plena** es alcanzable solo donde hay verificador objetivo (tests, dry-run). Sin verificador, es ilusoria.
 4. 🔴 **Imposible autónomamente hoy:** acción física, juicio ético fundamentado, auto-mejora sin deriva, planificación >5-10 pasos.
 5. 🔵 **Este documento es v3.** Reemplaza v2. El paradigma (single-agent+autoverify+reversible) es el objetivo máximo — todo lo demás se subordina a él.
