@@ -11,12 +11,12 @@
 **Un agente autónomo de propósito general** que opera sin supervisión humana continua.
 Aspira a adquirir/replicar un espectro amplio de capacidades humanas — cognición, comunicación, percepción, memoria, acción digital, creatividad, aprendizaje, autogestión, razonamiento social, juicio ético.
 
-| Área | Qué cubre |
-|---|---|
-| 🗂️ **Organización** | Proyectos, priorización, deadlines, conexiones |
-| 🔬 **Investigación** | Escaneo de tendencias 24/7, alerta de obsolescencia, validación |
-| 🛠️ **Trabajo** | Construcción de código, dossiers, proyectos reales |
-| 💚 **Personal** | Finanzas, salud mental (TDAH/ACC), agenda, hábitos, relaciones |
+| Área                       | Qué cubre                                                       |
+| --------------------------- | ---------------------------------------------------------------- |
+| 🗂️**Organización** | Proyectos, priorización, deadlines, conexiones                  |
+| 🔬**Investigación**  | Escaneo de tendencias 24/7, alerta de obsolescencia, validación |
+| 🛠️**Trabajo**       | Construcción de código, dossiers, proyectos reales             |
+| 💚**Personal**        | Finanzas, salud mental (TDAH/ACC), agenda, hábitos, relaciones  |
 
 **Erik = diseñador ex-ante + auditor ex-post.** Define objetivos e invariantes una vez, revisa trazas después.
 **open-pax = agente autónomo.** Razona, actúa, se verifica y se corrige solo, dentro de un perímetro de acciones reversibles.
@@ -76,12 +76,12 @@ AUDITOR EX-POST (Erik, revisa después)
 
 ### Lo que reemplaza al human-in-loop (4 sustitutos mecánicos)
 
-| # | Mecanismo | Qué reemplaza del humano |
-|---|---|---|
-| 1 | **Auto-verificador adversarial** — 2º LLM con instrucción de refutar la acción | La duda humana |
-| 2 | **Reversibilidad por diseño** — toda acción es compensable o sandboxed | La intercepción del error |
-| 3 | **Kill-switches automáticos** — watchdog por invariantes violadas | El "botón de pánico" |
-| 4 | **Memoria como espejo** — el agente lee su historial y se autocorrige | La supervisión continua |
+| # | Mecanismo                                                                                | Qué reemplaza del humano  |
+| - | ---------------------------------------------------------------------------------------- | -------------------------- |
+| 1 | **Auto-verificador adversarial** — 2º LLM con instrucción de refutar la acción | La duda humana             |
+| 2 | **Reversibilidad por diseño** — toda acción es compensable o sandboxed          | La intercepción del error |
+| 3 | **Kill-switches automáticos** — watchdog por invariantes violadas                | El "botón de pánico"     |
+| 4 | **Memoria como espejo** — el agente lee su historial y se autocorrige             | La supervisión continua   |
 
 ---
 
@@ -93,38 +93,49 @@ AUDITOR EX-POST (Erik, revisa después)
 ### ESENCIALES — El paradigma en 4 reglas
 
 #### R1 — Autonomía es el objetivo, no una mejora
+
 open-pax debe operar **sin supervisión humana continua**. El humano diseña ex-ante (objetivos, invariantes, perímetros) y audita ex-post (trazas). **No aprueba cada acción.** Toda regla, componente o decisión que introduzca human-in-loop como dependencia permanente viola el objetivo.
 
 #### R2 — Reversibilidad por defecto
+
 Toda acción del agente debe ser **reversible o confinada a sandbox**. Si una acción no puede deshacerse, se bloquea por defecto hasta que se defina un kill-switch automático. El error no necesita intercepción humana — se deshace solo. La irreversibilidad es la excepción que requiere dead-man's switch, no la regla.
 
 #### R3 — Auto-verificación obligatoria
+
 Antes de ejecutar cualquier acción, el agente debe pasar por su **auto-verificador**: un segundo pase adversarial (LLM con instrucción de refutar, **familia distinta de modelo**) + tests deterministas (lint, typecheck, dry-run). Si el verificador no aprueba, la acción no se ejecuta — se reescribe o se aborta. Sin verificador, no hay acción.
 
 #### R4 — Kill-switch por invariantes, no por humanos
+
 Los kill-switches se disparan cuando los **invariantes numéricos** (presupuesto, tasa de error, blast radius, permisos) se violan — automáticamente. El humano no es el interruptor; el invariante lo es. Erik define los invariantes una vez, antes del despliegue. El watchdog los ejecuta.
 
 ### DERIVADAS — Cómo se opera
 
 #### R5 — Resultado sobre método
+
 Se puede implementar y combinar cualquier cosa. No importa el método, lo ortodoxo o lo complejo. **Importa el resultado autónomo.** Si juntar 7 herramientas raras logra la capacidad autónoma, se juntan.
 
 #### R6 — Sin limitantes artificiales
+
 No hay límites técnicos ni económicos pre-establecidos. La única restricción: no hacer gastos innecesarios. $0 es deseable, $1,500 MXN/sem que rinda 100x es aceptable. El presupuesto compra mejores modelos, no más capas.
 
 #### R7 — Todo sujeto a cambio
+
 Nada es dogma excepto el objetivo (autonomía). Si mañana sale una tecnología que mejora la auto-verificación, la reversibilidad o la memoria, se migra. Si un enfoque no produce autonomía, se descarta sin culpa.
 
 #### R8 — Tú imaginas, el sistema construye
+
 Erik no programa. Erik es el cerebro creativo que imagina y decide objetivos. open-pax (construido por cualquier agente de IA) escribe el código, lo ejecuta, lo prueba, se auto-verifica y se lo entrega a Erik como un electrodoméstico autónomo: funciona solo. **El paradigma incluye género bootstrap-builder:** un agente externo construye los componentes de Fase 1 inicialmente.
 
 #### R9 — Tolerancia cero a la amnesia
+
 Todo estado importante va a disco. El sistema sobrevive a reinicios, caídas de luz y cambio de sesión. La memoria es legible y auditable — Erik puede reconstruir causalmente cualquier decisión del agente. Nada se queda en la conversación. Las trazas de R9 y R10 (audit trail) alimentan al watchdog como insumo.
 
 #### R10 — Honestidad radical
+
 Semáforos 🟢🟡🔴 siempre. Si una capacidad está al 60%, se dice 60%. Si algo viola TOS, se documenta. Si algo no es posible autónomamente hoy, se dice. Si el auto-verificador tiene falsos negativos, se mide y se reporta. La confianza en el expediente es absoluta.
 
 #### R11 — Diseñado para TDAH
+
 UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo prioriza, ejecuta y reporta: "hice esto, aquí está el resultado". Sin culpa por lo que no se hizo — el sistema lo retomará.
 
 ---
@@ -132,30 +143,38 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 ## 🔩 Hardware y servicios
 
 ### Hardware
-| Recurso | Especificación | Estado |
-|---|---|---|
-| Oracle nube1 (São Paulo) | 4 vCPU ARM, 24 GB RAM | 🟢 Viva, Tailscale, Letta desplegado |
-| Oracle nube2 (Frankfurt) | 4 vCPU ARM, 24 GB RAM | 🟢 Viva, Tailscale, LiteLLM desplegado (cerebropax) |
-| Laptop ASUS | i5-11400H, 7.7 GB RAM, RTX 3050 4 GB VRAM | 🟢 Activa |
-| 2do equipo Tailscale | Ollama con qwen3-abliterated:14b + embeddings bge-m3 | 🟢 Accesible |
-| Xiaomi 14T Pro | Nodo Tailscale, panel de control | 🟢 Activo |
+
+| Recurso                   | Especificación                                      | Estado                                              |
+| ------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
+| Oracle nube1 (São Paulo) | 4 vCPU ARM, 24 GB RAM                                | 🟢 Viva, Tailscale, Letta desplegado                |
+| Oracle nube2 (Frankfurt)  | 4 vCPU ARM, 24 GB RAM                                | 🟢 Viva, Tailscale, LiteLLM desplegado (cerebropax) |
+| Laptop ASUS               | i5-11400H, 7.7 GB RAM, RTX 3050 4 GB VRAM            | 🟢 Activa                                           |
+| 2do equipo Tailscale      | Ollama con qwen3-abliterated:14b + embeddings bge-m3 | 🟢 Accesible                                        |
+| Xiaomi 14T Pro            | Nodo Tailscale, panel de control                     | 🟢 Activo                                           |
 
 ### APIs y servicios
-| Servicio | Para qué | Costo | Estado |
-|---|---|---|---|
-| Groq API | Cerebro rápido gratis (Llama 3) | $0 | 🟢 |
-| NVIDIA NIM | ~121 modelos gratis | $0 | 🟢 |
-| DeepSeek API | Código barato | centavos | 🟡 |
-| Google Gemini | Free tier | $0 | 🟢 |
-| Anthropic API | Claude (calidad tope) | $$-$$$ | 🟡 |
-| OpenRouter | 100+ modelos, 1 llave | variable | 🟡 (regenerar key) |
-| Telegram Bot API | Interfaz con Erik | $0 | 🟢 @LaInconclusa80_bot |
-| Cloudflare | DNS + Tunnel + R2 | $0 | 🟢 |
-| Tailscale | Malla privada | $0 | 🟢 |
-| GitHub | Repos + Pages + Actions | $0 | 🟢 |
-| Supabase | DB + auth | $0 | 🟢 |
+
+| Servicio         | Para qué                        | Costo    | Estado                 |
+| ---------------- | -------------------------------- | -------- | ---------------------- |
+| Groq API         | Cerebro rápido gratis (Llama 3) | $0       | 🟢                     |
+| NVIDIA NIM       | ~121 modelos gratis              | $0       | 🟢                     |
+| DeepSeek API     | Código barato                   | centavos | 🟡                     |
+| Google Gemini    | Free tier                        | $0       | 🟢                     |
+| Anthropic API    | Claude (calidad tope)            |
+$$
+-$
+$$
+
+    | 🟡                     |
+| OpenRouter       | 100+ modelos, 1 llave            | variable | 🟡 (regenerar key)     |
+| Telegram Bot API | Interfaz con Erik                | $0       | 🟢 @LaInconclusa80_bot |
+| Cloudflare       | DNS + Tunnel + R2                | $0       | 🟢                     |
+| Tailscale        | Malla privada                    | $0       | 🟢                     |
+| GitHub           | Repos + Pages + Actions          | $0       | 🟢                     |
+| Supabase         | DB + auth                        | $0       | 🟢                     |
 
 ### Presupuesto operativo
+
 - $1,500 MXN/sem ≈ $370 USD/mes para APIs pagas
 - Distribución: ~$80 API económica (Groq/DeepSeek) · ~$200 API premium (GPT-4o-mini/Haiku) · ~$90 reserva
 
@@ -165,24 +184,24 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 
 ### Componentes del paradigma single-agent+autoverify+reversible
 
-| Componente | Rol | Estado actual | Estado objetivo |
-|---|---|---|---|
-| **LLM núcleo** | Razonamiento + tool-calling | Letta con OpenCode Zen big-pickle | LiteLLM/cerebropax enruta a Qwen3/Llama-4 + APIs |
-| **Tool-calling (MCP)** | Estándar de herramientas | Pendiente | MCP server con tools reversibles |
-| **Memoria legible** | Audit trail + contexto | pgvector (Letta) | pgvector + Qdrant + logs estructurados |
-| **Auto-verificador** | 2º pase adversarial + tests | Pendiente | LLM-as-judge (modelo distinto) + eval suite |
-| **Sandbox reversible** | Ejecución con undo | Pendiente | Docker + git checkpoint + dry-run |
-| **Kill-switch automático** | Watchdog por invariantes | Pendiente | Watchdog determinista por invariantes |
+| Componente                        | Rol                          | Estado actual                     | Estado objetivo                                  |
+| --------------------------------- | ---------------------------- | --------------------------------- | ------------------------------------------------ |
+| **LLM núcleo**             | Razonamiento + tool-calling  | Letta con OpenCode Zen big-pickle | LiteLLM/cerebropax enruta a Qwen3/Llama-4 + APIs |
+| **Tool-calling (MCP)**      | Estándar de herramientas    | Pendiente                         | MCP server con tools reversibles                 |
+| **Memoria legible**         | Audit trail + contexto       | pgvector (Letta)                  | pgvector + Qdrant + logs estructurados           |
+| **Auto-verificador**        | 2º pase adversarial + tests | Pendiente                         | LLM-as-judge (modelo distinto) + eval suite      |
+| **Sandbox reversible**      | Ejecución con undo          | Pendiente                         | Docker + git checkpoint + dry-run                |
+| **Kill-switch automático** | Watchdog por invariantes     | Pendiente                         | Watchdog determinista por invariantes            |
 
 ### Asignación a nodos
 
-| Nodo | Aloja | Por qué |
-|---|---|---|
-| nube1 (SP, 24 GB) | Letta (agente + memoria) | Ya desplegado, memoria activa |
-| nube2 (FRA, 24 GB) | LiteLLM/cerebropax + sandbox + watchdog | Workspace, más RAM disponible |
-| Laptop | Modelos locales (Qwen3:4b) + SD + Whisper | GPU local |
-| 2do equipo | Modelos grandes (Qwen3:14b) | Más VRAM/cómputo |
-| Xiaomi | Panel de control + notificaciones | Siempre con Erik |
+| Nodo               | Aloja                                     | Por qué                       |
+| ------------------ | ----------------------------------------- | ------------------------------ |
+| nube1 (SP, 24 GB)  | Letta (agente + memoria)                  | Ya desplegado, memoria activa  |
+| nube2 (FRA, 24 GB) | LiteLLM/cerebropax + sandbox + watchdog   | Workspace, más RAM disponible |
+| Laptop             | Modelos locales (Qwen3:4b) + SD + Whisper | GPU local                      |
+| 2do equipo         | Modelos grandes (Qwen3:14b)               | Más VRAM/cómputo             |
+| Xiaomi             | Panel de control + notificaciones         | Siempre con Erik               |
 
 ---
 
@@ -190,21 +209,22 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 
 > Fuente: Veredicto del Consejo (documentos/14)
 
-| Capacidad | Estado | Notas |
-|---|---|---|
-| Cognición/razonamiento acotado | 🟢 Alta | Fiable en dominios delimitados |
-| Comunicación (texto, voz) | 🟢 Alta | TTS/STT maduros |
-| Acción digital (tool-calling) | 🟢 Alta | MCP como estándar |
-| Memoria (RAG, vectorial) | 🟢 Alta | Funcional; poda automática pendiente (Fase 2) |
-| Percepción multimodal | 🟡 Media | Madura puntual, no continua |
-| Creatividad | 🟡 Media | Recombinación, no extrapolación |
-| Planificación >5-10 pasos | 🔴 Baja | Error acumula exponencialmente |
-| Acción física general | 🔴 Imposible | Robótica = investigación |
-| Juicio ético autónomo | 🔴 Imposible | Simulado, no fundamentado |
-| Auto-mejora sin deriva | 🔴 Imposible | Problema abierto |
-| Aprendizaje en pesos | 🔴 Imposible | No demostrado |
+| Capacidad                       | Estado       | Notas                                          |
+| ------------------------------- | ------------ | ---------------------------------------------- |
+| Cognición/razonamiento acotado | 🟢 Alta      | Fiable en dominios delimitados                 |
+| Comunicación (texto, voz)      | 🟢 Alta      | TTS/STT maduros                                |
+| Acción digital (tool-calling)  | 🟢 Alta      | MCP como estándar                             |
+| Memoria (RAG, vectorial)        | 🟢 Alta      | Funcional; poda automática pendiente (Fase 2) |
+| Percepción multimodal          | 🟡 Media     | Madura puntual, no continua                    |
+| Creatividad                     | 🟡 Media     | Recombinación, no extrapolación              |
+| Planificación >5-10 pasos      | 🔴 Baja      | Error acumula exponencialmente                 |
+| Acción física general         | 🔴 Imposible | Robótica = investigación                     |
+| Juicio ético autónomo         | 🔴 Imposible | Simulado, no fundamentado                      |
+| Auto-mejora sin deriva          | 🔴 Imposible | Problema abierto                               |
+| Aprendizaje en pesos            | 🔴 Imposible | No demostrado                                  |
 
 ### Regla de autonomía por capacidad
+
 - 🟢 Autonomía plena donde hay **verificador objetivo** (tests, dry-run, validadores)
 - 🟡 Autonomía con supervisión donde el verificador es LLM-as-judge (puede alucinar)
 - 🔴 Sin autonomía donde no hay verificador — modo asistido (cola diferida)
@@ -214,10 +234,11 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 ## 🚧 Hoja de ruta (alineada al paradigma)
 
 ### Fase 0 — Fundación 🟢 COMPLETA
-- [x] 2 VMs Oracle A1 4/24 ARM vivas, Tailscale
-- [x] Xiaomi 14T Pro como nodo Tailscale
-- [x] Letta desplegado en nube1 con pgvector + Telegram bridge
-- [x] Timeout resuelto (migrado a OpenCode Zen big-pickle)
+
+- [X] 2 VMs Oracle A1 4/24 ARM vivas, Tailscale
+- [X] Xiaomi 14T Pro como nodo Tailscale
+- [X] Letta desplegado en nube1 con pgvector + Telegram bridge
+- [X] Timeout resuelto (migrado a OpenCode Zen big-pickle)
 
 ### Fase 1 — Núcleo autónomo ⏳ ACTUAL
 
@@ -225,97 +246,106 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 > Ejecutado por bootstrap-builder (R8): un agente IA construye los componentes, no Erik.
 
 FASE 1A — Cerebro (secuencial, bloqueante)
-- [x] 1. Desplegar LiteLLM/cerebropax en nube2 → 24 modelos cargados, accesible vía Tailscale ✅
+
+- [X] 1. Desplegar LiteLLM/cerebropax en nube2 → 24 modelos cargados, accesible vía Tailscale ✅
 - [ ] 2. Cablear Letta→LiteLLM → agente enruta vía cerebropax
 
 FASE 1B — Cuerpo (paralelo, mismo builder)
+
 - [ ] 3a. Sandbox reversible (git init + cwd restricto)
 - [ ] 3b. Tool MCP `write_file` + `undo` (git reset --hard HEAD~1)
 
 FASE 1C — Juicio mínimo (secuencial tras 1B)
+
 - [ ] 4. Auto-verificador: subprocess `ruff check` (LLM adversarial → Fase 2)
 
 FASE 1D — Defensa mínima (secuencial tras 1C)
+
 - [ ] 5. Watchdog mínimo: I5 (0 irreversibles) + logging (I1-I4 → Fase 2)
 
 **Hito Fase 1:** agente ejecuta "crea hola.py" → escribe → ruff → revierte si falla → notifica a Telegram — sin intervención humana, con trazas, sin violar I5.
 
 ### Fase 2 — Capacidades autónomas ⏳
+
 - [ ] 10 capacidades tipo A con verificador objetivo (código, configs, SQL)
 - [ ] Memoria legible con poda automática
 - [ ] Sub-agentes para tareas acotadas (research, finanzas, organización)
 - [ ] **Hito:** "investiga X y dame el reporte" → autónomo end-to-end
 
 ### Fase 3 — Profundidad ⏳
+
 - [ ] Capacidades tipo A+R (mixto) con auto-verificación
 - [ ] Voz natural (TTS/STT) integrada al agente
 - [ ] Salud mental autónoma (recordatorios, tracking, alertas)
 - [ ] **Hito:** "gestiona mi agenda esta semana" → autónomo
 
 ### Fase 4 — Percepción ⏳
+
 - [ ] Visión multimodal (cámara + LLaVA)
 - [ ] browser-use integrado como tool reversible
 - [ ] **Hito:** "lee esta página y extrae los datos" → autónomo
 
 ### Fase 5 — Hardening antifragil ⏳
+
 - [ ] Barbell: 90% reversible + 10% irreversible con dead-man's switch
 - [ ] Telemetría de falsos negativos del verificador
 - [ ] Auto-recalibración de umbrales por tasa de error
 - [ ] **Hito:** sistema opera 30 días sin intervención, auditando sus propias trazas
 
 ### Fase 6+ — Lo que descubramos 🔮
+
 - [ ] Lo que el estado del arte permita cuando lleguemos
 
 ---
 
 ## 📚 Documentos del proyecto
 
-| Documento | Qué es |
-|---|---|
-| `EXPEDIENTE-MAESTRO.md` | Fuente única de verdad (este archivo, v3) |
-| `SIGUIENTE-PASO.md` | 1 archivo, 1 comando — lo que Erik ejecuta hoy para avanzar |
-| `documentos/06_capacidades-humanas-universales.md` | Taxonomía: 316 capacidades en 18 grupos |
-| `documentos/07_capacidades-cuerpo-fisico-filtro.md` | Filtro: 48 capacidades que requieren cuerpo físico |
-| `documentos/08_metodo-implementacion.md` | Reclasificación A (workflow) · R (recurso) · A+R (mixto) · N/A |
-| `documentos/09_frameworks-tipo-A.md` | Framework óptimo para 91 capacidades tipo A |
-| `documentos/10_recursos-proveedores-tipo-R.md` | Recurso + proveedor para 74 capacidades tipo R |
-| `documentos/11_frameworks-tipo-AR.md` | Framework + recurso para 94 capacidades tipo A+R |
-| `documentos/_archivados/` | Documentos obsoletos (12, 13, 01-05 originales) — conservados como histórico |
-| `documentos/14_veredicto-consejo-estado-del-arte.md` | **Veredicto --full (18 miembros, autonomía): single-agent+autoverify+reversible. OBJETIVO MÁXIMO.** |
-| `documentos/15_expediente-cerebropax.md` | Expediente histórico: banco de cerebros (LiteLLM) — ahora integrado como `codigo/cerebropax/` |
-| `documentos/16_prompts-arranque-cerebropax.md` | Prompts copy-paste para sesiones de cerebropax |
-| `documentos/17_expediente-recursospax.md` | Expediente histórico: gestión de recursos — ahora integrado como `recursos/bitacora/` |
-| `documentos/18_expediente-personalpax.md` | Expediente histórico: área personal — ahora integrado como capacidades del agente |
-| `documentos/19_invariantes-operativos.md` | Invariantes numéricos (presupuesto, blast radius, tasa error) + DAG de Fase 1 |
-| `documentos/20_roadmap-fase-1.md` | **Roadmap de ejecución de Fase 1** — orden de los 6 pasos, qué paralelizar, anti-over-engineering |
-| `codigo/letta/` | Stack Letta: Docker Compose + Telegram bridge + setup |
-| `codigo/cerebropax/` | LiteLLM: config.yaml + docker-compose + deploy + test |
-| `recursos/bitacora/` | Bitácora de APIs LLM (claves, saldos, canónicas) |
-| `recursos/infraestructura/01_inventario-infraestructura.md` | Inventario completo de hardware, cuentas, APIs |
-| `recursos/infraestructura/02_topologia-red.svg` | Diagrama de la red |
-| `diagramas/01_panorama-vision-erik.svg` | Visión general: 4 áreas |
-| `diagramas/02_ciclo-diario.svg` | Ciclo autónomo diario |
-| `diagramas/03_arquitectura-capas.svg` | Arquitectura por capas |
-| `diagramas/04_proyectos-reales-flujo.svg` | Flujo de proyectos reales |
-| `diagramas/05_hoja-de-ruta.svg` | Fases visuales con semáforos |
-| `diagramas/06_arquitectura-cerebropax.svg` | Arquitectura original del banco de cerebros |
-| `diagramas/07_panorama-personalpax.svg` | Panorama original del área personal |
-| `visual/analisis-frameworks-capacidades.docx` | Word: 316 capacidades × frameworks |
-| `visual/reporte-capacidades-pdf.html` | HTML: 316 capacidades por grupo |
-| `visual/reporte-metodo-implementacion.html` | HTML: 316 capacidades por método |
-| `visual/reporte-frameworks-tipo-A.html` | HTML: 91 tipo A con framework óptimo |
-| `visual/reporte-recursos-tipo-R.html` | HTML: 74 tipo R con recurso + proveedor |
-| `visual/reporte-frameworks-tipo-AR.html` | HTML: 94 tipo A+R con framework + recurso |
+| Documento                                                     | Qué es                                                                                                     |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `EXPEDIENTE-MAESTRO.md`                                     | Fuente única de verdad (este archivo, v3)                                                                  |
+| `SIGUIENTE-PASO.md`                                         | 1 archivo, 1 comando — lo que Erik ejecuta hoy para avanzar                                                |
+| `documentos/06_capacidades-humanas-universales.md`          | Taxonomía: 316 capacidades en 18 grupos                                                                    |
+| `documentos/07_capacidades-cuerpo-fisico-filtro.md`         | Filtro: 48 capacidades que requieren cuerpo físico                                                         |
+| `documentos/08_metodo-implementacion.md`                    | Reclasificación A (workflow) · R (recurso) · A+R (mixto) · N/A                                          |
+| `documentos/09_frameworks-tipo-A.md`                        | Framework óptimo para 91 capacidades tipo A                                                                |
+| `documentos/10_recursos-proveedores-tipo-R.md`              | Recurso + proveedor para 74 capacidades tipo R                                                              |
+| `documentos/11_frameworks-tipo-AR.md`                       | Framework + recurso para 94 capacidades tipo A+R                                                            |
+| `documentos/_archivados/`                                   | Documentos obsoletos (12, 13, 01-05 originales) — conservados como histórico                              |
+| `documentos/14_veredicto-consejo-estado-del-arte.md`        | **Veredicto --full (18 miembros, autonomía): single-agent+autoverify+reversible. OBJETIVO MÁXIMO.** |
+| `documentos/15_expediente-cerebropax.md`                    | Expediente histórico: banco de cerebros (LiteLLM) — ahora integrado como`codigo/cerebropax/`            |
+| `documentos/16_prompts-arranque-cerebropax.md`              | Prompts copy-paste para sesiones de cerebropax                                                              |
+| `documentos/17_expediente-recursospax.md`                   | Expediente histórico: gestión de recursos — ahora integrado como`recursos/bitacora/`                   |
+| `documentos/18_expediente-personalpax.md`                   | Expediente histórico: área personal — ahora integrado como capacidades del agente                        |
+| `documentos/19_invariantes-operativos.md`                   | Invariantes numéricos (presupuesto, blast radius, tasa error) + DAG de Fase 1                              |
+| `documentos/20_roadmap-fase-1.md`                           | **Roadmap de ejecución de Fase 1** — orden de los 6 pasos, qué paralelizar, anti-over-engineering  |
+| `codigo/letta/`                                             | Stack Letta: Docker Compose + Telegram bridge + setup                                                       |
+| `codigo/cerebropax/`                                        | LiteLLM: config.yaml + docker-compose + deploy + test                                                       |
+| `recursos/bitacora/`                                        | Bitácora de APIs LLM (claves, saldos, canónicas)                                                          |
+| `recursos/infraestructura/01_inventario-infraestructura.md` | Inventario completo de hardware, cuentas, APIs                                                              |
+| `recursos/infraestructura/02_topologia-red.svg`             | Diagrama de la red                                                                                          |
+| `diagramas/01_panorama-vision-erik.svg`                     | Visión general: 4 áreas                                                                                   |
+| `diagramas/02_ciclo-diario.svg`                             | Ciclo autónomo diario                                                                                      |
+| `diagramas/03_arquitectura-capas.svg`                       | Arquitectura por capas                                                                                      |
+| `diagramas/04_proyectos-reales-flujo.svg`                   | Flujo de proyectos reales                                                                                   |
+| `diagramas/05_hoja-de-ruta.svg`                             | Fases visuales con semáforos                                                                               |
+| `diagramas/06_arquitectura-cerebropax.svg`                  | Arquitectura original del banco de cerebros                                                                 |
+| `diagramas/07_panorama-personalpax.svg`                     | Panorama original del área personal                                                                        |
+| `visual/analisis-frameworks-capacidades.docx`               | Word: 316 capacidades × frameworks                                                                         |
+| `visual/reporte-capacidades-pdf.html`                       | HTML: 316 capacidades por grupo                                                                             |
+| `visual/reporte-metodo-implementacion.html`                 | HTML: 316 capacidades por método                                                                           |
+| `visual/reporte-frameworks-tipo-A.html`                     | HTML: 91 tipo A con framework óptimo                                                                       |
+| `visual/reporte-recursos-tipo-R.html`                       | HTML: 74 tipo R con recurso + proveedor                                                                     |
+| `visual/reporte-frameworks-tipo-AR.html`                    | HTML: 94 tipo A+R con framework + recurso                                                                   |
 
 ## 🧩 Componentes (ex-subproyectos fusionados)
 
 > Los subproyectos `cerebropax`, `recursospax` y `personalpax` fueron **fusionados** en el árbol único. Ya no son carpetas separadas — son componentes del sistema.
 
-| Componente | Vive en | Función |
-|---|---|---|
-| **cerebropax** (LiteLLM/router) | `codigo/cerebropax/` + `documentos/15-16` | Núcleo LLM del agente — enruta modelos gratis+baratos+premium |
-| **recursospax** (gestión APIs) | `recursos/bitacora/` + `documentos/17` | APIs, cuentas, claves, saldos — bitácora viva |
-| **personalpax** (área personal) | `documentos/18` + capacidades del agente | Área 💚 Personal: dominio de capacidades del agente |
+| Componente                             | Vive en                                       | Función                                                        |
+| -------------------------------------- | --------------------------------------------- | --------------------------------------------------------------- |
+| **cerebropax** (LiteLLM/router)  | `codigo/cerebropax/` + `documentos/15-16` | Núcleo LLM del agente — enruta modelos gratis+baratos+premium |
+| **recursospax** (gestión APIs)  | `recursos/bitacora/` + `documentos/17`    | APIs, cuentas, claves, saldos — bitácora viva                 |
+| **personalpax** (área personal) | `documentos/18` + capacidades del agente    | Área 💚 Personal: dominio de capacidades del agente            |
 
 > La tabla de **Documentos del proyecto** arriba contiene la ubicación exacta de cada archivo.
 
@@ -328,6 +358,28 @@ FASE 1D — Defensa mínima (secuencial tras 1C)
 3. 🟡 **La autonomía plena** es alcanzable solo donde hay verificador objetivo (tests, dry-run). Sin verificador, es ilusoria.
 4. 🔴 **Imposible autónomamente hoy:** acción física, juicio ético fundamentado, auto-mejora sin deriva, planificación >5-10 pasos.
 5. 🔵 **Este documento es v3.** Reemplaza v2. El paradigma (single-agent+autoverify+reversible) es el objetivo máximo — todo lo demás se subordina a él.
+
+---
+
+## 🔍 Auditoría ECC + Council (6-jul-2026) — ver `documentos/21`
+
+> Auditoría externa al paradigma con dos frameworks de Erik: **ECC** (dimensión técnica: arquitecto + python-reviewer + security-reviewer) y **Council** (dimensión estratégica: Sutskever + Taleb + Munger, Chairman opus, modo quick 2 rondas).
+
+**Resultado consolidado (un único veredicto):** *Barbell 90/10* — 90% Yésika (ingreso cierto $3-5k/sem), 10% open-pax **estrechado de 316 capacidades a ≤5 capacidades narrow sobre Yésika**, en sustrato propio (laptop + celular) para lo reversible y VM propia solo para lo irreversible, con Erik dentro del lazo hasta watchdog probado 30 días.
+
+**Hallazgos técnicos críticos (ECC):**
+- 🔴 **Ollama expuesto al internet público** en VM SP (`letta/docker-compose.yml:48-49`). Único hallazgo explotable HOY sin error humano → **cerrar puerto HOY**.
+- 🔴 `telegram-bridge.py:130` en dev-mode abierto (si `ALLOWED_USERS` vacío = acceso libre al agente autónomo).
+- 🔴 `setup-agent.py:79-83` y `setup-agent-remote.py:79-83` hacen `delete` del agente **sin backup** = destrucción irreversible de memoria.
+- 🔴 Letta endpoint 8283 sin auth; `add_model_internal.py` AttributeError garantizado; `setup-model.py` sin `raise_for_status`; `letta/deploy.sh:25` pipe-to-shell `get.docker.com`.
+- 🟢 Secretos en git históricos **limpios** (137 blobs revisados, solo `.env.example` con placeholders). Riesgo real = un `git add .` futuro.
+- 🟡 `recursos/bitacora/01_apis-llm.md` (commiteado) filtra metadatos: rutas absolutas del disco de Erik, conteo de claves. Inteligencia de objetivo.
+
+**Claves a regenerar (orden):** Telegram bot token → OpenRouter → OpenCode → 4× LITELLM_* → 11 claves LLM de cerebropax. Anthropic está **suelta** (no en ningún `.env`), guardar en vault.
+
+**Council — split real sin resolver:** ¿VM propia antes de Fase 1 (Taleb: sí, dealbreaker) o solo antes de lo irreversible (Sutskever: no; Munger: split)? Con los **4 nodos propios de Erik** (laptop + celular + 2 VM Oracle), la postura de Sutskever gana peso: los reversibles caben en sustrato propio diurno. Falta dato: costo de migrar a VM propia vs. probabilidad real de baneo en 30-60 días.
+
+**Kill switch del veredicto:** si para 2026-08-06 open-pax consume >10% del tiempo sin transferir aprendizaje a Yésika, O se banea una VM sin redundancia, O las claves siguen sin regenerar → pausar open-pax, 100% a Yésika.
 
 ---
 
