@@ -218,10 +218,10 @@ $$
 
 | Nodo | Aloja | Por qué |
 |---|---|---|
-| **Laptop** (propio) | Hermes + skills + sesión de día | Sustrato propio, reversible, GPU local |
-| **Xiaomi** (propio) | Erik habla con Hermes por Telegram | Siempre con Erik |
-| nube2 (FRA, ajeno) | LiteLLM/cerebropax (router modelos) | 24GB RAM, Tailscale |
-| nube1 (SP, ajeno) | (futuro) Hermes 24/7 o n8n Fase 2 | Letta archivado |
+| **Laptop** (propio) | IDEs de Erik (kilo, Antigravity, claude) — liberada de Hermes | 🟢 Activa · 1.1GB RAM libre |
+| **Xiaomi** (propio) | Erik habla con Hermes por Telegram | 🟢 Activo |
+| nube2 (FRA, ajeno) | **Hermes 24/7** + LiteLLM/cerebropax (25 modelos) | 🟢 Hermes v0.18.0 + gateway systemd activo |
+| nube1 (SP, ajeno) | Libre (Letta archivado) | 🟡 Disponible para n8n Fase 2 |
 
 ### n8n (Fase 2, NO ahora)
 
@@ -321,6 +321,7 @@ $$
 | `documentos/22_decision-agente-narrow-hermes.md`            | **Decisión: Hermes reemplaza Letta** — 5 capacidades narrow, gateway TG nativo |
 | `documentos/23_lobulo-frontal-spec.md`                      | **Encuadre fundacional:** open-pax = lóbulo frontal de Erik (7 funciones frontales, no 316 caps) |
 | `documentos/24_hermes-mas-n8n-arquitectura.md`              | Hermes + n8n (cerebro + manos) — Fase 1 solo Hermes, n8n en Fase 2 |
+| `documentos/25_hablar-voz-hermes.md`                        | **Cómo darle voz a Hermes** — edge-tts + Telegram nativo ($0, ya instalado), ElevenLabs upgrade Fase 2 |
 | `codigo/letta/`                                             | Stack Letta: Docker Compose + Telegram bridge + setup                                                       |
 | `codigo/cerebropax/`                                        | LiteLLM: config.yaml + docker-compose + deploy + test                                                       |
 | `recursos/bitacora/`                                        | Bitácora de APIs LLM (claves, saldos, canónicas)                                                          |
@@ -386,11 +387,11 @@ $$
 
 ---
 
-## 🧠 Re-encuadre del propósito (6-jul-2026) — ver `documentos/22`, `23`, `24`
+## 🧠 Re-encuadre del propósito (6-jul-2026) — ver `documentos/22`, `23`, `24`, `25`
 
 > Tras la auditoría, Erik aclaró el propósito real: open-pax NO es un agente autónomo de 316 capacidades — es su **asistente personal para ejecución+seguimiento de tareas** (TDAH + Altas Capacidades Cognitivas), re-encuadrado como su **lóbulo frontal externo** (TDAH = hipofrontalidad).
 
-**Tres decisiones en cadena (todas a disco):**
+**Cuatro decisiones en cadena (todas a disco):**
 
 - **`documentos/22` — Motor: Hermes, no Letta, no OpenClaw.** Hermes ya está instalado en `AppData\Local\hermes\` con `state.db`, `memories\`, `cron\`, `skills\`, `sandboxes\` vivos + gateway nativo a Telegram/Discord/Slack/WhatsApp/Signal. Hace nativamente todo lo que Letta+bridge custom construirían → elimina 4 de 6 hallazgos 🔴 de la auditoría. Costo de cambio = 0.
 
@@ -398,14 +399,17 @@ $$
 
 - **`documentos/24` — Arquitectura: Hermes + n8n (cerebro + manos).** n8n (orquestador de workflows determinista) complementa a Hermes (cognición). Patrón: `Erik → Hermes (decide) → n8n (ejecuta APIs) → Hermes (interpreta) → Erik`. Anti-TDAH: **fasear, NO sumar de golpe** — Fase 1 = solo Hermes (80% del valor), Fase 2 = n8n SOLO cuando una skill de Hermes necesite una API externa que no tenga nativa. n8n ya existió en el Hetzner (caído 2-jul); `N8N_API_KEY` aún en `keys.env` pero sin instancia. Desplegar en VM Oracle (NO laptop, RAM al límite), webhook interno solo por Tailscale.
 
-**Pendientes vigentes (de la cadena 22-24):**
-1. Verificar si Hermes gateway a Telegram ya está configurado (doc 22 Paso 1).
+- **`documentos/25` — Voz: cómo hace Hermes para "hablar".** Verificado en disco 6-jul: Hermes YA instalado en `AppData\Local\hermes\` con plugin Telegram nativo (`plugins\platforms\telegram\`) + edge-tts 7.2.7 (TTS gratis, ilimitado, voces es-MX DaliaNeural/JorgeNeural). Veredicto: **Fase 1 = edge-tts + Telegram nativo HOY ($0, sin instalar nada)**; ElevenLabs (API key de Erik, no en disco aún) = **upgrade Fase 2** solo para mensajes largos/celebraciones donde edge-tts cansa. Andamiaje TDAH: voz SOLO para recordatorios cortos de función ejecutiva ("llevas 20 min", "¡cerraste la tarea!"), NUNCA para leer output técnico. Plugin Telegram pide `TELEGRAM_BOT_TOKEN` + `TELEGRAM_ALLOWED_USERS` (cierra dev-mode 🔴 del doc 21) + `TELEGRAM_HOME_CHANNEL`.
+
+**Pendientes vigentes (de la cadena 22-25):**
+1. ✅ Verificar plugin Telegram de Hermes — **HECHO (doc 25): existe y es nativo**. Falta configurarlo con token regenerado.
 2. Conectar Hermes a `AGENTS.md` (Contexto-IA) para que sepa quién es Erik.
-3. Construir skill #1 "¿qué toca hoy?" (función frontal #3, lee `mi-tablero.html`).
+3. Construir skill #1 "¿qué toca hoy?" (función frontal #3, lee `mi-tablero.html`) — puede responder con VOZ (doc 25).
 4. Archivar `codigo/letta/` a `_archivados/letta-no-desplegado/` (mover, no borrar).
 5. Mini-autodiagnóstico de las 7 funciones frontales (decide cuál skill construir primero).
-6. 🔴 HOY: cerrar Ollama 11434 al internet (doc 21 Paso 1) + regenerar claves.
+6. 🔴 HOY: regenerar Telegram bot token (doc 21 + doc 25 Paso 0) + cerrar Ollama 11434 al internet (doc 21 Paso 1) + regenerar claves.
+7. 🟢 Probar edge-tts aislado (doc 25 Paso 2) — 5 min, confirma que Hermes puede hablar $0.
 
 ---
 
-*open-pax v3 · 5-jul-2026 (actualizado 6-jul-2026 con re-encuadre lóbulo frontal docs 22-24) · Paradigma: single-agent + autoverify + reversible · Motor: Hermes · Orquestador: n8n (Fase 2) · Consejo de 18 miembros*
+*open-pax v3 · 5-jul-2026 (actualizado 6-jul-2026 con re-encuadre lóbulo frontal docs 22-25) · Paradigma: single-agent + autoverify + reversible · Motor: Hermes · Orquestador: n8n (Fase 2) · Voz: edge-tts + Telegram nativo (ElevenLabs upgrade) · Consejo de 18 miembros*
