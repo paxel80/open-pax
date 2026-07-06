@@ -1,0 +1,57 @@
+services:
+  letta_db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: letta
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: letta
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U letta"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  letta:
+    image: letta/letta:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8283:8283"
+    environment:
+      - LETTA_PG_URI=postgresql://letta:${POSTGRES_PASSWORD}@letta_db:5432/letta
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - OPENAI_API_KEY=${OPENCODE_API_KEY}
+      - OLLAMA_API_BASE=http://ollama:11434
+    depends_on:
+      letta_db:
+        condition: service_healthy
+    volumes:
+      - letta_data:/root/.letta
+
+  telegram_bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.telegram
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - LETTA_BASE_URL=http://letta:8283
+      - ALLOWED_USERS=${ALLOWED_USERS}
+      - LETTA_AGENT_NAME=open-pax
+    depends_on:
+      - letta
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  letta_data:
+  ollama_data:

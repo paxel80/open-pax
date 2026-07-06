@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#238636"/><stop offset="100%" stop-color="#3fb950"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1f6feb"/><stop offset="100%" stop-color="#58a6ff"/></linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6e40c9"/><stop offset="100%" stop-color="#a371f7"/></linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9e6a03"/><stop offset="100%" stop-color="#d29922"/></linearGradient>
+    <linearGradient id="gray" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#30363d"/><stop offset="100%" stop-color="#484f58"/></linearGradient>
+  </defs>
+
+  <rect width="1000" height="800" fill="url(#bg)"/>
+
+  <text x="500" y="32" text-anchor="middle" fill="#c9d1d9" font-size="17" font-weight="bold">open-pax — Arquitectura del Sistema (capas fisicas y logicas)</text>
+  <text x="500" y="52" text-anchor="middle" fill="#8b949e" font-size="11">Todo $0 · Oracle 24/7 · Tailscale privado · La laptop solo controla</text>
+
+  <!-- CAPA 0: FISICA -->
+  <rect x="15" y="70" width="970" height="30" rx="5" fill="url(#gray)" opacity="0.3"/>
+  <text x="500" y="91" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold">CAPA 0: FISICA — donde corre realmente</text>
+
+  <!-- Nodos -->
+  <rect x="30" y="110" width="210" height="85" rx="8" fill="url(#purple)" opacity="0.08" stroke="url(#purple)" stroke-width="1.5"/>
+  <text x="135" y="133" text-anchor="middle" fill="#a371f7" font-size="11" font-weight="bold">Oracle SP (Brasil)</text>
+  <text x="135" y="150" text-anchor="middle" fill="#c9d1d9" font-size="10">4 CPU · 24 GB · $0</text>
+  <text x="135" y="165" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.73.84.93</text>
+  <text x="135" y="182" text-anchor="middle" fill="#8b949e" font-size="9">Cuenta esposa Esmeralda</text>
+
+  <rect x="260" y="110" width="210" height="85" rx="8" fill="url(#green)" opacity="0.08" stroke="url(#green)" stroke-width="1.5"/>
+  <text x="365" y="133" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">Oracle FRA (Alemania)</text>
+  <text x="365" y="150" text-anchor="middle" fill="#c9d1d9" font-size="10">4 CPU · 24 GB · $0</text>
+  <text x="365" y="165" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.75.24.115</text>
+  <text x="365" y="182" text-anchor="middle" fill="#8b949e" font-size="9">Cuenta amigo Johann</text>
+
+  <rect x="490" y="110" width="210" height="85" rx="8" fill="url(#blue)" opacity="0.08" stroke="url(#blue)" stroke-width="1.5"/>
+  <text x="595" y="133" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">Laptop ASUS TUF</text>
+  <text x="595" y="150" text-anchor="middle" fill="#c9d1d9" font-size="10">7.7 GB · RTX 3050</text>
+  <text x="595" y="165" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.120.229.112</text>
+  <text x="595" y="182" text-anchor="middle" fill="#8b949e" font-size="9">NO 24/7 · se apaga de noche</text>
+
+  <rect x="720" y="110" width="250" height="85" rx="8" fill="url(#orange)" opacity="0.08" stroke="url(#orange)" stroke-width="1.5"/>
+  <text x="845" y="133" text-anchor="middle" fill="#d29922" font-size="11" font-weight="bold">Xiaomi 14T Pro</text>
+  <text x="845" y="150" text-anchor="middle" fill="#c9d1d9" font-size="10">~3.6 GB · Termux</text>
+  <text x="845" y="165" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.85.146.98</text>
+  <text x="845" y="182" text-anchor="middle" fill="#8b949e" font-size="9">Nodo ligero · cron · worker</text>
+
+  <!-- Tailscale -->
+  <line x1="135" y1="195" x2="135" y2="215" stroke="#1f6feb" stroke-width="1" opacity="0.3"/>
+  <line x1="365" y1="195" x2="365" y2="215" stroke="#1f6feb" stroke-width="1" opacity="0.3"/>
+  <line x1="595" y1="195" x2="595" y2="215" stroke="#1f6feb" stroke-width="1" opacity="0.3"/>
+  <line x1="845" y1="195" x2="845" y2="215" stroke="#1f6feb" stroke-width="1" opacity="0.3"/>
+  <rect x="40" y="215" width="920" height="18" rx="3" fill="#1f6feb" opacity="0.08"/>
+  <text x="500" y="229" text-anchor="middle" fill="#58a6ff" font-size="10">TAILSCALE — todos se ven entre si por IPs 100.x.x.x ($0, privado, seguro)</text>
+
+  <!-- CAPA 1: SERVICIOS -->
+  <rect x="15" y="250" width="970" height="30" rx="5" fill="url(#gray)" opacity="0.3"/>
+  <text x="500" y="271" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold">CAPA 1: SERVICIOS — que vive en cada nodo</text>
+
+  <!-- SP services -->
+  <rect x="30" y="290" width="210" height="145" rx="6" fill="#161b22" stroke="#a371f7" stroke-width="0.8"/>
+  <text x="135" y="310" text-anchor="middle" fill="#a371f7" font-size="10" font-weight="bold">Oracle SP · "Mostrador"</text>
+  <line x1="50" y1="318" x2="220" y2="318" stroke="#30363d" stroke-width="0.5"/>
+  <text x="45" y="335" fill="#c9d1d9" font-size="9">Constelacion (WA + TG 24/7)</text>
+  <text x="45" y="352" fill="#c9d1d9" font-size="9">Cloudflare Tunnel URL fija</text>
+  <text x="45" y="369" fill="#c9d1d9" font-size="9">Oracle 23ai PAXELMEM (BD)</text>
+  <text x="45" y="386" fill="#c9d1d9" font-size="9">Puerta de aprobacion (TG)</text>
+  <text x="45" y="403" fill="#c9d1d9" font-size="9">Dashboard de proyectos</text>
+  <text x="45" y="420" fill="#8b949e" font-size="8">Cara al mundo · mas cerca de MX</text>
+
+  <!-- FRA services -->
+  <rect x="260" y="290" width="230" height="145" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="0.8"/>
+  <text x="375" y="310" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">Oracle FRA · "Taller"</text>
+  <line x1="280" y1="318" x2="470" y2="318" stroke="#30363d" stroke-width="0.5"/>
+  <text x="275" y="335" fill="#c9d1d9" font-size="9">LangGraph + Deep Agents</text>
+  <text x="275" y="352" fill="#c9d1d9" font-size="9">Mem0 (memoria 91.6%)</text>
+  <text x="275" y="369" fill="#c9d1d9" font-size="9">LiveKit Agents (voz+llamadas)</text>
+  <text x="275" y="386" fill="#c9d1d9" font-size="9">LiteLLM (banco de cerebros)</text>
+  <text x="275" y="403" fill="#c9d1d9" font-size="9">Qdrant (memoria vectorial)</text>
+  <text x="275" y="420" fill="#8b949e" font-size="8">Motor pesado · modelos 14b+27b</text>
+
+  <!-- Laptop services -->
+  <rect x="510" y="290" width="210" height="145" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="615" y="310" text-anchor="middle" fill="#58a6ff" font-size="10" font-weight="bold">Laptop · "Plano Control"</text>
+  <line x1="530" y1="318" x2="700" y2="318" stroke="#30363d" stroke-width="0.5"/>
+  <text x="525" y="335" fill="#c9d1d9" font-size="9">Ollama <=4B (qwen3)</text>
+  <text x="525" y="352" fill="#c9d1d9" font-size="9">Fabrica de Codigo (ACP)</text>
+  <text x="525" y="369" fill="#c9d1d9" font-size="9">browser-use 3.0 (RTX 3050)</text>
+  <text x="525" y="386" fill="#c9d1d9" font-size="9">Constelacion (backup local)</text>
+  <text x="525" y="403" fill="#c9d1d9" font-size="9">Obsidian (2do cerebro)</text>
+  <text x="525" y="420" fill="#8b949e" font-size="8">"Erik programa aqui" · NO 24/7</text>
+
+  <!-- Xiaomi services -->
+  <rect x="740" y="290" width="230" height="145" rx="6" fill="#161b22" stroke="#d29922" stroke-width="0.8"/>
+  <text x="855" y="310" text-anchor="middle" fill="#d29922" font-size="10" font-weight="bold">Xiaomi · "Nodo Ligero"</text>
+  <line x1="760" y1="318" x2="950" y2="318" stroke="#30363d" stroke-width="0.5"/>
+  <text x="755" y="335" fill="#c9d1d9" font-size="9">Termux + Python 3.14</text>
+  <text x="755" y="352" fill="#c9d1d9" font-size="9">Cron ligero (pings, health)</text>
+  <text x="755" y="369" fill="#c9d1d9" font-size="9">SSH server (puerto 8022)</text>
+  <text x="755" y="386" fill="#c9d1d9" font-size="9">Panel de control movil</text>
+  <text x="755" y="403" fill="#c9d1d9" font-size="9">WhatsApp Business</text>
+  <text x="755" y="420" fill="#8b949e" font-size="8">Siempre contigo · siempre ON</text>
+
+  <!-- CAPA 2: CONEXIONES EXTERNAS -->
+  <rect x="15" y="455" width="970" height="30" rx="5" fill="url(#gray)" opacity="0.3"/>
+  <text x="500" y="476" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold">CAPA 2: CONEXIONES EXTERNAS — lo que usa el sistema</text>
+
+  <!-- APIs -->
+  <rect x="30" y="495" width="145" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="0.8"/>
+  <text x="102" y="515" text-anchor="middle" fill="#3fb950" font-size="9" font-weight="bold">APIs GRATIS</text>
+  <text x="102" y="532" text-anchor="middle" fill="#c9d1d9" font-size="8">Groq · NVIDIA · DeepSeek</text>
+  <text x="102" y="548" text-anchor="middle" fill="#c9d1d9" font-size="8">Gemini · OpenRouter</text>
+
+  <rect x="190" y="495" width="145" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="0.8"/>
+  <text x="262" y="515" text-anchor="middle" fill="#58a6ff" font-size="9" font-weight="bold">CLOUDFLARE</text>
+  <text x="262" y="532" text-anchor="middle" fill="#c9d1d9" font-size="8">DNS · CDN · Tunel</text>
+  <text x="262" y="548" text-anchor="middle" fill="#c9d1d9" font-size="8">Zoho correo · R2 backups</text>
+
+  <rect x="350" y="495" width="145" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="0.8"/>
+  <text x="422" y="515" text-anchor="middle" fill="#a371f7" font-size="9" font-weight="bold">GITHUB</text>
+  <text x="422" y="532" text-anchor="middle" fill="#c9d1d9" font-size="8">paxel80 (publico)</text>
+  <text x="422" y="548" text-anchor="middle" fill="#c9d1d9" font-size="8">erikjosehrnndz (privado)</text>
+
+  <rect x="510" y="495" width="145" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="0.8"/>
+  <text x="582" y="515" text-anchor="middle" fill="#d29922" font-size="9" font-weight="bold">SUPABASE</text>
+  <text x="582" y="532" text-anchor="middle" fill="#c9d1d9" font-size="8">DB + auth (gratis)</text>
+  <text x="582" y="548" text-anchor="middle" fill="#c9d1d9" font-size="8">lainconclusa-web</text>
+
+  <rect x="670" y="495" width="145" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="0.8"/>
+  <text x="742" y="515" text-anchor="middle" fill="#58a6ff" font-size="9" font-weight="bold">MCP Servers</text>
+  <text x="742" y="532" text-anchor="middle" fill="#c9d1d9" font-size="8">Gmail · Calendar</text>
+  <text x="742" y="548" text-anchor="middle" fill="#c9d1d9" font-size="8">Notion · Slack · GitHub</text>
+
+  <rect x="830" y="495" width="145" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="0.8"/>
+  <text x="902" y="515" text-anchor="middle" fill="#3fb950" font-size="9" font-weight="bold">MONITOREO</text>
+  <text x="902" y="532" text-anchor="middle" fill="#c9d1d9" font-size="8">LangSmith (opcional)</text>
+  <text x="902" y="548" text-anchor="middle" fill="#c9d1d9" font-size="8">Langfuse (re-instalar)</text>
+
+  <!-- CAPA 3: FLUJO DE PROYECTOS -->
+  <rect x="15" y="585" width="970" height="30" rx="5" fill="url(#gray)" opacity="0.3"/>
+  <text x="500" y="606" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold">CAPA 3: PROYECTOS — lo que open-pax gestiona para Erik</text>
+
+  <!-- Proyectos -->
+  <rect x="20" y="625" width="185" height="55" rx="6" fill="url(#blue)" opacity="0.06" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="112" y="647" text-anchor="middle" fill="#58a6ff" font-size="10" font-weight="bold">Hotel Amiga</text>
+  <text x="112" y="665" text-anchor="middle" fill="#8b949e" font-size="9">🟡 Asistente recepcionista</text>
+
+  <rect x="218" y="625" width="185" height="55" rx="6" fill="url(#green)" opacity="0.06" stroke="#3fb950" stroke-width="0.8"/>
+  <text x="310" y="647" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">POS Yesika</text>
+  <text x="310" y="665" text-anchor="middle" fill="#8b949e" font-size="9">🟢 Sistema vanguardista</text>
+
+  <rect x="416" y="625" width="185" height="55" rx="6" fill="url(#orange)" opacity="0.06" stroke="#d29922" stroke-width="0.8"/>
+  <text x="508" y="647" text-anchor="middle" fill="#d29922" font-size="10" font-weight="bold">Impresion 3D</text>
+  <text x="508" y="665" text-anchor="middle" fill="#8b949e" font-size="9">🟡 Ruta de accion + dossier</text>
+
+  <rect x="614" y="625" width="185" height="55" rx="6" fill="url(#purple)" opacity="0.06" stroke="#a371f7" stroke-width="0.8"/>
+  <text x="706" y="647" text-anchor="middle" fill="#a371f7" font-size="10" font-weight="bold">Pax el 80</text>
+  <text x="706" y="665" text-anchor="middle" fill="#8b949e" font-size="9">🔴 Animacion (pausado)</text>
+
+  <rect x="812" y="625" width="173" height="55" rx="6" fill="url(#gray)" opacity="0.06" stroke="#484f58" stroke-width="0.8"/>
+  <text x="898" y="647" text-anchor="middle" fill="#8b949e" font-size="10" font-weight="bold">+11 proyectos mas</text>
+  <text x="898" y="665" text-anchor="middle" fill="#8b949e" font-size="9">Menu QR · Mercadito · etc</text>
+
+  <!-- CAPA 4: INTERFAZ -->
+  <rect x="15" y="700" width="970" height="30" rx="5" fill="url(#gray)" opacity="0.3"/>
+  <text x="500" y="721" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold">CAPA 4: INTERFAZ — como hablas con open-pax</text>
+
+  <rect x="180" y="740" width="200" height="40" rx="6" fill="url(#green)" opacity="0.06" stroke="#3fb950" stroke-width="0.8"/>
+  <text x="280" y="765" text-anchor="middle" fill="#3fb950" font-size="10">Telegram @LaInconclusa80_bot</text>
+
+  <rect x="400" y="740" width="200" height="40" rx="6" fill="url(#green)" opacity="0.06" stroke="#3fb950" stroke-width="0.8"/>
+  <text x="500" y="765" text-anchor="middle" fill="#3fb950" font-size="10">WhatsApp Business</text>
+
+  <rect x="620" y="740" width="200" height="40" rx="6" fill="url(#blue)" opacity="0.06" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="720" y="765" text-anchor="middle" fill="#58a6ff" font-size="10">Voz (LiveKit · futuro)</text>
+</svg>

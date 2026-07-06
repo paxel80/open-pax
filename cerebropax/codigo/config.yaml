@@ -1,0 +1,225 @@
+# =============================================================================
+# cerebropax — Banco de cerebros de open-pax
+# Configuración LiteLLM: define todos los modelos disponibles y sus rutas.
+# =============================================================================
+# Las LLAVES van en .env (NUNCA subir a git). Aquí solo referencias ${VAR}.
+# Docs: https://docs.litellm.ai/docs/proxy/configs
+# =============================================================================
+
+model_list:
+
+  # ===========================================================================
+  # GROQ — gratis, lo más rápido que existe (chat instantáneo)
+  # ===========================================================================
+  - model_name: groq/llama-3.3-70b
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: ${GROQ_API_KEY}
+  - model_name: groq/llama-3.1-8b-instant
+    litellm_params:
+      model: groq/llama-3.1-8b-instant
+      api_key: ${GROQ_API_KEY}
+  - model_name: groq/mixtral-8x7b
+    litellm_params:
+      model: groq/mixtral-8x7b-32768
+      api_key: ${GROQ_API_KEY}
+
+  # ===========================================================================
+  # NVIDIA NIM — ~121 modelos gratis, muy capaces (tareas difíciles)
+  # ===========================================================================
+  - model_name: nvidia/qwen3-next-80b
+    litellm_params:
+      model: nvidia/qwen/qwen3-next-80b-a3b-instruct
+      api_key: ${NVIDIA_API_KEY}
+      api_base: https://integrate.api.nvidia.com/v1
+  - model_name: nvidia/llama-3.1-nemotron-70b
+    litellm_params:
+      model: nvidia/nvidia/llama-3.1-nemotron-70b-instruct
+      api_key: ${NVIDIA_API_KEY}
+      api_base: https://integrate.api.nvidia.com/v1
+
+  # ===========================================================================
+  # DEEPSEEK — centavos, código baratísimo + razonamiento (deepseek-reasoner)
+  # ===========================================================================
+  - model_name: deepseek/chat
+    litellm_params:
+      model: deepseek/deepseek-chat
+      api_key: ${DEEPSEEK_API_KEY}
+  - model_name: deepseek/coder
+    litellm_params:
+      model: deepseek/deepseek-coder
+      api_key: ${DEEPSEEK_API_KEY}
+  - model_name: deepseek/reasoner
+    litellm_params:
+      model: deepseek/deepseek-reasoner
+      api_key: ${DEEPSEEK_API_KEY}
+
+  # ===========================================================================
+  # GEMINI — gratis, ve imágenes + texto (multimodal)
+  # ===========================================================================
+  - model_name: gemini/2.0-flash
+    litellm_params:
+      model: gemini/gemini-2.0-flash-001
+      api_key: ${GEMINI_API_KEY}
+  - model_name: gemini/2.5-flash
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: ${GEMINI_API_KEY}
+
+  # ===========================================================================
+  # CEREBRAS — gratis, rival de Groq en velocidad
+  # ===========================================================================
+  - model_name: cerebras/llama-3.1-8b
+    litellm_params:
+      model: cerebras/llama3.1-8b
+      api_key: ${CEREBRAS_API_KEY}
+  - model_name: cerebras/llama-3.1-70b
+    litellm_params:
+      model: cerebras/llama3.1-70b
+      api_key: ${CEREBRAS_API_KEY}
+
+  # ===========================================================================
+  # MISTRAL — free tier, bueno para código
+  # ===========================================================================
+  - model_name: mistral/large
+    litellm_params:
+      model: mistral/mistral-large-latest
+      api_key: ${MISTRAL_API_KEY}
+  - model_name: mistral/codestral
+    litellm_params:
+      model: mistral/codestral-latest
+      api_key: ${MISTRAL_API_KEY}
+
+  # ===========================================================================
+  # COHERE — RAG, embeddings, comandos
+  # ===========================================================================
+  - model_name: cohere/command-r-plus
+    litellm_params:
+      model: cohere/command-r-plus
+      api_key: ${COHERE_API_KEY}
+
+  # ===========================================================================
+  # HUGGINGFACE — experimentos, modelos raros
+  # ===========================================================================
+  - model_name: hf/mistral-7b
+    litellm_params:
+      model: huggingface/mistralai/Mistral-7B-Instruct-v0.3
+      api_key: ${HUGGINGFACE_API_KEY}
+
+  # ===========================================================================
+  # OPENROUTER — el súper mercado: 100+ modelos con 1 llave
+  # ===========================================================================
+  - model_name: openrouter/auto
+    litellm_params:
+      model: openrouter/auto
+      api_key: ${OPENROUTER_API_KEY}
+  - model_name: openrouter/anthropic/claude-3.5-sonnet
+    litellm_params:
+      model: openrouter/anthropic/claude-3.5-sonnet
+      api_key: ${OPENROUTER_API_KEY}
+
+  # ===========================================================================
+  # OPENAI — pago, calidad tope (solo para lo difícil)
+  # ===========================================================================
+  - model_name: openai/gpt-4o
+    litellm_params:
+      model: openai/gpt-4o
+      api_key: ${OPENAI_API_KEY}
+  - model_name: openai/gpt-4o-mini
+    litellm_params:
+      model: openai/gpt-4o-mini
+      api_key: ${OPENAI_API_KEY}
+
+  # ===========================================================================
+  # ANTHROPIC — pago, calidad tope (Claude, rivalsal de OpenAI para lo difícil)
+  # Clave revelada por Erik via curl 5-jul-2026 (no estaba en ningun .env)
+  # Modelos: claude-sonnet-4-6 (verificado responde), opus (verificar acceso)
+  # ===========================================================================
+  - model_name: anthropic/claude-sonnet-4-6
+    litellm_params:
+      model: anthropic/claude-sonnet-4-6
+      api_key: ${ANTHROPIC_API_KEY}
+  - model_name: anthropic/claude-haiku
+    litellm_params:
+      model: anthropic/claude-3-5-haiku-20241022
+      api_key: ${ANTHROPIC_API_KEY}
+
+  # ===========================================================================
+  # OLLAMA LOCAL (respaldo 24/7 sin censura)
+  # ===========================================================================
+  - model_name: ollama/llama3.1-8b
+    litellm_params:
+      model: ollama/llama3.1:8b
+      api_base: http://central:11434
+  - model_name: ollama/llama3-8b
+    litellm_params:
+      model: ollama/llama3:8b
+      api_base: http://central:11434
+
+# =============================================================================
+# Grupos de routing (alias cómodos para los consumidores)
+# =============================================================================
+router_groups:
+  - group_alias: chat-rapido
+    models:
+      - groq/llama-3.1-8b-instant
+      - cerebras/llama-3.1-8b
+      - gemini/2.0-flash
+  - group_alias: chat-inteligente
+    models:
+      - groq/llama-3.3-70b
+      - nvidia/qwen3-next-80b
+      - cerebras/llama-3.1-70b
+  - group_alias: codigo
+    models:
+      - deepseek/coder
+      - mistral/codestral
+      - deepseek/chat
+  - group_alias: razonamiento
+    models:
+      - deepseek/reasoner
+      - nvidia/llama-3.1-nemotron-70b
+  - group_alias: resumen
+    models:
+      - gemini/2.0-flash
+      - groq/llama-3.3-70b
+      - mistral/large
+  - group_alias: vision
+    models:
+      - gemini/2.0-flash
+      - gemini/2.5-flash
+  - group_alias: respaldo-local
+    models:
+      - ollama/llama3.1-8b
+      - ollama/llama3-8b
+  - group_alias: todo-el-mercado
+    models:
+      - openrouter/auto
+  - group_alias: calidad-tope
+    models:
+      - anthropic/claude-sonnet-4-6
+      - openai/gpt-4o
+      - anthropic/claude-haiku
+
+# =============================================================================
+# Ajustes del proxy
+# =============================================================================
+litellm_settings:
+  drop_params: true
+  num_retries: 2
+  request_timeout: 60
+  fallbacks:
+    - groq/llama-3.1-8b-instant:
+        - cerebras/llama-3.1-8b
+        - ollama/llama3.1-8b
+    - groq/llama-3.3-70b:
+        - nvidia/qwen3-next-80b
+        - cerebras/llama-3.1-70b
+    - anthropic/claude-sonnet-4-6:
+        - openai/gpt-4o
+        - nvidia/qwen3-next-80b
+
+general_settings:
+  master_key: ${LITELLM_MASTER_KEY}
+  ui_token: ${LITELLM_UI_TOKEN}
+  database_url: ${LITELLM_DATABASE_URL}

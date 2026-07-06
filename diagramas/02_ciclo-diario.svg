@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 820" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08867e"/>
+      <stop offset="100%" stop-color="#3fb950"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f6feb"/>
+      <stop offset="100%" stop-color="#58a6ff"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6e40c9"/>
+      <stop offset="100%" stop-color="#a371f7"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9e6a03"/>
+      <stop offset="100%" stop-color="#d29922"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b0000"/>
+      <stop offset="100%" stop-color="#da3633"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  </defs>
+
+  <rect width="1000" height="820" fill="url(#bg)"/>
+
+  <!-- Titulo -->
+  <text x="500" y="35" text-anchor="middle" fill="#c9d1d9" font-size="18" font-weight="bold">Cómo Funciona open-pax — El Ciclo Diario Autónomo</text>
+  <text x="500" y="55" text-anchor="middle" fill="#8b949e" font-size="12">Corre 24/7 en Oracle · Solo te molesta cuando necesita tu confirmación o tiene algo BUENO que mostrarte</text>
+
+  <!-- PASO 0: Arranque -->
+  <rect x="350" y="75" width="300" height="55" rx="10" fill="url(#blue)" opacity="0.1" stroke="url(#blue)" stroke-width="1.5"/>
+  <text x="500" y="98" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold">🌅 CADA MAÑANA — Arranque automático</text>
+  <text x="500" y="118" text-anchor="middle" fill="#c9d1d9" font-size="11">Escanea tus 15+ proyectos · Revisa tendencias · Prepara tu resumen</text>
+
+  <line x1="500" y1="130" x2="500" y2="155" stroke="#58a6ff" stroke-width="2"/>
+  <polygon points="495,153 500,163 505,153" fill="#58a6ff"/>
+
+  <!-- PASO 1 -->
+  <rect x="50" y="165" width="280" height="130" rx="10" fill="url(#orange)" opacity="0.08" stroke="url(#orange)" stroke-width="1.5"/>
+  <text x="190" y="188" text-anchor="middle" fill="#d29922" font-size="13" font-weight="bold">📡 1. INVESTIGAR (autónomo)</text>
+  <line x1="80" y1="198" x2="300" y2="198" stroke="#d29922" stroke-width="0.5" opacity="0.3"/>
+  <text x="70" y="218" fill="#c9d1d9" font-size="11">- Escanea GitHub Trending cada hora</text>
+  <text x="70" y="236" fill="#c9d1d9" font-size="11">- Rastrea TikTok tendencias AI</text>
+  <text x="70" y="254" fill="#c9d1d9" font-size="11">- Lee papers, tools nuevas, MCP servers</text>
+  <text x="70" y="272" fill="#8b949e" font-size="10">→ Te avisa SOLO si es relevante para TUS proyectos</text>
+
+  <!-- PASO 2 -->
+  <rect x="360" y="165" width="280" height="130" rx="10" fill="url(#purple)" opacity="0.08" stroke="url(#purple)" stroke-width="1.5"/>
+  <text x="500" y="188" text-anchor="middle" fill="#a371f7" font-size="13" font-weight="bold">📋 2. ORGANIZAR (autónomo)</text>
+  <line x1="390" y1="198" x2="610" y2="198" stroke="#a371f7" stroke-width="0.5" opacity="0.3"/>
+  <text x="380" y="218" fill="#c9d1d9" font-size="11">- Revisa TODOS tus proyectos activos</text>
+  <text x="380" y="236" fill="#c9d1d9" font-size="11">- Actualiza estado: 🟢🟡🔴 de cada uno</text>
+  <text x="380" y="254" fill="#c9d1d9" font-size="11">- Conecta ideas entre proyectos (tu superpoder)</text>
+  <text x="380" y="272" fill="#8b949e" font-size="10">→ Te da UN solo siguiente paso (TDAH-friendly)</text>
+
+  <!-- PASO 3 -->
+  <rect x="670" y="165" width="280" height="130" rx="10" fill="url(#cyan)" opacity="0.08" stroke="url(#cyan)" stroke-width="1.5"/>
+  <text x="810" y="188" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">✅ 3. DECIDIR (con tu OK)</text>
+  <line x1="700" y1="198" x2="920" y2="198" stroke="#3fb950" stroke-width="0.5" opacity="0.3"/>
+  <text x="690" y="218" fill="#c9d1d9" font-size="11">- Arma la LISTA PRIORIZADA del día</text>
+  <text x="690" y="236" fill="#c9d1d9" font-size="11">- "Hoy toca avanzar el POS de Yésika"</text>
+  <text x="690" y="254" fill="#c9d1d9" font-size="11">- Te manda a Telegram: botones Aprobar/Editar</text>
+  <text x="690" y="272" fill="#8b949e" font-size="10">→ Tú confirmas en 2 segundos desde el cel</text>
+
+  <!-- Flujo horizontal -->
+  <line x1="330" y1="230" x2="360" y2="230" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="355,227 362,230 355,233" fill="#30363d"/>
+  <line x1="640" y1="230" x2="670" y2="230" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="665,227 672,230 665,233" fill="#30363d"/>
+
+  <!-- PASO 4: Trabajo -->
+  <rect x="50" y="325" width="900" height="140" rx="10" fill="url(#blue)" opacity="0.06" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="500" y="350" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold">🛠️ 4. EJECUTAR — Las Manos Trabajando (horas, autónomo, silencioso)</text>
+  <line x1="90" y1="360" x2="910" y2="360" stroke="#58a6ff" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Sub-pasos -->
+  <rect x="70" y="370" width="200" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="170" y="393" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="bold">La Fábrica de Código</text>
+  <text x="170" y="410" text-anchor="middle" fill="#8b949e" font-size="10">Escribe código · prueba</text>
+  <text x="170" y="426" text-anchor="middle" fill="#8b949e" font-size="10">5 obreros en paralelo</text>
+
+  <rect x="290" y="370" width="200" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="390" y="393" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="bold">Investigación profunda</text>
+  <text x="390" y="410" text-anchor="middle" fill="#8b949e" font-size="10">Mercado · competencia</text>
+  <text x="390" y="426" text-anchor="middle" fill="#8b949e" font-size="10">Precios · viabilidad</text>
+
+  <rect x="510" y="370" width="200" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="610" y="393" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="bold">Computer-use</text>
+  <text x="610" y="410" text-anchor="middle" fill="#8b949e" font-size="10">Navega webs · formularios</text>
+  <text x="610" y="426" text-anchor="middle" fill="#8b949e" font-size="10">Crea cuentas · scrapea</text>
+
+  <rect x="730" y="370" width="200" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="830" y="393" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="bold">Dossiers y documentos</text>
+  <text x="830" y="410" text-anchor="middle" fill="#8b949e" font-size="10">Corridas financieras</text>
+  <text x="830" y="426" text-anchor="middle" fill="#8b949e" font-size="10">HTML imprimible a PDF</text>
+
+  <!-- PASO 5: Verificación -->
+  <rect x="50" y="490" width="900" height="65" rx="10" fill="url(#red)" opacity="0.06" stroke="#da3633" stroke-width="1.5"/>
+  <text x="500" y="515" text-anchor="middle" fill="#da3633" font-size="13" font-weight="bold">🛑 5. PUERTA DE APROBACIÓN — Solo aquí te molesta</text>
+  <text x="500" y="540" text-anchor="middle" fill="#c9d1d9" font-size="11">Antes de: gastar dinero · publicar algo · borrar algo · enviar a cliente · crear cuenta en web de tercero</text>
+
+  <!-- PASO 6: Reporte -->
+  <rect x="50" y="580" width="900" height="65" rx="10" fill="url(#cyan)" opacity="0.06" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="500" y="605" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">📲 6. REPORTE — Telegram (solo cuando hay ALGO BUENO)</text>
+  <text x="500" y="630" text-anchor="middle" fill="#c9d1d9" font-size="11">"Erik, el POS de Yésika avanzó: ya genera recibos. ¿Quieres verlo?" [Ver demo] [Seguir] [Cambiar enfoque]</text>
+
+  <!-- PASO 7: Memoria -->
+  <rect x="50" y="670" width="900" height="55" rx="10" fill="url(#purple)" opacity="0.06" stroke="#a371f7" stroke-width="1.5"/>
+  <text x="500" y="693" text-anchor="middle" fill="#a371f7" font-size="13" font-weight="bold">🧲 7. RECORDAR — Todo lo que pasó se guarda en Mem0 (91.6% precisión)</text>
+  <text x="500" y="713" text-anchor="middle" fill="#c9d1d9" font-size="11">"Erik dijo que el color del POS sea ámbar" → 3 meses después, el asistente LO RECUERDA sin que repitas</text>
+
+  <!-- Flechas de conexión vertical -->
+  <line x1="500" y1="295" x2="500" y2="325" stroke="#58a6ff" stroke-width="2"/>
+  <polygon points="495,323 500,333 505,323" fill="#58a6ff"/>
+  <line x1="500" y1="465" x2="500" y2="490" stroke="#da3633" stroke-width="2"/>
+  <polygon points="495,488 500,498 505,488" fill="#da3633"/>
+  <line x1="500" y1="555" x2="500" y2="580" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="495,578 500,588 505,578" fill="#3fb950"/>
+  <line x1="500" y1="645" x2="500" y2="670" stroke="#a371f7" stroke-width="2"/>
+  <polygon points="495,668 500,678 505,668" fill="#a371f7"/>
+
+  <!-- Etiqueta del ciclo -->
+  <rect x="785" y="720" width="180" height="45" rx="6" fill="url(#blue)" opacity="0.08" stroke="url(#blue)" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="875" y="738" text-anchor="middle" fill="#58a6ff" font-size="10">Cada 2 horas: repetir</text>
+  <text x="875" y="755" text-anchor="middle" fill="#58a6ff" font-size="10">pasos 1→2→3→4→6</text>
+
+  <!-- TDAH note -->
+  <rect x="50" y="720" width="520" height="45" rx="6" fill="#a371f7" opacity="0.06" stroke="#a371f7" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="310" y="738" text-anchor="middle" fill="#a371f7" font-size="10">🧩 DISEÑADO PARA TDAH: solo te pide atención en el paso 5 (segundos). Todo lo demás es invisible.</text>
+  <text x="310" y="755" text-anchor="middle" fill="#a371f7" font-size="10">Tú no persigues al sistema — el sistema te persigue a ti con lo IMPORTANTE.</text>
+</svg>

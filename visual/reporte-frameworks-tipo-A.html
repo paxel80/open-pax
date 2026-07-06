@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang='es'><head><meta charset='UTF-8'><title>Frameworks óptimos — Tipo A</title>
+
+<style>
+@page { size: A4 landscape; margin: 10mm; }
+* { font-family: 'Segoe UI', Arial, sans-serif; }
+body { margin:0; color:#1a1a1a; font-size:11px; }
+.cover { text-align:center; padding:30px 0 16px; border-bottom:3px solid #16a34a; margin-bottom:16px; }
+.cover h1 { font-size:26px; color:#15803d; margin:0 0 6px; }
+.cover .sub { font-size:13px; color:#555; }
+.cover .meta { font-size:11px; color:#888; }
+h2 { color:#15803d; border-bottom:2px solid #16a34a; padding-bottom:4px; margin-top:22px; font-size:15px; }
+table { border-collapse:collapse; width:100%; margin-bottom:12px; }
+th { background:#15803d; color:#fff; padding:6px 8px; text-align:left; font-size:10px; }
+td { padding:5px 8px; border-bottom:1px solid #e5e7eb; font-size:10px; vertical-align:top; }
+tr:nth-child(even) td { background:#f0fdf4; }
+.fw { font-weight:bold; color:#15803d; }
+.fw-non8n { font-weight:bold; color:#b45309; }
+.bar { background:#f0fdf4; border-left:4px solid #16a34a; padding:10px 14px; margin:10px 0; }
+.excp { background:#fef3c7; border-left:4px solid #d97706; padding:10px 14px; margin:10px 0; }
+.note { font-size:10px; color:#666; font-style:italic; }
+</style>
+</head><body>
+<div class='cover'>
+<h1>Frameworks óptimos para capacidades tipo A</h1>
+<div class='sub'>Serie de acciones (workflow puro, sin LLM) · asignación uno a uno</div>
+<div class='meta'>91 capacidades · 5-jul-2026 · open-pax/documentos/09</div>
+</div>
+<h2>Resumen por framework</h2>
+<table><tr><th>Framework</th><th>Capacidades</th><th>%</th></tr>
+<tr><td class='fw'>n8n</td><td>61</td><td>67%</td></tr>
+<tr><td class='fw'>n8n + Postgres</td><td>4</td><td>4%</td></tr>
+<tr><td class='fw'>n8n + Metabase</td><td>4</td><td>4%</td></tr>
+<tr><td class='fw'>n8n + DB</td><td>4</td><td>4%</td></tr>
+<tr><td class='fw'>n8n + Playwright</td><td>3</td><td>3%</td></tr>
+<tr><td class='fw-non8n'>git CLI (script)</td><td>2</td><td>2%</td></tr>
+<tr><td class='fw'>n8n + ADB (script)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Docker sandbox (script)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw'>n8n (Cheerio) / Python+Playwright</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Ansible/Terraform (IaC)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Python script (reglas)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Python (numpy-financial)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw'>n8n + Anki-like (script)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Ansible + scripts (hardening)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Bitwarden/Vault (self-hosted)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Borg/restic (script + cron)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>WireGuard/Tailscale (infra)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw-non8n'>Wazuh/Falco (SIEM)</td><td>1</td><td>1%</td></tr>
+<tr><td class='fw'>n8n + Borg</td><td>1</td><td>1%</td></tr>
+<tr><td><b>TOTAL</b></td><td><b>91</b></td><td>100%</td></tr></table>
+<div class='bar'>
+<b>Conclusión:</b> n8n (puro o combinado) cubre <b>80</b> de 91 capacidades tipo A. 
+En <b>11</b> casos una herramienta especializada es mejor (n8n la invoca pero no la reemplaza). 
+<b>LangChain y CrewAI no se asignaron a ninguna tipo A</b> — son para LLM/agentes (tipos R y A+R).
+</div>
+<h2>Tabla completa (uno a uno)</h2>
+<table><tr><th>#</th><th>Capacidad</th><th>Qué es</th><th>Framework óptimo</th><th>Por qué</th></tr>
+<tr><td>1.2</td><td>Atender / concentrarse</td><td>Foco sostenido en una tarea</td><td class='fw'>n8n</td><td>Workflow que silencia notifs + timer pomodoro; visual, programable por cron.</td></tr>
+<tr><td>1.7</td><td>Olvidar selectivamente</td><td>Descartar lo irrelevante</td><td class='fw'>n8n</td><td>Job de purga con reglas TTL sobre la DB; nodos Date+Delete visuales.</td></tr>
+<tr><td>1.12</td><td>Planificar multi-paso</td><td>Secuencia hacia meta</td><td class='fw'>n8n</td><td>Workflow con nodos secuenciales + estado persistente en DB.</td></tr>
+<tr><td>1.13</td><td>Tomar decisiones</td><td>Elegir entre opciones</td><td class='fw'>n8n</td><td>Nodo IF/Switch con reglas declarativas; Erik ve el árbol de decisión.</td></tr>
+<tr><td>1.14</td><td>Priorizar</td><td>Ordenar por importancia</td><td class='fw'>n8n</td><td>Nodos Sort + Function con fórmula de scoring; editable visualmente.</td></tr>
+<tr><td>1.15</td><td>Comparar / evaluar</td><td>Sopesar alternativas</td><td class='fw'>n8n</td><td>Nodos Compare/Diff sobre datos; salida tabular para Erik.</td></tr>
+<tr><td>1.19</td><td>Categorizar / clasificar</td><td>Agrupar por similitud</td><td class='fw'>n8n</td><td>Nodos Set + reglas de clasificación; sin LLM si son reglas fijas.</td></tr>
+<tr><td>1.20</td><td>Calcular / matemáticas</td><td>Operaciones numéricas</td><td class='fw'>n8n</td><td>Nodo Code (JS) para cálculos rápidos; para pesados → Python.</td></tr>
+<tr><td>2.3</td><td>Leer texto</td><td>Decodificar símbolos escritos</td><td class='fw'>n8n</td><td>Nodos Read File + Extract; pipeline de parseo determinista.</td></tr>
+<tr><td>2.14</td><td>Dar instrucciones</td><td>Indicar cómo hacer algo</td><td class='fw'>n8n</td><td>Nodo que envía instrucciones a canal (Telegram/Email).</td></tr>
+<tr><td>2.20</td><td>Comunicar por escrito (mensajería)</td><td>Chat, email, cartas</td><td class='fw'>n8n</td><td>Nodos nativos Telegram/Slack/Email/Gmail; su especialidad.</td></tr>
+<tr><td>5.1</td><td>Usar computadora</td><td>Teclado, ratón, OS</td><td class='fw'>n8n + Playwright</td><td>RPA determinista vía nodo Playwright; si necesita adaptarse → browser-use (R).</td></tr>
+<tr><td>5.2</td><td>Usar smartphone</td><td>Apps, táctil</td><td class='fw'>n8n + ADB (script)</td><td>Automatización móvil por ADB; escaso en n8n nativo, complementa con script.</td></tr>
+<tr><td>5.3</td><td>Navegar internet</td><td>Abrir webs, seguir links</td><td class='fw'>n8n + Playwright</td><td>Automatización de navegador headless; n8n orquesta, Playwright ejecuta.</td></tr>
+<tr><td>5.4</td><td>Buscar información web</td><td>Google, búsquedas</td><td class='fw'>n8n</td><td>Nodo HTTP + Brave/SerpAPI/Google; orquesta resultados paginados.</td></tr>
+<tr><td>5.5</td><td>Leer contenido web</td><td>Extraer info de páginas</td><td class='fw'>n8n</td><td>Nodos HTTP + HTML/Cheerio Extract; scraping determinista.</td></tr>
+<tr><td>5.7</td><td>Rellenar formularios web</td><td>Escribir campos, seleccionar</td><td class='fw'>n8n + Playwright</td><td>Llenado de forms con selectores estables; n8n pasa los datos.</td></tr>
+<tr><td>5.10</td><td>Usar apps específicas (Excel, Notion, etc)</td><td>Operar software concreto</td><td class='fw'>n8n</td><td>Nodos app nativos (Notion, Sheets, Airtable) o HTTP API.</td></tr>
+<tr><td>5.13</td><td>Ejecutar código y ver resultado</td><td>Correr programas</td><td class='fw-non8n'>Docker sandbox (script)</td><td>Aislamiento y reproducibilidad; n8n solo orquesta el disparo, el código corre en contenedor.</td></tr>
+<tr><td>5.14</td><td>Usar git / versionado</td><td>Gestionar repositorios</td><td class='fw-non8n'>git CLI (script)</td><td>git es la herramienta nativa; n8n no aporta valor sobre CLI.</td></tr>
+<tr><td>5.15</td><td>Manejar bases de datos</td><td>Consultar, insertar, actualizar</td><td class='fw'>n8n</td><td>Nodos Postgres/MySQL/Redis nativos; CRUD visual con mapeo.</td></tr>
+<tr><td>5.16</td><td>Manejar APIs (REST/GraphQL)</td><td>Consumir servicios web</td><td class='fw'>n8n</td><td>Nodo HTTP Request es su núcleo; auth, paginación, retries visuales.</td></tr>
+<tr><td>5.17</td><td>Scraping web</td><td>Extraer datos de páginas</td><td class='fw'>n8n (Cheerio) / Python+Playwright</td><td>Simple → n8n HTTP+Cheerio; JS-heavy/anti-bot → Python+Playwright.</td></tr>
+<tr><td>5.18</td><td>Descargar / subir archivos</td><td>Transferir datos</td><td class='fw'>n8n</td><td>Nodos Read/Write File + S3/FTP/Drive; transferencias programadas.</td></tr>
+<tr><td>5.19</td><td>Configurar servidores / infra</td><td>Sistemas, redes</td><td class='fw-non8n'>Ansible/Terraform (IaC)</td><td>IaC declarativo idempotente; n8n no es herramienta de infra.</td></tr>
+<tr><td>6.1</td><td>Anotar gastos</td><td>Registrar lo que se gasta</td><td class='fw'>n8n + Postgres</td><td>Webhook desde Telegram → insert en DB; Erik registra por mensaje.</td></tr>
+<tr><td>6.2</td><td>Categorizar gastos</td><td>Clasificar por tipo</td><td class='fw'>n8n</td><td>Nodos Set + reglas (palabras clave → categoría); sin LLM si es determinista.</td></tr>
+<tr><td>6.3</td><td>Hacer presupuesto</td><td>Planear ingresos/gastos</td><td class='fw'>n8n</td><td>Workflow de agregación sobre DB de gastos; salida a spreadsheet.</td></tr>
+<tr><td>6.4</td><td>Comparar precios</td><td>Buscar la mejor oferta</td><td class='fw'>n8n</td><td>Scraping multi-fuente + nodo Sort por precio; alerta si baja.</td></tr>
+<tr><td>6.10</td><td>Calcular impuestos</td><td>Determinar obligaciones fiscales</td><td class='fw-non8n'>Python script (reglas)</td><td>Reglas fiscales complejas mejor en código testeable; n8n lo invoca.</td></tr>
+<tr><td>6.11</td><td>Generar estados financieros</td><td>Balance, P&L, flujo de caja</td><td class='fw'>n8n + Metabase</td><td>n8n calcula y guarda; Metabase visualiza reportes vivos para Erik.</td></tr>
+<tr><td>6.12</td><td>Calcular rentabilidad (TIR/VAN)</td><td>Evaluación de proyectos</td><td class='fw-non8n'>Python (numpy-financial)</td><td>numpy-financial tiene TIR/VAN nativos; n8n pasa inputs.</td></tr>
+<tr><td>6.13</td><td>Hacer facturas</td><td>Emitir comprobantes</td><td class='fw'>n8n</td><td>Workflow: datos cliente → plantilla PDF → guardar + enviar.</td></tr>
+<tr><td>6.18</td><td>Gestionar suscripciones</td><td>Alta/baja servicios recurrentes</td><td class='fw'>n8n</td><td>API nodes + DB; recordatorio antes de renovación, kill switch.</td></tr>
+<tr><td>6.19</td><td>Detectar gastos hormiga</td><td>Identificar micro-gastos</td><td class='fw'>n8n + Metabase</td><td>Agregación SQL + dashboard; n8n alerta umbrales.</td></tr>
+<tr><td>7.1</td><td>Anotar citas / eventos</td><td>Registrar en agenda</td><td class='fw'>n8n</td><td>Nodos Google/Outlook Calendar nativos; inserción desde Telegram.</td></tr>
+<tr><td>7.2</td><td>Recordar compromisos</td><td>No olvidar lo agendado</td><td class='fw'>n8n</td><td>Schedule trigger + notify; consulta DB agenda cada mañana.</td></tr>
+<tr><td>7.3</td><td>Programar recordatorios</td><td>Alertas a futuras horas</td><td class='fw'>n8n</td><td>Schedule/Cron trigger es su especialidad; zona horaria incluida.</td></tr>
+<tr><td>7.4</td><td>Priorizar tareas</td><td>Decidir qué antes</td><td class='fw'>n8n</td><td>Sort + fórmula urgencia/importancia; un solo 'siguiente paso' (R7 TDAH).</td></tr>
+<tr><td>7.5</td><td>Hacer listas de tareas</td><td>Todo list</td><td class='fw'>n8n + DB</td><td>CRUD de tareas; n8n expone por Telegram botón.</td></tr>
+<tr><td>7.7</td><td>Calendarizar / bloquear tiempo</td><td>Asignar slots</td><td class='fw'>n8n</td><td>Calendar API + lógica de bloques; evita solapamientos.</td></tr>
+<tr><td>7.8</td><td>Reprogramar</td><td>Mover citas/tareas</td><td class='fw'>n8n</td><td>Update en Calendar API + notify a involucrados.</td></tr>
+<tr><td>7.10</td><td>Seguir progreso de proyectos</td><td>Track de avance</td><td class='fw'>n8n + DB</td><td>Workflow que actualiza % avance y lo reporta.</td></tr>
+<tr><td>7.11</td><td>Detectar retrasos</td><td>Notar desviaciones del plan</td><td class='fw'>n8n</td><td>Compare fecha actual vs planificada → alerta si delta>umbral.</td></tr>
+<tr><td>7.12</td><td>Gestionar múltiples proyectos</td><td>Coordinar varios frentes</td><td class='fw'>n8n</td><td>Multi-board sync; un workflow por proyecto + agregador.</td></tr>
+<tr><td>7.13</td><td>Sincronizar calendarios</td><td>Google, Outlook, etc</td><td class='fw'>n8n</td><td>Nodos Calendar múltiples; su especialidad de integración.</td></tr>
+<tr><td>7.14</td><td>Gestionar zonas horarias</td><td>Coordinar entre países</td><td class='fw'>n8n</td><td>Nodos con conversión tz nativa; cron aware.</td></tr>
+<tr><td>8.1</td><td>Recordar medicación</td><td>No olvidar pastillas</td><td class='fw'>n8n</td><td>Schedule trigger + notify Telegram; confirma toma.</td></tr>
+<tr><td>8.4</td><td>Sugerir pausas</td><td>Toma 10 min</td><td class='fw'>n8n</td><td>Cron cada X horas de foco → push pausa.</td></tr>
+<tr><td>8.5</td><td>Recordar hidratación</td><td>Tomar agua</td><td class='fw'>n8n</td><td>Cron horario → notify.</td></tr>
+<tr><td>8.11</td><td>Recordar seguimientos médicos</td><td>Próximas revisiones</td><td class='fw'>n8n</td><td>Schedule desde DB médica → notify.</td></tr>
+<tr><td>8.19</td><td>Llevar diario emocional</td><td>Registro de sentimientos</td><td class='fw'>n8n + Postgres</td><td>Form por Telegram → insert; n8n muestra histórico.</td></tr>
+<tr><td>8.20</td><td>Recordar chequeos preventivos</td><td>Anuales, rutina</td><td class='fw'>n8n</td><td>Cron anual/semestral desde DB de chequeos.</td></tr>
+<tr><td>9.1</td><td>Mantener contacto</td><td>Saludar, escribir, llamar</td><td class='fw'>n8n</td><td>Cron + msg API; sugerencia de a quién contactar hoy.</td></tr>
+<tr><td>9.2</td><td>Recordar cumpleaños / fechas</td><td>No olvidar eventos de otros</td><td class='fw'>n8n</td><td>Cron diario sobre DB contactos → notify.</td></tr>
+<tr><td>9.3</td><td>Coordinar encuentros</td><td>Organizar reuniones</td><td class='fw'>n8n</td><td>Encuesta/poll + Calendar; encuentra slot común.</td></tr>
+<tr><td>9.11</td><td>Mantener relaciones a distancia</td><td>Llamadas, mensajes</td><td class='fw'>n8n</td><td>Programación de msgs recurrentes para no perder contacto.</td></tr>
+<tr><td>9.13</td><td>Gestión de contactos</td><td>CRM personal</td><td class='fw'>n8n + Postgres</td><td>CRUD de contactos; n8n como backend + Telegram front.</td></tr>
+<tr><td>11.5</td><td>Memorizar / estudiar</td><td>Repaso activo</td><td class='fw'>n8n + Anki-like (script)</td><td>Cron de spaced repetition; n8n programa, motor SR calcula intervalos.</td></tr>
+<tr><td>11.14</td><td>Seguir tendencias / novedades</td><td>Estar al día</td><td class='fw'>n8n</td><td>Scraping periódico de fuentes → digest; su especialidad de agregación.</td></tr>
+<tr><td>12.1</td><td>Cumplir leyes / normativas</td><td>Acatar marco legal</td><td class='fw'>n8n</td><td>Checklist de compliance como workflow; valida antes de acciones.</td></tr>
+<tr><td>12.11</td><td>Archivar documentos importantes</td><td>Guardar papeles</td><td class='fw'>n8n</td><td>Storage node (S3/local) + index en DB; busca por metadata.</td></tr>
+<tr><td>12.13</td><td>Comparar seguros / coberturas</td><td>Protección financiera</td><td class='fw'>n8n</td><td>Scraping + compare tabla; alerta renovación.</td></tr>
+<tr><td>12.15</td><td>Cumplir obligaciones contractuales</td><td>Honrar acuerdos</td><td class='fw'>n8n</td><td>Schedule de hitos contractuales + reminders.</td></tr>
+<tr><td>13.2</td><td>Hacer lista de compras</td><td>Qué comprar</td><td class='fw'>n8n + DB</td><td>Genera desde inventario + menú semanal; output a Telegram.</td></tr>
+<tr><td>13.9</td><td>Gestionar inventario hogar</td><td>Saber qué hay</td><td class='fw'>n8n + Postgres</td><td>CRUD inventario; alerta stock bajo.</td></tr>
+<tr><td>14.3</td><td>Proteger información digital</td><td>Seguridad informática</td><td class='fw-non8n'>Ansible + scripts (hardening)</td><td>Hardening declarativo idempotente; n8n orquesta su ejecución.</td></tr>
+<tr><td>14.5</td><td>Gestionar contraseñas</td><td>Credenciales seguras</td><td class='fw-non8n'>Bitwarden/Vault (self-hosted)</td><td>Vault dedicado es seguro y compartible; n8n rota y valida.</td></tr>
+<tr><td>14.6</td><td>Hacer backups</td><td>Respaldo de datos</td><td class='fw-non8n'>Borg/restic (script + cron)</td><td>Borg/restic son óptimos para backup incremental; n8n programa el cron.</td></tr>
+<tr><td>14.7</td><td>Cifrar / proteger comunicaciones</td><td>Privacidad</td><td class='fw-non8n'>WireGuard/Tailscale (infra)</td><td>VPN mesh ya desplegada por Erik; n8n verifica estado.</td></tr>
+<tr><td>14.8</td><td>Monitorear intrusiones</td><td>Detectar accesos no autorizados</td><td class='fw-non8n'>Wazuh/Falco (SIEM)</td><td>SIEM dedicado detecta intrusiones; n8n consume alertas y notifica.</td></tr>
+<tr><td>14.11</td><td>Detectar anomalías</td><td>Comportamiento inusual</td><td class='fw'>n8n + Metabase</td><td>Métricas + umbral; n8n alerta, Metabase visualiza.</td></tr>
+<tr><td>14.12</td><td>Auditar / revisar permisos</td><td>Control de accesos</td><td class='fw'>n8n</td><td>Workflow de auditoría: lista permisos, compara con baseline, reporta drift.</td></tr>
+<tr><td>14.13</td><td>Planear recuperación ante desastres</td><td>Continuidad</td><td class='fw'>n8n + Borg</td><td>Workflow DR: test restore periódico + report; Borg restaura, n8n orquesta.</td></tr>
+<tr><td>15.9</td><td>Adaptar horarios a estaciones</td><td>Ritmo circadiano estacional</td><td class='fw'>n8n</td><td>Cron con config estacional (horario de verano/invierno).</td></tr>
+<tr><td>15.10</td><td>Detectar recursos disponibles</td><td>Qué tengo a mano</td><td class='fw'>n8n + DB</td><td>Escaneo de inventario de recursos open-pax; reporte.</td></tr>
+<tr><td>16.1</td><td>Automonitoreo</td><td>Cómo voy</td><td class='fw'>n8n</td><td>Healthcheck workflow periódico; reporta estado del sistema.</td></tr>
+<tr><td>16.4</td><td>Gestionar energía / fatiga</td><td>No agotarse</td><td class='fw'>n8n</td><td>Throttle de trabajos por carga; pausa si CPU/RAM alta.</td></tr>
+<tr><td>16.5</td><td>Reiniciar / resetear</td><td>Empezar de cero</td><td class='fw'>n8n</td><td>Nodo Execute Command orquesta reinicios controlados.</td></tr>
+<tr><td>16.6</td><td>Detectar cuando algo falla</td><td>Diagnóstico</td><td class='fw'>n8n</td><td>Error Trigger + alerta; su especialidad de monitoring.</td></tr>
+<tr><td>16.8</td><td>Documentar lo hecho</td><td>Bitácora</td><td class='fw'>n8n</td><td>Append a log DB en cada nodo; trazabilidad automática.</td></tr>
+<tr><td>16.9</td><td>Versionar / dejar revertible</td><td>Poder deshacer</td><td class='fw-non8n'>git CLI (script)</td><td>git es la herramienta; n8n hace commit tras cada cambio.</td></tr>
+<tr><td>16.10</td><td>Supervisar procesos autónomos</td><td>Vigilar que todo va bien</td><td class='fw'>n8n</td><td>Dashboard de workflows activos + cron de auditoría.</td></tr>
+<tr><td>16.11</td><td>Detener / pausar algo que corre</td><td>Kill switch</td><td class='fw'>n8n</td><td>Webhook botón (R6 supervisión humana); su especialidad.</td></tr>
+<tr><td>16.12</td><td>Recuperarse de fallos</td><td>Resiliencia de sistema</td><td class='fw'>n8n</td><td>Workflows de retry + fallback; Error Workflow nativo.</td></tr>
+<tr><td>16.14</td><td>Detectar sobre-esfuerzo / desperdicio</td><td>Eficiencia</td><td class='fw'>n8n + Metabase</td><td>Métricas de tiempo/recurso por workflow; dashboard.</td></tr>
+<tr><td>16.15</td><td>Planear vs ejecutar</td><td>Separar diseño de acción</td><td class='fw'>n8n</td><td>Workflow 'plan' genera, workflow 'exec' ejecuta; separación clara.</td></tr>
+<tr><td>17.2</td><td>Distinguir útil/inútil</td><td>Juicio pragmático</td><td class='fw'>n8n</td><td>Nodos de regla (scoring) sobre datos; sin LLM si es determinista.</td></tr>
+<tr><td>17.5</td><td>Distinguir relevante/irrelevante</td><td>Juicio de prioridad</td><td class='fw'>n8n</td><td>Reglas de relevancia + scoring; n8n filtra.</td></tr>
+<tr><td>17.7</td><td>Distinguir urgente/no urgente</td><td>Juicio temporal</td><td class='fw'>n8n</td><td>Scoring por fecha límite + reglas; output priorizado.</td></tr>
+<tr><td>17.8</td><td>Distinguir confidencial/público</td><td>Juicio de privacidad</td><td class='fw'>n8n</td><td>Reglas de clasificación sobre metadata; etiqueta automática.</td></tr>
+</table>
+<h2>Anexo — Cuándo NO usar n8n (excepciones)</h2>
+<div class='excp'>Estas capacidades se <b>invocan desde n8n</b> pero la lógica vive en la herramienta especializada. n8n sigue como orquestador visual.</div>
+<table><tr><th>Capacidad</th><th>Mejor opción</th><th>Razón</th></tr>
+<tr><td>5.13 Ejecutar código y ver resultado</td><td class='fw-non8n'>Docker sandbox (script)</td><td>Aislamiento y reproducibilidad; n8n solo orquesta el disparo, el código corre en contenedor.</td></tr>
+<tr><td>5.14 Usar git / versionado</td><td class='fw-non8n'>git CLI (script)</td><td>git es la herramienta nativa; n8n no aporta valor sobre CLI.</td></tr>
+<tr><td>5.19 Configurar servidores / infra</td><td class='fw-non8n'>Ansible/Terraform (IaC)</td><td>IaC declarativo idempotente; n8n no es herramienta de infra.</td></tr>
+<tr><td>6.10 Calcular impuestos</td><td class='fw-non8n'>Python script (reglas)</td><td>Reglas fiscales complejas mejor en código testeable; n8n lo invoca.</td></tr>
+<tr><td>6.12 Calcular rentabilidad (TIR/VAN)</td><td class='fw-non8n'>Python (numpy-financial)</td><td>numpy-financial tiene TIR/VAN nativos; n8n pasa inputs.</td></tr>
+<tr><td>14.3 Proteger información digital</td><td class='fw-non8n'>Ansible + scripts (hardening)</td><td>Hardening declarativo idempotente; n8n orquesta su ejecución.</td></tr>
+<tr><td>14.5 Gestionar contraseñas</td><td class='fw-non8n'>Bitwarden/Vault (self-hosted)</td><td>Vault dedicado es seguro y compartible; n8n rota y valida.</td></tr>
+<tr><td>14.6 Hacer backups</td><td class='fw-non8n'>Borg/restic (script + cron)</td><td>Borg/restic son óptimos para backup incremental; n8n programa el cron.</td></tr>
+<tr><td>14.7 Cifrar / proteger comunicaciones</td><td class='fw-non8n'>WireGuard/Tailscale (infra)</td><td>VPN mesh ya desplegada por Erik; n8n verifica estado.</td></tr>
+<tr><td>14.8 Monitorear intrusiones</td><td class='fw-non8n'>Wazuh/Falco (SIEM)</td><td>SIEM dedicado detecta intrusiones; n8n consume alertas y notifica.</td></tr>
+<tr><td>16.9 Versionar / dejar revertible</td><td class='fw-non8n'>git CLI (script)</td><td>git es la herramienta; n8n hace commit tras cada cambio.</td></tr>
+</table>
+<p class='note'>Generado por gen_frameworks_A.py · open-pax/documentos/09 · 5-jul-2026</p>
+</body></html>

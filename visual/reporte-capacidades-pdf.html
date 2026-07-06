@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>open-pax — Capacidades humanas universales (reporte PDF)</title>
+<style>
+  @page { size: A4 landscape; margin: 12mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Calibri, sans-serif;
+    color: #1a1a2e; font-size: 11px; line-height: 1.4;
+    background: #fff;
+  }
+  .cover { text-align: center; padding: 40px 20px; page-break-after: always; }
+  .cover h1 { font-size: 26px; color: #2B579A; margin-bottom: 10px; }
+  .cover h2 { font-size: 15px; color: #555; font-weight: 600; margin-bottom: 20px; }
+  .cover .meta { color: #888; font-size: 12px; margin-top: 15px; }
+  .cover .stats { margin-top: 30px; display: flex; justify-content: center; gap: 30px; }
+  .cover .stat { text-align: center; }
+  .cover .stat .num { font-size: 32px; font-weight: bold; }
+  .cover .stat .lbl { font-size: 11px; color: #666; }
+  .cover .g { color: #2e8b2e; }
+  .cover .y { color: #d4a017; }
+  .cover .r { color: #d83a3a; }
+
+  h1.section { font-size: 16px; color: #2B579A; border-bottom: 2px solid #2B579A; padding-bottom: 4px; margin: 18px 0 8px; page-break-before: always; }
+  h1.section:first-of-type { page-break-before: auto; }
+  .grouphint { font-size: 10px; color: #888; font-style: italic; margin-bottom: 8px; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  th { background: #2B579A; color: #fff; padding: 5px 6px; font-size: 9.5px; text-align: left; font-weight: 600; }
+  td { padding: 4px 6px; border: 1px solid #ddd; font-size: 9.5px; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7f9fc; }
+  td.tipo { text-align: center; font-size: 12px; width: 32px; }
+  td.num { width: 36px; color: #666; font-weight: 600; }
+  td.cap { width: 200px; }
+  td.empty { background: #fafafa; color: #bbb; font-style: italic; font-size: 8px; text-align: center; }
+  .green-bg { background: #e8f5e9 !important; }
+  .yellow-bg { background: #fff8e1 !important; }
+  .red-bg { background: #ffebee !important; }
+
+  .summary-table th, .summary-table td { font-size: 10px; }
+  .summary-table td { text-align: center; }
+  .summary-table td:first-child { text-align: left; }
+
+  .legend { margin: 12px 0; padding: 10px; background: #f0f4fa; border-radius: 6px; font-size: 10px; }
+  .legend span { margin-right: 20px; }
+  .footer { text-align: center; color: #aaa; font-size: 9px; margin-top: 20px; page-break-before: avoid; }
+
+  .anexo h2 { font-size: 14px; color: #2B579A; margin: 14px 0 6px; }
+  @media print { .no-print { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>open-pax — Capacidades Humanas Universales</h1>
+  <h2>Reporte completo para análisis de frameworks, metodologías y sistemas óptimos</h2>
+  <div class="meta">316 capacidades · 18 grupos · 5-jul-2026 · open-pax/documentos</div>
+  <div class="stats">
+    <div class="stat"><div class="num g">113</div><div class="lbl">🟢 Digital / replicable</div></div>
+    <div class="stat"><div class="num y">149</div><div class="lbl">🟡 Parcial / asistible</div></div>
+    <div class="stat"><div class="num r">54</div><div class="lbl">🔴 Cuerpo físico / imposible</div></div>
+  </div>
+  <div class="meta" style="margin-top:30px;">
+    Documento companions: <b>analisis-frameworks-capacidades.docx</b> (Word editable para el análisis)<br>
+    Este PDF es el reporte de referencia · El Word es la herramienta de trabajo
+  </div>
+</div>
+
+<div class="legend">
+  <b>Leyenda:</b>
+  <span>🟢 Digital / replicable en software — automatizable hoy</span>
+  <span>🟡 Parcial — requiere LLM + contexto o hardware externo</span>
+  <span>🔴 Requiere cuerpo físico humano o imposible en software</span>
+</div>
+
+<h1 class="section" style="page-break-before:auto;">Tabla maestra — resumen por grupo</h1>
+<table class="summary-table">
+  <tr><th>Grupo</th><th>Total</th><th>🟢</th><th>🟡</th><th>🔴</th><th>Predomina</th></tr>
+  <tr><td>1. Cognición y razonamiento</td><td>25</td><td>14</td><td>10</td><td>1</td><td style="text-align:center">🟢</td></tr>
+  <tr><td>2. Comunicación y lenguaje</td><td>24</td><td>9</td><td>12</td><td>3</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>3. Percepción sensorial</td><td>18</td><td>1</td><td>10</td><td>7</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>4. Acción física y motricidad</td><td>16</td><td>0</td><td>3</td><td>13</td><td style="text-align:center">🔴</td></tr>
+  <tr><td>5. Acción digital y herramienta</td><td>25</td><td>18</td><td>7</td><td>0</td><td style="text-align:center">🟢</td></tr>
+  <tr><td>6. Gestión económica y financiera</td><td>20</td><td>11</td><td>9</td><td>0</td><td style="text-align:center">🟢</td></tr>
+  <tr><td>7. Gestión del tiempo y organización</td><td>15</td><td>12</td><td>3</td><td>0</td><td style="text-align:center">🟢</td></tr>
+  <tr><td>8. Salud, bienestar y autocuidado</td><td>20</td><td>6</td><td>14</td><td>0</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>9. Social y relacional</td><td>20</td><td>3</td><td>14</td><td>3</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>10. Creatividad y expresión</td><td>16</td><td>0</td><td>15</td><td>1</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>11. Aprendizaje y desarrollo</td><td>20</td><td>7</td><td>13</td><td>0</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>12. Cívico, legal y administrativo</td><td>15</td><td>4</td><td>10</td><td>1</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>13. Doméstico y vida cotidiana</td><td>15</td><td>3</td><td>6</td><td>6</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>14. Seguridad y protección</td><td>15</td><td>9</td><td>4</td><td>2</td><td style="text-align:center">🟢</td></tr>
+  <tr><td>15. Exploración y adaptación al entorno</td><td>10</td><td>1</td><td>6</td><td>3</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>16. Meta-ejecución (gestión del propio sistema)</td><td>15</td><td>11</td><td>4</td><td>0</td><td style="text-align:center">🟢</td></tr>
+  <tr><td>17. Ética, moral y juicio de valor</td><td>15</td><td>4</td><td>9</td><td>2</td><td style="text-align:center">🟡</td></tr>
+  <tr><td>18. Biológico y fisiológico (no replicable)</td><td>12</td><td>0</td><td>0</td><td>12</td><td style="text-align:center">🔴</td></tr>
+  <tr style="font-weight:bold;background:#d6e4f0"><td>TOTAL</td><td>316</td><td>113</td><td>149</td><td>54</td><td>—</td></tr>
+</table>
+<h1 class="section">1. Cognición y razonamiento</h1>
+<div class="grouphint">25 capacidades — 🟢 14 · 🟡 10 · 🔴 1</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">1.1</td><td class="cap">Percibir (notar, darse cuenta)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.2</td><td class="cap">Atender / concentrarse</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.3</td><td class="cap">Memorizar a corto plazo</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.4</td><td class="cap">Memorizar a largo plazo</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.5</td><td class="cap">Recordar con contexto temporal</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.6</td><td class="cap">Consolidar / 'dormir' sobre algo</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.7</td><td class="cap">Olvidar selectivamente</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.8</td><td class="cap">Razonar lógicamente (deductivo)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.9</td><td class="cap">Razonar inductivamente</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.10</td><td class="cap">Razonar abductivamente</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.11</td><td class="cap">Resolver problemas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.12</td><td class="cap">Planificar multi-paso</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.13</td><td class="cap">Tomar decisiones</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.14</td><td class="cap">Priorizar</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.15</td><td class="cap">Comparar / evaluar</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.16</td><td class="cap">Abstraer</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.17</td><td class="cap">Analizar (descomponer)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.18</td><td class="cap">Sintetizar (componer)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.19</td><td class="cap">Categorizar / clasificar</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.20</td><td class="cap">Calcular / matemáticas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.21</td><td class="cap">Estimar / aproximar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.22</td><td class="cap">Pensamiento crítico</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.23</td><td class="cap">Pensamiento lateral / creativo</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.24</td><td class="cap">Razonamiento contrafactual</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">1.25</td><td class="cap">Meta-cognición</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">2. Comunicación y lenguaje</h1>
+<div class="grouphint">24 capacidades — 🟢 9 · 🟡 12 · 🔴 3</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">2.1</td><td class="cap">Hablar (producir voz)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.2</td><td class="cap">Escuchar (comprender voz)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.3</td><td class="cap">Leer texto</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.4</td><td class="cap">Escribir texto</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.5</td><td class="cap">Redactar documentos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.6</td><td class="cap">Traducir idiomas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.7</td><td class="cap">Resumir</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.8</td><td class="cap">Parafrasear</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.9</td><td class="cap">Argumentar / persuadir</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.10</td><td class="cap">Narrar / contar historias</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.11</td><td class="cap">Explicar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.12</td><td class="cap">Negociar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.13</td><td class="cap">Debatir</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.14</td><td class="cap">Dar instrucciones</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.15</td><td class="cap">Hacer preguntas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.16</td><td class="cap">Escuchar activamente</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.17</td><td class="cap">Leer entre líneas (inferir)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.18</td><td class="cap">Detectar ironía/sarcasmo</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.19</td><td class="cap">Adaptar registro (formal/informal)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.20</td><td class="cap">Comunicar por escrito (mensajería)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.21</td><td class="cap">Comunicar por voz (teléfono)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.22</td><td class="cap">Comunicar por video</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.23</td><td class="cap">Lenguaje corporal / gestos</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">2.24</td><td class="cap">Comunicar no-verbal (expresión)</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">3. Percepción sensorial</h1>
+<div class="grouphint">18 capacidades — 🟢 1 · 🟡 10 · 🔴 7</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">3.1</td><td class="cap">Ver (visión)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.2</td><td class="cap">Reconocer objetos visuales</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.3</td><td class="cap">Reconocer rostros</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.4</td><td class="cap">Leer texto de imágenes (OCR)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.5</td><td class="cap">Interpretar imágenes / fotos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.6</td><td class="cap">Ver video / movimiento</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.7</td><td class="cap">Estimar distancias / profundidad</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.8</td><td class="cap">Detectar movimiento</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.9</td><td class="cap">Escuchar (audición)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.10</td><td class="cap">Reconocer sonidos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.11</td><td class="cap">Reconocer música / melodías</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.12</td><td class="cap">Localizar sonido (dirección)</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.13</td><td class="cap">Tocar (tacto)</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.14</td><td class="cap">Oler (olfato)</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.15</td><td class="cap">Gustar (gusto)</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.16</td><td class="cap">Sentir dolor</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.17</td><td class="cap">Equilibrio / propiocepción</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">3.18</td><td class="cap">Sentir paso del tiempo</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">4. Acción física y motricidad</h1>
+<div class="grouphint">16 capacidades — 🟢 0 · 🟡 3 · 🔴 13</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">4.1</td><td class="cap">Caminar / desplazarse</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.2</td><td class="cap">Correr</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.3</td><td class="cap">Manipular objetos con manos</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.4</td><td class="cap">Escribir a mano</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.5</td><td class="cap">Dibujar / ilustrar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.6</td><td class="cap">Construir / ensamblar físico</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.7</td><td class="cap">Reparar objetos físicos</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.8</td><td class="cap">Cocinar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.9</td><td class="cap">Limpiar / ordenar espacio físico</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.10</td><td class="cap">Conducir vehículos</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.11</td><td class="cap">Operar herramientas manuales</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.12</td><td class="cap">Cargar / transportar peso</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.13</td><td class="cap">Realizar actividad física/deporte</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.14</td><td class="cap">Gesticular / expresar con cuerpo</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.15</td><td class="cap">Operar maquinaria (vía IoT)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">4.16</td><td class="cap">Manipular pantallas/dispositivos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">5. Acción digital y herramienta</h1>
+<div class="grouphint">25 capacidades — 🟢 18 · 🟡 7 · 🔴 0</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">5.1</td><td class="cap">Usar computadora</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.2</td><td class="cap">Usar smartphone</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.3</td><td class="cap">Navegar internet</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.4</td><td class="cap">Buscar información web</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.5</td><td class="cap">Leer contenido web</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.6</td><td class="cap">Iniciar sesión en webs</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.7</td><td class="cap">Rellenar formularios web</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.8</td><td class="cap">Crear cuentas en servicios</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.9</td><td class="cap">Resolver captchas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.10</td><td class="cap">Usar apps específicas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.11</td><td class="cap">Programar / escribir código</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.12</td><td class="cap">Depurar código (debug)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.13</td><td class="cap">Ejecutar código y ver resultado</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.14</td><td class="cap">Usar git / versionado</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.15</td><td class="cap">Manejar bases de datos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.16</td><td class="cap">Manejar APIs (REST/GraphQL)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.17</td><td class="cap">Scraping web</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.18</td><td class="cap">Descargar / subir archivos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.19</td><td class="cap">Configurar servidores / infra</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.20</td><td class="cap">Diseñar (UI/UX, gráficos)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.21</td><td class="cap">Editar imágenes / video / audio</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.22</td><td class="cap">Generar imágenes con IA</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.23</td><td class="cap">Generar voz con IA (TTS)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.24</td><td class="cap">Transcribir audio a texto (STT)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">5.25</td><td class="cap">Operar dispositivos IoT</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">6. Gestión económica y financiera</h1>
+<div class="grouphint">20 capacidades — 🟢 11 · 🟡 9 · 🔴 0</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">6.1</td><td class="cap">Anotar gastos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.2</td><td class="cap">Categorizar gastos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.3</td><td class="cap">Hacer presupuesto</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.4</td><td class="cap">Comparar precios</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.5</td><td class="cap">Ahorrar / decidir no gastar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.6</td><td class="cap">Invertir</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.7</td><td class="cap">Pagar facturas / servicios</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.8</td><td class="cap">Transferir dinero</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.9</td><td class="cap">Monitorear inversiones</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.10</td><td class="cap">Calcular impuestos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.11</td><td class="cap">Generar estados financieros</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.12</td><td class="cap">Calcular rentabilidad (TIR/VAN)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.13</td><td class="cap">Hacer facturas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.14</td><td class="cap">Cobrar a clientes</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.15</td><td class="cap">Negociar precios / descuentos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.16</td><td class="cap">Comprar online</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.17</td><td class="cap">Vender online</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.18</td><td class="cap">Gestionar suscripciones</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.19</td><td class="cap">Detectar gastos hormiga</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">6.20</td><td class="cap">Hacer forecast financiero</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">7. Gestión del tiempo y organización</h1>
+<div class="grouphint">15 capacidades — 🟢 12 · 🟡 3 · 🔴 0</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">7.1</td><td class="cap">Anotar citas / eventos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.2</td><td class="cap">Recordar compromisos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.3</td><td class="cap">Programar recordatorios</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.4</td><td class="cap">Priorizar tareas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.5</td><td class="cap">Hacer listas de tareas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.6</td><td class="cap">Estimar duración de tareas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.7</td><td class="cap">Calendarizar / bloquear tiempo</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.8</td><td class="cap">Reprogramar</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.9</td><td class="cap">Delegar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.10</td><td class="cap">Seguir progreso de proyectos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.11</td><td class="cap">Detectar retrasos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.12</td><td class="cap">Gestionar múltiples proyectos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.13</td><td class="cap">Sincronizar calendarios</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.14</td><td class="cap">Gestionar zonas horarias</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">7.15</td><td class="cap">Hacer retrospectivas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">8. Salud, bienestar y autocuidado</h1>
+<div class="grouphint">20 capacidades — 🟢 6 · 🟡 14 · 🔴 0</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">8.1</td><td class="cap">Recordar medicación</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.2</td><td class="cap">Monitorear estado de ánimo</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.3</td><td class="cap">Detectar bajones prolongados</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.4</td><td class="cap">Sugerir pausas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.5</td><td class="cap">Recordar hidratación</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.6</td><td class="cap">Fomentar ejercicio</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.7</td><td class="cap">Trackear sueño</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.8</td><td class="cap">Trackear alimentación</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.9</td><td class="cap">Trackear síntomas físicos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.10</td><td class="cap">Agendar citas médicas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.11</td><td class="cap">Recordar seguimientos médicos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.12</td><td class="cap">Detectar patrones de salud</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.13</td><td class="cap">Gestionar estrés</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.14</td><td class="cap">Fomentar hábitos (streaks)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.15</td><td class="cap">Detectar señales de alarma</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.16</td><td class="cap">Hacer meditación guiada</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.17</td><td class="cap">Monitorear signos vitales</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.18</td><td class="cap">Gestionar crisis de ansiedad</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.19</td><td class="cap">Llevar diario emocional</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">8.20</td><td class="cap">Recordar chequeos preventivos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">9. Social y relacional</h1>
+<div class="grouphint">20 capacidades — 🟢 3 · 🟡 14 · 🔴 3</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">9.1</td><td class="cap">Mantener contacto</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.2</td><td class="cap">Recordar cumpleaños / fechas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.3</td><td class="cap">Coordinar encuentros</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.4</td><td class="cap">Empatizar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.5</td><td class="cap">Consolar / apoyar emocional</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.6</td><td class="cap">Detectar estado emocional ajeno</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.7</td><td class="cap">Resolver conflictos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.8</td><td class="cap">Dar feedback</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.9</td><td class="cap">Recibir feedback</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.10</td><td class="cap">Hacer networking</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.11</td><td class="cap">Mantener relaciones a distancia</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.12</td><td class="cap">Organizar eventos sociales</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.13</td><td class="cap">Gestión de contactos (CRM personal)</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.14</td><td class="cap">Detectar manipulación / mentiras</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.15</td><td class="cap">Establecer límites</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.16</td><td class="cap">Liderar / dirigir grupos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.17</td><td class="cap">Hacer presentaciones en público</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.18</td><td class="cap">Enseñar / transmitir conocimiento</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.19</td><td class="cap">Acompañar en duelo / pérdidas</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">9.20</td><td class="cap">Detectar soledad / aislamiento</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">10. Creatividad y expresión</h1>
+<div class="grouphint">16 capacidades — 🟢 0 · 🟡 15 · 🔴 1</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">10.1</td><td class="cap">Generar ideas nuevas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.2</td><td class="cap">Conectar conceptos lejanos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.3</td><td class="cap">Escribir creativo (ficción, poesía)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.4</td><td class="cap">Componer música</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.5</td><td class="cap">Improvisar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.6</td><td class="cap">Hacer humor / chistes</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.7</td><td class="cap">Diseñar estética</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.8</td><td class="cap">Crear metáforas / analogías</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.9</td><td class="cap">Producir arte visual</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.10</td><td class="cap">Producir video / cine</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.11</td><td class="cap">Diseñar productos / inventos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.12</td><td class="cap">Estilizar / branded look</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.13</td><td class="cap">Curar / seleccionar lo mejor</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.14</td><td class="cap">Remixar / combinar existente</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.15</td><td class="cap">Tener estilo personal / voz</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">10.16</td><td class="cap">Sorprender / romper expectativas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">11. Aprendizaje y desarrollo</h1>
+<div class="grouphint">20 capacidades — 🟢 7 · 🟡 13 · 🔴 0</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">11.1</td><td class="cap">Aprender de la lectura</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.2</td><td class="cap">Aprender de videos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.3</td><td class="cap">Aprender de la experiencia</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.4</td><td class="cap">Aprender de mentor / maestro</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.5</td><td class="cap">Memorizar / estudiar</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.6</td><td class="cap">Practicar / entrenar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.7</td><td class="cap">Investigar un tema</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.8</td><td class="cap">Sintetizar conocimiento</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.9</td><td class="cap">Enseñar lo aprendido</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.10</td><td class="cap">Evaluar propio progreso</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.11</td><td class="cap">Detectar propias debilidades</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.12</td><td class="cap">Adaptarse a cambios</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.13</td><td class="cap">Aprender idiomas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.14</td><td class="cap">Seguir tendencias / novedades</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.15</td><td class="cap">Detectar obsolescencia</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.16</td><td class="cap">Validar información</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.17</td><td class="cap">Hacer preguntas críticas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.18</td><td class="cap">Aprender de errores propios</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.19</td><td class="cap">Aprender de errores ajenos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">11.20</td><td class="cap">Identificar mentores / modelos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">12. Cívico, legal y administrativo</h1>
+<div class="grouphint">15 capacidades — 🟢 4 · 🟡 10 · 🔴 1</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">12.1</td><td class="cap">Cumplir leyes / normativas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.2</td><td class="cap">Conocer derechos propios</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.3</td><td class="cap">Redactar contratos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.4</td><td class="cap">Firmar documentos legalmente</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.5</td><td class="cap">Hacer trámites burocráticos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.6</td><td class="cap">Pagar impuestos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.7</td><td class="cap">Reclamar / defender derechos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.8</td><td class="cap">Votar / participar cívicamente</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.9</td><td class="cap">Gestionar identidad documental</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.10</td><td class="cap">Comprender jerga legal</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.11</td><td class="cap">Archivar documentos importantes</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.12</td><td class="cap">Detectar estafas / fraudes</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.13</td><td class="cap">Comparar seguros / coberturas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.14</td><td class="cap">Gestionar herencias / testamentos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">12.15</td><td class="cap">Cumplir obligaciones contractuales</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">13. Doméstico y vida cotidiana</h1>
+<div class="grouphint">15 capacidades — 🟢 3 · 🟡 6 · 🔴 6</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">13.1</td><td class="cap">Planear comidas / menú semanal</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.2</td><td class="cap">Hacer lista de compras</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.3</td><td class="cap">Cocinar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.4</td><td class="cap">Limpiar el hogar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.5</td><td class="cap">Lavar ropa</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.6</td><td class="cap">Hacer compras físicas</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.7</td><td class="cap">Recibir compras / paquetes</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.8</td><td class="cap">Mantener electrodomésticos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.9</td><td class="cap">Gestionar inventario hogar</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.10</td><td class="cap">Controlar consumo (luz, agua)</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.11</td><td class="cap">Decorar / personalizar espacio</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.12</td><td class="cap">Cuidar plantas / jardín</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.13</td><td class="cap">Cuidar mascotas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.14</td><td class="cap">Gestionar residuos / reciclaje</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">13.15</td><td class="cap">Hacer mantenimiento preventivo</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">14. Seguridad y protección</h1>
+<div class="grouphint">15 capacidades — 🟢 9 · 🟡 4 · 🔴 2</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">14.1</td><td class="cap">Detectar peligros físicos</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.2</td><td class="cap">Protegerse de ataques físicos</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.3</td><td class="cap">Proteger información digital</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.4</td><td class="cap">Detectar phishing / engaños</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.5</td><td class="cap">Gestionar contraseñas</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.6</td><td class="cap">Hacer backups</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.7</td><td class="cap">Cifrar / proteger comunicaciones</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.8</td><td class="cap">Monitorear intrusiones</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.9</td><td class="cap">Reaccionar a emergencias</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.10</td><td class="cap">Verificar identidad de otros</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.11</td><td class="cap">Detectar anomalías</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.12</td><td class="cap">Auditar / revisar permisos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.13</td><td class="cap">Planear recuperación ante desastres</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.14</td><td class="cap">Defensa legal / reportar delitos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">14.15</td><td class="cap">Seguro / cobertura de riesgos</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">15. Exploración y adaptación al entorno</h1>
+<div class="grouphint">10 capacidades — 🟢 1 · 🟡 6 · 🔴 3</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">15.1</td><td class="cap">Orientarse / no perderse</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.2</td><td class="cap">Adaptarse a nuevo entorno</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.3</td><td class="cap">Explorar lo desconocido</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.4</td><td class="cap">Detectar oportunidades</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.5</td><td class="cap">Migrar / mudarse</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.6</td><td class="cap">Aprender cultura / costumbres nuevas</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.7</td><td class="cap">Viajar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.8</td><td class="cap">Sobrevivir en condiciones extremas</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.9</td><td class="cap">Adaptar horarios a estaciones</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">15.10</td><td class="cap">Detectar recursos disponibles</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">16. Meta-ejecución (gestión del propio sistema)</h1>
+<div class="grouphint">15 capacidades — 🟢 11 · 🟡 4 · 🔴 0</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">16.1</td><td class="cap">Automonitoreo</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.2</td><td class="cap">Auto-reparación</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.3</td><td class="cap">Auto-mejora continua</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.4</td><td class="cap">Gestionar energía / fatiga</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.5</td><td class="cap">Reiniciar / resetear</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.6</td><td class="cap">Detectar cuando algo falla</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.7</td><td class="cap">Pedir ayuda / escalar</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.8</td><td class="cap">Documentar lo hecho</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.9</td><td class="cap">Versionar / dejar revertible</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.10</td><td class="cap">Supervisar procesos autónomos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.11</td><td class="cap">Detener / pausar algo que corre</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.12</td><td class="cap">Recuperarse de fallos</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.13</td><td class="cap">Explicar por qué se hizo algo</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.14</td><td class="cap">Detectar sobre-esfuerzo / desperdicio</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">16.15</td><td class="cap">Planear vs ejecutar</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">17. Ética, moral y juicio de valor</h1>
+<div class="grouphint">15 capacidades — 🟢 4 · 🟡 9 · 🔴 2</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">17.1</td><td class="cap">Distinguir bien/mal</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.2</td><td class="cap">Distinguir útil/inútil</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.3</td><td class="cap">Distinguir bello/feo</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.4</td><td class="cap">Distinguir verdad/mentira</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.5</td><td class="cap">Distinguir relevante/irrelevante</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.6</td><td class="cap">Distinguir seguro/peligroso</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.7</td><td class="cap">Distinguir urgente/no urgente</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.8</td><td class="cap">Distinguir confidencial/público</td><td class="tipo green-bg">🟢</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.9</td><td class="cap">Tener principios / valores</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.10</td><td class="cap">Ceder / transigir</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.11</td><td class="cap">Perdonar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.12</td><td class="cap">Mantener integridad bajo presión</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.13</td><td class="cap">Equilibrar corto vs largo plazo</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.14</td><td class="cap">Asumir responsabilidad</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">17.15</td><td class="cap">Detectar conflicto de interés</td><td class="tipo yellow-bg">🟡</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">18. Biológico y fisiológico (no replicable)</h1>
+<div class="grouphint">12 capacidades — 🟢 0 · 🟡 0 · 🔴 12</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Tipo</th><th>Framework óptimo</th><th>Estado</th><th>Notas</th></tr>
+<tr><td class="num">18.1</td><td class="cap">Respirar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.2</td><td class="cap">Alimentarse / digerir</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.3</td><td class="cap">Dormir / descansar</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.4</td><td class="cap">Reproducirse</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.5</td><td class="cap">Crecer / desarrollarse</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.6</td><td class="cap">Sanar / regenerarse</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.7</td><td class="cap">Envejecer</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.8</td><td class="cap">Tener instintos</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.9</td><td class="cap">Tener emociones primarias</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.10</td><td class="cap">Sentir placer / displacer</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.11</td><td class="cap">Tener consciencia</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td class="num">18.12</td><td class="cap">Morir</td><td class="tipo red-bg">🔴</td><td class="empty">— a rellenar —</td><td class="empty">—</td><td class="empty">—</td></tr>
+</table>
+<h1 class="section">Anexo A — Frameworks candidatos a evaluar</h1>
+<table><tr><th>Framework/Sistema</th><th>Para qué sirve</th><th>Estado</th><th>Capacidades que cubre</th></tr>
+<tr><td><b>Letta (ex-MemGPT)</b></td><td>Memoria persistente + agentes con conversación</td><td>🟢 desplegado</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Ollama</b></td><td>Modelos LLM locales sin censura</td><td>🟢 desplegado</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>LiteLLM / cerebropax</b></td><td>Gateway de modelos (banco de cerebros)</td><td>🟡 en progreso</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>OpenCode Zen</b></td><td>Gateway OpenAI-compatible (temporal)</td><td>🟢 en uso</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>n8n</b></td><td>Orquestación visual + Telegram/WhatsApp</td><td>🔴 pendiente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>LangGraph + Deep Agents</b></td><td>Cerebro orquestador autónomo</td><td>🔴 pendiente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Mem0</b></td><td>Memoria semántica con razonamiento temporal</td><td>🔴 pendiente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>browser-use / Playwright</b></td><td>Navegación web, logins, formularios</td><td>🔴 pendiente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>LiveKit Agents</b></td><td>Voz bidireccional + llamadas</td><td>🔴 pendiente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Flowise</b></td><td>Construcción visual de agentes (alt.)</td><td>🔴 evaluar</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>LangFlow</b></td><td>Flujos visuales LangChain (alt.)</td><td>🔴 evaluar</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Dify</b></td><td>Plataforma LLM con RAG (alt.)</td><td>🔴 evaluar</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Aider / Cline / OpenHands</b></td><td>Agentes de código autónomo</td><td>🔴 evaluar</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Qdrant / pgvector</b></td><td>BD vectorial para RAG</td><td>🟢 pgvector desplegado</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Supabase</b></td><td>BD + auth + storage</td><td>🟢 disponible</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Cloudflare (Tunnel/R2/DNS)</b></td><td>Infraestructura pública $0</td><td>🟢 en uso</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Tailscale</b></td><td>Red privada malla</td><td>🟢 en uso</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Telegram Bot API</b></td><td>Canal principal con Erik</td><td>🟢 en uso</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>WhatsApp Business API</b></td><td>Canal secundario</td><td>🟢 Constelación</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Google Calendar API</b></td><td>Sincronización de agenda</td><td>🔴 pendiente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Belvo / Pluggy (Open Banking MX)</b></td><td>Integración bancaria</td><td>🔴 evaluar</td><td class="empty">— a rellenar —</td></tr>
+</table>
+<h1 class="section">Anexo B — Metodologías y patrones a evaluar</h1>
+<table><tr><th>Metodología/Patrón</th><th>Descripción</th><th>Aplica a</th></tr>
+<tr><td><b>Agentic patterns</b></td><td>ReAct, Plan-and-Execute, Reflection, Tool Use</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>RAG (Retrieval Augmented Generation)</b></td><td>Recuperar conocimiento antes de responder</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Multi-agent orchestration</b></td><td>Sub-agentes especializados coordinados</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Human-in-the-loop</b></td><td>Supervisión humana en lo delicado (R6)</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Event-driven architecture</b></td><td>Reaccionar a eventos vs polling</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Cron-based autonomy</b></td><td>Ciclo autónomo cada N horas</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Memory tiers</b></td><td>Corto plazo + largo plazo + consolidación (dreaming)</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Failover + resilience</b></td><td>Si un proveedor cae, usar el siguiente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Observability (Langfuse/LangSmith)</b></td><td>Ver qué pasa dentro del agente</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>GitOps</b></td><td>Configuración versionada en git</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Tailscale mesh</b></td><td>Red privada sin exponer servicios</td><td class="empty">— a rellenar —</td></tr>
+<tr><td><b>Cost optimization</b></td><td>$0 primero, pago solo si rinde 10x (R2)</td><td class="empty">— a rellenar —</td></tr>
+</table>
+<div class="footer">open-pax · reporte de capacidades humanas universales · 5-jul-2026 · 296 capacidades · 18 grupos · companion: analisis-frameworks-capacidades.docx</div>
+</body></html>

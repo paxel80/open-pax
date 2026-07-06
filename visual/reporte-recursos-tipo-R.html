@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang='es'><head><meta charset='UTF-8'><title>Recursos + proveedores — Tipo R</title>
+
+<style>
+@page { size: A4 landscape; margin: 10mm; }
+* { font-family: 'Segoe UI', Arial, sans-serif; }
+body { margin:0; color:#1a1a1a; font-size:11px; }
+.cover { text-align:center; padding:30px 0 16px; border-bottom:3px solid #2563eb; margin-bottom:16px; }
+.cover h1 { font-size:26px; color:#1d4ed8; margin:0 0 6px; }
+.cover .sub { font-size:13px; color:#555; }
+.cover .meta { font-size:11px; color:#888; }
+h2 { color:#1d4ed8; border-bottom:2px solid #2563eb; padding-bottom:4px; margin-top:22px; font-size:15px; }
+table { border-collapse:collapse; width:100%; margin-bottom:12px; }
+th { background:#1d4ed8; color:#fff; padding:6px 8px; text-align:left; font-size:10px; }
+td { padding:5px 8px; border-bottom:1px solid #e5e7eb; font-size:10px; vertical-align:top; }
+tr:nth-child(even) td { background:#eff6ff; }
+.prov { font-weight:bold; color:#1d4ed8; }
+.rec { color:#6b7280; font-style:italic; }
+.bar { background:#eff6ff; border-left:4px solid #2563eb; padding:10px 14px; margin:10px 0; }
+.warn { background:#fef3c7; border-left:4px solid #d97706; padding:6px 10px; margin:4px 0; font-size:10px; }
+.note { font-size:10px; color:#666; font-style:italic; }
+.prio { background:#dcfce7; color:#15803d; padding:1px 6px; border-radius:4px; font-weight:bold; font-size:9px; }
+</style>
+</head><body>
+<div class='cover'>
+<h1>Recursos + proveedores para capacidades tipo R</h1>
+<div class='sub'>Exclusivas de un recurso · asignación uno a uno (recurso + proveedor concreto)</div>
+<div class='meta'>74 capacidades · 5-jul-2026 · open-pax/documentos/10</div>
+</div>
+<h2>Resumen por recurso</h2>
+<table><tr><th>Recurso</th><th>Capacidades</th></tr>
+<tr><td>LLM</td><td>40</td></tr>
+<tr><td>Modelo visión</td><td>3</td></tr>
+<tr><td>Modelo audio</td><td>3</td></tr>
+<tr><td>TTS</td><td>2</td></tr>
+<tr><td>STT</td><td>2</td></tr>
+<tr><td>Modelo multimodal</td><td>2</td></tr>
+<tr><td>Generador de imágenes</td><td>2</td></tr>
+<tr><td>Wearable</td><td>2</td></tr>
+<tr><td>DB de sesión</td><td>1</td></tr>
+<tr><td>DB vectorial</td><td>1</td></tr>
+<tr><td>DB + timestamps</td><td>1</td></tr>
+<tr><td>LLM/MT</td><td>1</td></tr>
+<tr><td>Cámara + modelo visión</td><td>1</td></tr>
+<tr><td>OCR/visión</td><td>1</td></tr>
+<tr><td>Visión/profundidad</td><td>1</td></tr>
+<tr><td>Visión</td><td>1</td></tr>
+<tr><td>Micrófono + STT</td><td>1</td></tr>
+<tr><td>Micrófono array</td><td>1</td></tr>
+<tr><td>Servicio captcha/AI</td><td>1</td></tr>
+<tr><td>Sensor/actuador IoT</td><td>1</td></tr>
+<tr><td>Audio/LLM</td><td>1</td></tr>
+<tr><td>LLM de texto/voz</td><td>1</td></tr>
+<tr><td>Wallet/credencial</td><td>1</td></tr>
+<tr><td>Sensor IoT</td><td>1</td></tr>
+<tr><td>Cámara/sensor</td><td>1</td></tr>
+<tr><td>GPS/maps</td><td>1</td></tr>
+<tr><td><b>TOTAL</b></td><td><b>74</b></td></tr></table>
+<h2>Resumen por proveedor principal</h2>
+<table><tr><th>Proveedor</th><th>Caps</th><th>Notas</th></tr>
+<tr><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>28</td><td></td></tr>
+<tr><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>11</td><td></td></tr>
+<tr><td class='prov'>LLaVA</td><td>2</td><td></td></tr>
+<tr><td class='prov'>ESP32</td><td>2</td><td></td></tr>
+<tr><td class='prov'>Letta session memory (postgres)</td><td>1</td><td>Memoria de sesión ya disponible.</td></tr>
+<tr><td class='prov'>pgvector (Postgres en nube1)</td><td>1</td><td>DB vectorial ya desplegada con Letta.</td></tr>
+<tr><td class='prov'>pgvector</td><td>1</td><td></td></tr>
+<tr><td class='prov'>cerebropax (LiteLLM) → qwen3-abliterated:4b (local)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>cerebropax → qwen3-abliterated:4b/14b</td><td>1</td><td></td></tr>
+<tr><td class='prov'>cerebropax → qwen3-abliterated:14b (2do equipo)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>Piper (self-hosted, CPU, ~$0)</td><td>1</td><td>TTS offline, rápido, español.</td></tr>
+<tr><td class='prov'>faster-whisper-small (local GPU)</td><td>1</td><td>STT en 4GB VRAM; large vía Groq.</td></tr>
+<tr><td class='prov'>Webcam/IPCámara</td><td>1</td><td></td></tr>
+<tr><td class='prov'>FaceNet/InsightFace (self-hosted)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>Tesseract</td><td>1</td><td></td></tr>
+<tr><td class='prov'>LLaVA via Ollama (2do equipo)</td><td>1</td><td>Visión multimodal; API si pesado.</td></tr>
+<tr><td class='prov'>YOLOv8</td><td>1</td><td></td></tr>
+<tr><td class='prov'>MiDaS (Depth Anything) self-hosted</td><td>1</td><td></td></tr>
+<tr><td class='prov'>OpenCV</td><td>1</td><td></td></tr>
+<tr><td class='prov'>USB mic</td><td>1</td><td></td></tr>
+<tr><td class='prov'>YAMNet</td><td>1</td><td></td></tr>
+<tr><td class='prov'>ChromaPrint/AcoustID (self-hosted)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>2x USB mics</td><td>1</td><td></td></tr>
+<tr><td class='prov'>AI solver (YOLo+OCR self-hosted)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>Stable Diffusion 1.5 (local, 4GB VRAM)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>Piper (self-hosted)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>faster-whisper (local)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>🟡 Erik no tiene wearable → Google Fit via Android (free)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>Piper TTS</td><td>1</td><td></td></tr>
+<tr><td class='prov'>🟡 Sin wearable → Google Fit</td><td>1</td><td></td></tr>
+<tr><td class='prov'>MusicGen (AudioCraft) self-hosted</td><td>1</td><td></td></tr>
+<tr><td class='prov'>Stable Diffusion 1.5</td><td>1</td><td></td></tr>
+<tr><td class='prov'>Bitwarden vault (self-hosted)</td><td>1</td><td></td></tr>
+<tr><td class='prov'>IPCámara</td><td>1</td><td></td></tr>
+<tr><td class='prov'>OSM</td><td>1</td><td></td></tr>
+</table>
+<div class='bar'>
+<b>Principio rector:</b> 1er plano = self-hosted (gratis, control total). Plan alternativo = API free tier si no cabe en 4GB VRAM. 
+<b>R6</b>: juicio moral/estético/verdad → LLM propone, Erik valida. <b>R8</b>: 🟡 marca limitaciones reales.
+</div>
+<h2>Tabla completa (uno a uno)</h2>
+<table><tr><th>#</th><th>Capacidad</th><th>Recurso</th><th>Proveedor (1er plano)</th><th>Plan alternativo</th><th>Notas</th></tr>
+<tr><td>1.3</td><td>Memorizar a corto plazo</td><td class='rec'>DB de sesión</td><td class='prov'>Letta session memory (postgres)</td><td>Redis en nube2</td><td>Ya disponible en Letta desplegado.</td></tr>
+<tr><td>1.4</td><td>Memorizar a largo plazo</td><td class='rec'>DB vectorial</td><td class='prov'>pgvector (Postgres en nube1)</td><td>ChromaDB self-hosted</td><td>Ya desplegado con Letta. Embeddings: bge-m3 del 2do equipo.</td></tr>
+<tr><td>1.5</td><td>Recordar con contexto temporal</td><td class='rec'>DB + timestamps</td><td class='prov'>pgvector + columna timestamp (nube1)</td><td>TimescaleDB</td><td>Postgres maneja timestamps nativos.</td></tr>
+<tr><td>1.8</td><td>Razonar deductivo</td><td class='rec'>LLM</td><td class='prov'>cerebropax (LiteLLM) → qwen3-abliterated:4b (local) / 14b (2do equipo)</td><td>Groq llama-3.3-70b (free tier)</td><td>Modelo sin censura. Local ~50 t/s, 2do equipo para lo pesado.</td></tr>
+<tr><td>1.9</td><td>Razonar inductivo</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b/14b</td><td>DeepSeek-V3 (free)</td><td>Mismo gateway LiteLLM.</td></tr>
+<tr><td>1.10</td><td>Razonar abductivo</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b (2do equipo)</td><td>OpenRouter free models</td><td>Abducción requiere modelo grande; 14b en 2do equipo.</td></tr>
+<tr><td>1.16</td><td>Abstraer</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>1.21</td><td>Estimar / aproximar</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>1.22</td><td>Pensamiento crítico</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td>Requiere razonamiento profundo → 14b.</td></tr>
+<tr><td>1.23</td><td>Pensamiento lateral / creativo</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>OpenRouter</td><td>Creatividad → modelo grande.</td></tr>
+<tr><td>1.24</td><td>Razonamiento contrafactual</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq llama-3.3-70b</td><td></td></tr>
+<tr><td>2.1</td><td>Hablar (producir voz)</td><td class='rec'>TTS</td><td class='prov'>Piper (self-hosted, CPU, ~$0)</td><td>Coqui TTS / OpenAI TTS</td><td>Piper es óptimo: offline, rápido, calidad OK, español.</td></tr>
+<tr><td>2.2</td><td>Escuchar (comprender voz)</td><td class='rec'>STT</td><td class='prov'>faster-whisper-small (local GPU)</td><td>Groq whisper-large-v3 (free)</td><td>Whisper-small cabe en 4GB VRAM; large vía Groq.</td></tr>
+<tr><td>2.6</td><td>Traducir idiomas</td><td class='rec'>LLM/MT</td><td class='prov'>cerebropax → qwen3-abliterated:4b / DeepSeek-V3</td><td>Groq + DeepSeek</td><td>Multilingüe. Alternativa: LibreTranslate self-hosted (dedicado MT).</td></tr>
+<tr><td>2.7</td><td>Resumir</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>2.8</td><td>Parafrasear</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>2.9</td><td>Argumentar / persuadir</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td>Persuasión → 14b.</td></tr>
+<tr><td>2.10</td><td>Narrar / contar historias</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>OpenRouter</td><td>Narrativa → modelo grande.</td></tr>
+<tr><td>2.11</td><td>Explicar</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>2.13</td><td>Debatir</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq llama-3.3-70b</td><td>Debate → razonamiento profundo.</td></tr>
+<tr><td>2.17</td><td>Leer entre líneas (inferir)</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td>Inferencia → 14b.</td></tr>
+<tr><td>2.18</td><td>Detectar ironía/sarcasmo</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq</td><td>Sarcasmo difícil → modelo grande.</td></tr>
+<tr><td>2.19</td><td>Adaptar registro (formal/informal)</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>3.1</td><td>Ver (visión)</td><td class='rec'>Cámara + modelo visión</td><td class='prov'>Webcam/IPCámara + LLaVA via Ollama (2do equipo)</td><td>Qwen2-VL via OpenRouter free</td><td>LLaVA local; API si pesado.</td></tr>
+<tr><td>3.2</td><td>Reconocer objetos visuales</td><td class='rec'>Modelo visión</td><td class='prov'>LLaVA / YOLOv8 (self-hosted)</td><td>Roboflow free / OpenRouter</td><td>YOLOv8 para detección rápida, LLaVA para descripción.</td></tr>
+<tr><td>3.3</td><td>Reconocer rostros</td><td class='rec'>Modelo visión</td><td class='prov'>FaceNet/InsightFace (self-hosted)</td><td>CompreFace self-hosted</td><td>Self-hosted por privacidad. NO usar API externa con rostros.</td></tr>
+<tr><td>3.4</td><td>Leer texto de imágenes (OCR)</td><td class='rec'>OCR/visión</td><td class='prov'>Tesseract + PaddleOCR (self-hosted)</td><td>LLaVA OCR</td><td>Tesseract para documento; PaddleOCR para escena compleja.</td></tr>
+<tr><td>3.5</td><td>Interpretar imágenes / fotos</td><td class='rec'>Modelo multimodal</td><td class='prov'>LLaVA via Ollama (2do equipo)</td><td>Qwen2-VL free</td><td></td></tr>
+<tr><td>3.6</td><td>Ver video / movimiento</td><td class='rec'>Modelo visión</td><td class='prov'>YOLOv8 + OpenCV (self-hosted)</td><td>Frigate NVR self-hosted</td><td>Frigate combina detección + NVR; ideal para cámaras IP.</td></tr>
+<tr><td>3.7</td><td>Estimar distancias / profundidad</td><td class='rec'>Visión/profundidad</td><td class='prov'>MiDaS (Depth Anything) self-hosted</td><td>Depth-Anything-V2</td><td>Modelo de profundidad monocular. Si hay cámara RGBD mejor.</td></tr>
+<tr><td>3.8</td><td>Detectar movimiento</td><td class='rec'>Visión</td><td class='prov'>OpenCV + YOLOv8 (self-hosted)</td><td>Frigate motion detection</td><td>Frigate trae detección de movimiento + clasificación IA.</td></tr>
+<tr><td>3.9</td><td>Escuchar (audición)</td><td class='rec'>Micrófono + STT</td><td class='prov'>USB mic + faster-whisper (local)</td><td>Groq whisper</td><td></td></tr>
+<tr><td>3.10</td><td>Reconocer sonidos</td><td class='rec'>Modelo audio</td><td class='prov'>YAMNet / AudioSet (self-hosted)</td><td>Hugging Face audio models</td><td>Clasificación de eventos sonoros (sirena, ladrido, etc).</td></tr>
+<tr><td>3.11</td><td>Reconocer música / melodías</td><td class='rec'>Modelo audio</td><td class='prov'>ChromaPrint/AcoustID (self-hosted)</td><td>Shazam-like API</td><td>AcoustID gratis para fingerprinting musical.</td></tr>
+<tr><td>3.12</td><td>Localizar sonido (dirección)</td><td class='rec'>Micrófono array</td><td class='prov'>2x USB mics + TDOA (self-hosted)</td><td>ReSpeaker Mic Array</td><td>Hardware especializado; DIY posible con 2 mics.</td></tr>
+<tr><td>5.9</td><td>Resolver captchas</td><td class='rec'>Servicio captcha/AI</td><td class='prov'>AI solver (YOLo+OCR self-hosted) — 🟡 limitado</td><td>2captcha (~$3/1000)</td><td>R8: self-hostado no bate reCAPTCHA v3. Documentar TOS.</td></tr>
+<tr><td>5.22</td><td>Generar imágenes con IA</td><td class='rec'>Generador de imágenes</td><td class='prov'>Stable Diffusion 1.5 (local, 4GB VRAM) / sdxl-turbo</td><td>Pollinations.ai (free, sin API key)</td><td>SD1.5 cabe en 4GB; sdxl-turbo más rápido. Pollinations gratis sin auth.</td></tr>
+<tr><td>5.23</td><td>Generar voz con IA (TTS)</td><td class='rec'>TTS</td><td class='prov'>Piper (self-hosted)</td><td>Coqui XTTS / OpenAI TTS</td><td>Mismo recurso que 2.1.</td></tr>
+<tr><td>5.24</td><td>Transcribir audio a texto (STT)</td><td class='rec'>STT</td><td class='prov'>faster-whisper (local)</td><td>Groq whisper-large-v3</td><td>Mismo recurso que 2.2.</td></tr>
+<tr><td>5.25</td><td>Operar dispositivos IoT</td><td class='rec'>Sensor/actuador IoT</td><td class='prov'>ESP32 + Home Assistant (self-hosted)</td><td>Shelly / Tasmota</td><td>ESP32 $3-5, HA gratuito. DIY económico.</td></tr>
+<tr><td>7.6</td><td>Estimar duración de tareas</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>8.7</td><td>Trackear sueño</td><td class='rec'>Wearable</td><td class='prov'>🟡 Erik no tiene wearable → Google Fit via Android (free)</td><td>Garmin/Oura API</td><td>R8 honestidad: sin wearable, datos limitados. Alternativa: app sleeptracker Android.</td></tr>
+<tr><td>8.16</td><td>Hacer meditación guiada</td><td class='rec'>Audio/LLM</td><td class='prov'>Piper TTS + guiones LLM (self-hosted)</td><td>Medito app (gratis)</td><td>Generar audio con Piper; guiones con LLM.</td></tr>
+<tr><td>8.17</td><td>Monitorear signos vitales</td><td class='rec'>Wearable</td><td class='prov'>🟡 Sin wearable → Google Fit / phone sensors</td><td>Garmin/Oura</td><td>R8: limitado sin hardware. Phone tiene acelerómetro (pasos).</td></tr>
+<tr><td>9.6</td><td>Detectar estado emocional ajeno</td><td class='rec'>LLM de texto/voz</td><td class='prov'>cerebropax → qwen3-abliterated:14b + análisis tono voz (Whisper)</td><td>Hume AI free tier</td><td>Texto: LLM. Voz: prosodia con modelos de emociones.</td></tr>
+<tr><td>9.14</td><td>Detectar manipulación / mentiras</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td>Requiere razonamiento profundo sobre patrones.</td></tr>
+<tr><td>10.1</td><td>Generar ideas nuevas</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>OpenRouter</td><td></td></tr>
+<tr><td>10.2</td><td>Conectar conceptos lejanos</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>OpenRouter</td><td></td></tr>
+<tr><td>10.3</td><td>Escribir creativo (ficción, poesía)</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td>Creatividad → modelo grande.</td></tr>
+<tr><td>10.4</td><td>Componer música</td><td class='rec'>Modelo audio</td><td class='prov'>MusicGen (AudioCraft) self-hosted / Suno API</td><td>Suno (free tier limitado)</td><td>MusicGen local pesado → 2do equipo o API. Suno free con créditos.</td></tr>
+<tr><td>10.5</td><td>Improvisar</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq</td><td></td></tr>
+<tr><td>10.6</td><td>Hacer humor / chistes</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>OpenRouter</td><td>Humor es difícil para LLMs; modelo grande mejor.</td></tr>
+<tr><td>10.8</td><td>Crear metáforas / analogías</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>10.9</td><td>Producir arte visual</td><td class='rec'>Generador de imágenes</td><td class='prov'>Stable Diffusion 1.5 / sdxl-turbo (local)</td><td>Pollinations.ai free</td><td>Mismo recurso que 5.22.</td></tr>
+<tr><td>10.16</td><td>Sorprender / romper expectativas</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>OpenRouter</td><td></td></tr>
+<tr><td>11.2</td><td>Aprender de videos</td><td class='rec'>Modelo multimodal</td><td class='prov'>LLaVA + faster-whisper (self-hosted)</td><td>Qwen2-VL free</td><td>Whisper transcribe audio; LLaVA analiza frames clave.</td></tr>
+<tr><td>11.8</td><td>Sintetizar conocimiento</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td></td></tr>
+<tr><td>11.15</td><td>Detectar obsolescencia</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>Groq</td><td></td></tr>
+<tr><td>11.17</td><td>Hacer preguntas críticas</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq</td><td></td></tr>
+<tr><td>11.19</td><td>Aprender de errores ajenos</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td></td></tr>
+<tr><td>12.2</td><td>Conocer derechos propios</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b + RAG legal MX</td><td>Groq</td><td>RAG sobre leyes MX ( Constitución, Códigos).</td></tr>
+<tr><td>12.9</td><td>Gestionar identidad documental</td><td class='rec'>Wallet/credencial</td><td class='prov'>Bitwarden vault (self-hosted) + scans cifrados</td><td>Vaultwarden</td><td>Vaultwarden = Bitwarden self-hosted gratis.</td></tr>
+<tr><td>12.10</td><td>Comprender jerga legal</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b + RAG legal</td><td>DeepSeek-V3</td><td></td></tr>
+<tr><td>12.12</td><td>Detectar estafas / fraudes</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq</td><td></td></tr>
+<tr><td>13.10</td><td>Controlar consumo (luz, agua)</td><td class='rec'>Sensor IoT</td><td class='prov'>ESP32 + sensor no invasivo SCT-013 (corriente) + HA</td><td>Shelly EM</td><td>Shelly EM ~$30 (1 vez); DIY ESP32+SCT-013 ~$10.</td></tr>
+<tr><td>14.1</td><td>Detectar peligros físicos</td><td class='rec'>Cámara/sensor</td><td class='prov'>IPCámara + Frigate + YOLOv8 (self-hosted)</td><td>Shelly Door/Window sensor</td><td>Frigate detecta intrusos; sensores de puerta complementan.</td></tr>
+<tr><td>14.4</td><td>Detectar phishing / engaños</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq</td><td>Analiza email/URL; LLM detecta patrones de phishing.</td></tr>
+<tr><td>15.1</td><td>Orientarse / no perderse</td><td class='rec'>GPS/maps</td><td class='prov'>OSM + Nominatim + GraphHopper (self-hosted)</td><td>Google Maps API (free tier)</td><td>100% gratis self-hosted. GraphHopper para routing.</td></tr>
+<tr><td>15.6</td><td>Aprender cultura / costumbres nuevas</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b + RAG web</td><td>OpenRouter</td><td></td></tr>
+<tr><td>17.1</td><td>Distinguir bien/mal</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td>Juicio moral → modelo grande; el humano aprueba (R6).</td></tr>
+<tr><td>17.3</td><td>Distinguir bello/feo</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:4b</td><td>OpenRouter</td><td>Estética subjetiva; LLM + humano valida.</td></tr>
+<tr><td>17.4</td><td>Distinguir verdad/mentira</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b + RAG (fuentes verificables)</td><td>Groq + search</td><td>LLM solo alucina; requiere RAG con fuentes.</td></tr>
+<tr><td>17.6</td><td>Distinguir seguro/peligroso</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>Groq</td><td></td></tr>
+<tr><td>17.15</td><td>Detectar conflicto de interés</td><td class='rec'>LLM</td><td class='prov'>cerebropax → qwen3-abliterated:14b</td><td>DeepSeek-V3</td><td>Requiere razonamiento profundo sobre contextos.</td></tr>
+</table>
+<h2>Catálogo de recursos a provisionar</h2>
+<div class='bar'>Estos son los activos que hay que <b>instalar/desplegar/conectar</b>. Mientras más capacidades concentre un recurso, más rentable.</div>
+<table><tr><th>Recurso</th><th>Tipo</th><th>Caps</th><th>Notas de provisión</th></tr>
+<tr><td class='prov'>cerebropax (LiteLLM)</td><td>Banco de cerebros</td><td>~30</td><td>Gateway LLM que enruta a Ollama local + 2do equipo + APIs free. **Prioridad #1.** Ya tiene expediente.</td></tr>
+<tr><td class='prov'>pgvector (Postgres)</td><td>DB vectorial</td><td>~3</td><td>Ya desplegado con Letta. Memoria a largo plazo.</td></tr>
+<tr><td class='prov'>Piper</td><td>TTS</td><td>~3</td><td>`apt install piper` o Docker. Voces ES descargables gratis.</td></tr>
+<tr><td class='prov'>faster-whisper</td><td>STT</td><td>~3</td><td>Docker / Python. small/base en 4GB VRAM.</td></tr>
+<tr><td class='prov'>Stable Diffusion</td><td>Generador imágenes</td><td>~3</td><td>Automatic1111 o ComfyUI. SD1.5 en 4GB; sdxl-turbo más rápido.</td></tr>
+<tr><td class='prov'>LLaVA (Ollama)</td><td>Visión multimodal</td><td>~5</td><td>2do equipo Tailscale. API local vía Ollama.</td></tr>
+<tr><td class='prov'>YOLOv8 + OpenCV</td><td>Detección objetos/movimiento</td><td>~3</td><td>Python. Real-time en CPU/GPU.</td></tr>
+<tr><td class='prov'>Frigate NVR</td><td>NVR + IA</td><td>~2</td><td>Docker self-hosted. Para cámaras IP de seguridad.</td></tr>
+<tr><td class='prov'>Tesseract + PaddleOCR</td><td>OCR</td><td>~2</td><td>Python libs. Documento y escena.</td></tr>
+<tr><td class='prov'>ESP32 + Home Assistant</td><td>IoT</td><td>~3</td><td>HA en Docker (nube2). ESP32 $3-5/nodo. Sensores DIY.</td></tr>
+<tr><td class='prov'>Vaultwarden</td><td>Identidad/credenciales</td><td>~1</td><td>Docker self-hosted. Bitwarden-compatible, gratis.</td></tr>
+<tr><td class='prov'>GraphHopper + OSM</td><td>Mapas/routing</td><td>~1</td><td>Docker self-hosted. 100% gratis.</td></tr>
+<tr><td class='prov'>2captcha (alt)</td><td>Captcha solver</td><td>~1</td><td>🟡 Pago ~$3/1000. Solo si self-hostado no bate.</td></tr>
+</table>
+<p class='note'>Generado por gen_recursos_R.py · open-pax/documentos/10 · 5-jul-2026</p>
+</body></html>

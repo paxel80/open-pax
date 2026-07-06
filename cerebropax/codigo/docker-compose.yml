@@ -1,0 +1,80 @@
+# =============================================================================
+# cerebropax — Docker Compose
+# Banco de cerebros: LiteLLM Gateway + PostgreSQL (para logs/keys)
+# =============================================================================
+# Despliegue: ver deploy.sh
+# Corregido 5-jul-2026: removido `environment_file` (clave inválida de Compose).
+# =============================================================================
+
+services:
+
+  # ---------------------------------------------------------------------------
+  # LiteLLM Gateway — el conmutador de cerebros
+  # ---------------------------------------------------------------------------
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    container_name: cerebropax-litellm
+    restart: unless-stopped
+    ports:
+      # Escucha en TODAS las interfaces, pero ufw solo permite Tailscale + localhost.
+      # No exponer al internet público. Ver deploy.sh para reglas de ufw.
+      - "4000:4000"
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - litellm_logs:/var/log/litellm
+    env_file:
+      - .env
+    environment:
+      # Solo variables no sensibles o derivadas; el resto entra via .env
+      - STORE_MODEL_IN_DB=true
+    depends_on:
+      litellm_db:
+        condition: service_healthy
+    healthcheck:
+      # Endpoint de liveliness de LiteLLM
+      test: ["CMD", "curl", "-f", "http://localhost:4000/health/liveliness"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - cerebropax_net
+
+  # ---------------------------------------------------------------------------
+  # PostgreSQL — guarda logs, claves virtuales, uso por modelo
+  # ---------------------------------------------------------------------------
+  litellm_db:
+    image: postgres:16-alpine
+    container_name: cerebropax-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: litellm
+      POSTGRES_PASSWORD: ${LITELLM_DB_PASSWORD}
+      POSTGRES_DB: litellm
+    volumes:
+      - litellm_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U litellm"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+    networks:
+      - cerebropax_net
+
+volumes:
+  litellm_logs:
+  litellm_db_data:
+
+networks:
+  cerebropax_net:
+    driver: bridge

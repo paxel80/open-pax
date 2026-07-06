@@ -1,0 +1,7 @@
+# recursospax — .gitignore
+# Las bitácoras NO contienen claves, se suben a git.
+# Los scripts de comprobación se suben a git.
+# Solo excluir archivos temporales y .env si se usara.
+
+*_temp.md
+.env

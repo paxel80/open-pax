@@ -1,0 +1,14 @@
+# personalpax — NUNCA subir datos personales a git
+.env
+*.env
+!*.env.example
+
+# Bitácora personal (datos sensibles cifrados)
+bitacora/*.md
+!bitacora/README.md
+
+# Datos sensibles
+*.json
+datos/
+*.enc
+*.age

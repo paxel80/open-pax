@@ -1,0 +1,33 @@
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp
+*.tmp
+*.bak
+*~
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+
+# Docker volumes
+volumes/
+data/
+
+# Temp generation scripts (kilo working dir)
+gen_*.py
+html_body.txt
+check_*.py

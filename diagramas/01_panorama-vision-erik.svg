@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 800" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d1117"/><stop offset="100%" stop-color="#161b22"/></linearGradient>
+    <linearGradient id="brain" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6e40c9"/><stop offset="100%" stop-color="#a371f7"/></linearGradient>
+    <linearGradient id="hands" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1f6feb"/><stop offset="100%" stop-color="#58a6ff"/></linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#238636"/><stop offset="100%" stop-color="#3fb950"/></linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9e6a03"/><stop offset="100%" stop-color="#d29922"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b0000"/><stop offset="100%" stop-color="#da3633"/></linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#08867e"/><stop offset="100%" stop-color="#39d353"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="1120" height="800" fill="url(#bg)"/>
+
+  <!-- Titulo -->
+  <text x="560" y="38" text-anchor="middle" fill="#c9d1d9" font-size="20" font-weight="bold">open-pax — Tu Sistema Operativo de Vida</text>
+  <text x="560" y="60" text-anchor="middle" fill="#8b949e" font-size="13">Tu = cerebro creativo · open-pax = manos que ejecutan 24/7 · TDAH-friendly</text>
+
+  <!-- ERIK -->
+  <rect x="350" y="85" width="420" height="72" rx="12" fill="url(#brain)" opacity="0.15" stroke="url(#brain)" stroke-width="2" filter="url(#glow)"/>
+  <text x="560" y="111" text-anchor="middle" fill="#a371f7" font-size="15" font-weight="bold">🧠 TU (Erik) — El Cerebro Creativo</text>
+  <text x="560" y="130" text-anchor="middle" fill="#c9d1d9" font-size="11">Ves conexiones donde nadie las ve · Ideas geniales · TDAH + ACC (muchas ideas, poco orden)</text>
+  <text x="560" y="147" text-anchor="middle" fill="#8b949e" font-size="10">Tu superpoder: creatividad ilimitada · Tu kriptonita: organizar y ejecutar solo</text>
+
+  <line x1="560" y1="157" x2="560" y2="190" stroke="#a371f7" stroke-width="2"/>
+  <polygon points="555,188 560,200 565,188" fill="#a371f7"/>
+
+  <!-- open-pax -->
+  <rect x="130" y="205" width="860" height="100" rx="12" fill="url(#hands)" opacity="0.1" stroke="url(#hands)" stroke-width="2"/>
+  <text x="560" y="234" text-anchor="middle" fill="#58a6ff" font-size="15" font-weight="bold">🤖 open-pax — Las Manos que NUNCA duermen</text>
+  <text x="560" y="255" text-anchor="middle" fill="#c9d1d9" font-size="11">Autonomo · Proactivo · Confiable · 24/7 · Sin que tengas que decirle que hacer</text>
+  <text x="560" y="275" text-anchor="middle" fill="#c9d1d9" font-size="11">Tu dices LA idea · open-pax planifica, investiga, ejecuta y te reporta</text>
+  <text x="560" y="295" text-anchor="middle" fill="#8b949e" font-size="10">Disenado para tu TDAH: te organiza, te recuerda, te da UN solo siguiente paso claro</text>
+
+  <!-- 4 PILARES -->
+  <!-- PILAR 1: Organizacion -->
+  <rect x="10" y="340" width="265" height="180" rx="10" fill="url(#green)" opacity="0.07" stroke="url(#green)" stroke-width="1.5"/>
+  <text x="142" y="368" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">🗂️ ORGANIZACION</text>
+  <line x1="30" y1="378" x2="255" y2="378" stroke="#3fb950" stroke-width="0.5" opacity="0.3"/>
+  <text x="20" y="398" fill="#c9d1d9" font-size="11">📋 Control de TODOS tus proyectos</text>
+  <text x="20" y="416" fill="#c9d1d9" font-size="11">🔢 ORDEN de accion (que primero)</text>
+  <text x="20" y="434" fill="#c9d1d9" font-size="11">⏰ Deadlines y recordatorios</text>
+  <text x="20" y="452" fill="#c9d1d9" font-size="11">🧩 Conecta ideas entre proyectos</text>
+  <text x="20" y="470" fill="#c9d1d9" font-size="11">📊 Dashboard de todo tu universo</text>
+  <text x="20" y="495" fill="#3fb950" font-size="9">→ Sabe que con TDAH necesitas UN paso a la vez</text>
+
+  <!-- PILAR 2: Investigacion -->
+  <rect x="288" y="340" width="265" height="180" rx="10" fill="url(#orange)" opacity="0.07" stroke="url(#orange)" stroke-width="1.5"/>
+  <text x="420" y="368" text-anchor="middle" fill="#d29922" font-size="13" font-weight="bold">🔬 INVESTIGACION</text>
+  <line x1="308" y1="378" x2="533" y2="378" stroke="#d29922" stroke-width="0.5" opacity="0.3"/>
+  <text x="298" y="398" fill="#c9d1d9" font-size="11">🔍 Escanea GitHub Trending 24/7</text>
+  <text x="298" y="416" fill="#c9d1d9" font-size="11">📱 Rastrea TikTok tendencias AI</text>
+  <text x="298" y="434" fill="#c9d1d9" font-size="11">📡 Detecta lo NUEVO antes que nadie</text>
+  <text x="298" y="452" fill="#c9d1d9" font-size="11">⚠️ Alerta: metodos obsoletos</text>
+  <text x="298" y="470" fill="#c9d1d9" font-size="11">🧪 Valida ideas con datos reales</text>
+  <text x="298" y="495" fill="#d29922" font-size="9">→ Mata tu miedo a la incertidumbre con DATOS</text>
+
+  <!-- PILAR 3: Trabajo -->
+  <rect x="566" y="340" width="265" height="180" rx="10" fill="url(#red)" opacity="0.07" stroke="url(#red)" stroke-width="1.5"/>
+  <text x="698" y="368" text-anchor="middle" fill="#da3633" font-size="13" font-weight="bold">🛠️ TRABAJO</text>
+  <line x1="586" y1="378" x2="811" y2="378" stroke="#da3633" stroke-width="0.5" opacity="0.3"/>
+  <text x="576" y="398" fill="#c9d1d9" font-size="11">🏨 Proyecto Hotel Amiga (recepcionista AI)</text>
+  <text x="576" y="416" fill="#c9d1d9" font-size="11">🍽️ POS Vanguardista Yesika</text>
+  <text x="576" y="434" fill="#c9d1d9" font-size="11">🖨️ Impresion 3D + dossier inversion</text>
+  <text x="576" y="452" fill="#c9d1d9" font-size="11">📋 Menu QR · Mercadito · +11 mas</text>
+  <text x="576" y="470" fill="#c9d1d9" font-size="11">🏭 La Fabrica construye el codigo</text>
+  <text x="576" y="495" fill="#da3633" font-size="9">→ Tu imaginas · open-pax CONSTRUYE</text>
+
+  <!-- PILAR 4: Personal (NUEVO) -->
+  <rect x="844" y="340" width="265" height="180" rx="10" fill="url(#teal)" opacity="0.07" stroke="url(#teal)" stroke-width="1.5"/>
+  <text x="976" y="368" text-anchor="middle" fill="#39d353" font-size="13" font-weight="bold">💚 PERSONAL</text>
+  <line x1="864" y1="378" x2="1089" y2="378" stroke="#39d353" stroke-width="0.5" opacity="0.3"/>
+  <text x="854" y="398" fill="#c9d1d9" font-size="11">💰 Financiero: gastos, ingresos, suscripciones</text>
+  <text x="854" y="416" fill="#c9d1d9" font-size="11">🧘 Salud mental: TDAH, ACC, animo, terapia</text>
+  <text x="854" y="434" fill="#c9d1d9" font-size="11">📅 Agenda: rutina, medicacion, citas</text>
+  <text x="854" y="452" fill="#c9d1d9" font-size="11">💪 Habitos: ejercicio, sueno, alimentacion</text>
+  <text x="854" y="470" fill="#c9d1d9" font-size="11">❤️ Relaciones: familia, amigos, pareja</text>
+  <text x="854" y="495" fill="#39d353" font-size="9">→ Te cuida incluso cuando tu no te cuidas</text>
+
+  <!-- Flujo 24/7 -->
+  <rect x="10" y="545" width="1100" height="55" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="560" y="567" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold">🔄 El ciclo AUTONOMO — 24/7 sin que le digas:</text>
+  <text x="560" y="587" text-anchor="middle" fill="#8b949e" font-size="11">Investigar tendencias → Organizar tus proyectos → Cuidar tu salud y finanzas → Avanzar el que toca → Reportarte por Telegram → Pedirte confirmacion en lo delicado → REPETIR</text>
+
+  <!-- Bottom: confianza -->
+  <rect x="130" y="625" width="860" height="50" rx="10" fill="url(#teal)" opacity="0.05" stroke="#39d353" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="560" y="648" text-anchor="middle" fill="#39d353" font-size="13" font-weight="bold">⚡ open-pax es alguien en quien PUEDES CONFIAR — para lo profesional Y lo personal</text>
+  <text x="560" y="666" text-anchor="middle" fill="#8b949e" font-size="11">Tu eres el genio que ve conexiones · open-pax es el ejecutor incansable que las vuelve realidad Y te cuida la vida</text>
+
+  <!-- Leyenda -->
+  <rect x="120" y="705" width="10" height="10" rx="2" fill="url(#brain)"/>
+  <text x="135" y="716" fill="#a371f7" font-size="9">Tu</text>
+  <rect x="170" y="705" width="10" height="10" rx="2" fill="url(#hands)"/>
+  <text x="185" y="716" fill="#58a6ff" font-size="9">open-pax</text>
+  <rect x="260" y="705" width="10" height="10" rx="2" fill="url(#green)"/>
+  <text x="275" y="716" fill="#3fb950" font-size="9">Organizacion</text>
+  <rect x="370" y="705" width="10" height="10" rx="2" fill="url(#orange)"/>
+  <text x="385" y="716" fill="#d29922" font-size="9">Investigacion</text>
+  <rect x="490" y="705" width="10" height="10" rx="2" fill="url(#red)"/>
+  <text x="505" y="716" fill="#da3633" font-size="9">Trabajo</text>
+  <rect x="575" y="705" width="10" height="10" rx="2" fill="url(#teal)"/>
+  <text x="590" y="716" fill="#39d353" font-size="9">Personal</text>
+
+  <!-- Derrame personal detalle -->
+  <rect x="680" y="695" width="420" height="85" rx="6" fill="url(#teal)" opacity="0.04" stroke="#39d353" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <text x="890" y="712" text-anchor="middle" fill="#39d353" font-size="9" font-weight="bold">Derrame del Area Personal</text>
+  <text x="695" y="728" fill="#8b949e" font-size="9">💸 Financiero: control de gastos fijos, suscripciones que te ahogan, ingresos Yesika, ahorro</text>
+  <text x="695" y="742" fill="#8b949e" font-size="9">🧠 Salud mental: recordatorio TDAH/ACC, patron de animo, te sugiere pausas, conexion terapeutica</text>
+  <text x="695" y="756" fill="#8b949e" font-size="9">📅 Agenda: rutina diaria, medicacion, citas medicas, cumpleanos familia, eventos importantes</text>
+  <text x="695" y="770" fill="#8b949e" font-size="9">💪 Habitos + ❤️ Relaciones: ejercicio, sueno, contacto familiar, red de apoyo</text>
+</svg>

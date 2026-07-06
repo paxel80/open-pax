@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d1117"/><stop offset="100%" stop-color="#161b22"/></linearGradient>
+    <linearGradient id="done" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#238636"/><stop offset="100%" stop-color="#3fb950"/></linearGradient>
+    <linearGradient id="progress" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1f6feb"/><stop offset="100%" stop-color="#58a6ff"/></linearGradient>
+    <linearGradient id="pending" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#30363d"/><stop offset="100%" stop-color="#484f58"/></linearGradient>
+  </defs>
+
+  <rect width="1000" height="750" fill="url(#bg)"/>
+
+  <text x="500" y="35" text-anchor="middle" fill="#c9d1d9" font-size="18" font-weight="bold">Hoja de Ruta — open-pax por Fases</text>
+  <text x="500" y="55" text-anchor="middle" fill="#8b949e" font-size="11">Construyendo el asistente humano-equivalente · Una sesion = una fase · Todo $0</text>
+
+  <!-- FASE 0 -->
+  <rect x="15" y="75" width="970" height="72" rx="8" fill="url(#done)" opacity="0.06" stroke="url(#done)" stroke-width="1.5"/>
+  <rect x="25" y="83" width="18" height="18" rx="9" fill="url(#done)"/>
+  <text x="34" y="97" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <text x="55" y="96" fill="#3fb950" font-size="13" font-weight="bold">FASE 0 — Fundacion · INFRAESTRUCTURA</text>
+  <text x="350" y="96" fill="#8b949e" font-size="10">ESTADO:  🟢 CASI COMPLETA (sobran 2 pendientes)</text>
+  <text x="55" y="118" fill="#c9d1d9" font-size="10">✅ 2 VMs Oracle 4/24 ARM vivas, endurecidas, Tailscale  ✅ Xiaomi en la malla  ✅ SSH en todas</text>
+  <text x="55" y="135" fill="#c9d1d9" font-size="10">⏳ Confirmar Erik accede por SSH a SP y FRA  ⏳ Re-descargar modelos 14b+27b en FRA (se perdieron con OVH)</text>
+
+  <!-- FASE 1 -->
+  <rect x="15" y="157" width="970" height="90" rx="8" fill="url(#progress)" opacity="0.06" stroke="url(#progress)" stroke-width="1.5"/>
+  <rect x="25" y="165" width="18" height="18" rx="9" fill="url(#progress)"/>
+  <text x="34" y="179" text-anchor="middle" fill="#fff" font-size="11">1</text>
+  <text x="55" y="178" fill="#58a6ff" font-size="13" font-weight="bold">FASE 1 — Despegar: Constelacion 24/7 + LiteLLM · 1 sesion</text>
+  <text x="350" y="178" fill="#8b949e" font-size="10">ESTADO:  🟡 PROXIMA SESION</text>
+  <text x="55" y="200" fill="#c9d1d9" font-size="10">📱 Migrar Constelacion a Oracle SP (WhatsApp+TG 24/7 con URL fija via Cloudflare Tunnel)</text>
+  <text x="55" y="217" fill="#c9d1d9" font-size="10">🧠 Instalar LiteLLM (banco cerebros) + Qdrant (memoria vectorial) en Oracle FRA · Conectar APIs gratis (Groq, NVIDIA, DeepSeek)</text>
+  <text x="55" y="234" fill="#c9d1d9" font-size="10">🏆 HITO: Erik habla con su asistente 24/7 por WhatsApp y Telegram, con URL fija, sin que la laptop este prendida</text>
+
+  <!-- FASE 2 -->
+  <rect x="15" y="257" width="970" height="75" rx="8" fill="url(#pending)" opacity="0.06" stroke="url(#pending)" stroke-width="1.5"/>
+  <rect x="25" y="265" width="18" height="18" rx="9" fill="url(#pending)"/>
+  <text x="34" y="279" text-anchor="middle" fill="#8b949e" font-size="11">2</text>
+  <text x="55" y="278" fill="#c9d1d9" font-size="13" font-weight="bold">FASE 2 — Cerebro LangGraph + Herramientas basicas · 1-2 sesiones</text>
+  <text x="350" y="278" fill="#8b949e" font-size="10">ESTADO:  ⏳ PENDIENTE</text>
+  <text x="55" y="300" fill="#c9d1d9" font-size="10">🧠 Backend LangGraph + Deep Agents en Oracle FRA · Sub-agentes: email + calendario via MCP</text>
+  <text x="55" y="317" fill="#c9d1d9" font-size="10">🏆 HITO: "Reagenda mi reunion del jueves" → lo hace. "Lee mis correos importantes" → los resume</text>
+
+  <!-- FASE 3 -->
+  <rect x="15" y="342" width="970" height="72" rx="8" fill="url(#pending)" opacity="0.06" stroke="url(#pending)" stroke-width="1.5"/>
+  <rect x="25" y="350" width="18" height="18" rx="9" fill="url(#pending)"/>
+  <text x="34" y="364" text-anchor="middle" fill="#8b949e" font-size="11">3</text>
+  <text x="55" y="363" fill="#c9d1d9" font-size="13" font-weight="bold">FASE 3 — Memoria que no olvida · 1 sesion</text>
+  <text x="350" y="363" fill="#8b949e" font-size="10">ESTADO:  ⏳ PENDIENTE</text>
+  <text x="55" y="385" fill="#c9d1d9" font-size="10">🧲 Mem0 self-hosted en Oracle FRA (algoritmo nuevo abril 2026: 91.6% precision, razonamiento temporal)</text>
+  <text x="55" y="402" fill="#c9d1d9" font-size="10">🏆 HITO: 3 meses despues, el asistente recuerda que "Erik dijo que el color del POS sea ambar"</text>
+
+  <!-- FASE 4 -->
+  <rect x="15" y="424" width="970" height="72" rx="8" fill="url(#pending)" opacity="0.06" stroke="url(#pending)" stroke-width="1.5"/>
+  <rect x="25" y="432" width="18" height="18" rx="9" fill="url(#pending)"/>
+  <text x="34" y="446" text-anchor="middle" fill="#8b949e" font-size="11">4</text>
+  <text x="55" y="445" fill="#c9d1d9" font-size="13" font-weight="bold">FASE 4 — Voz y llamadas reales · 1-2 sesiones</text>
+  <text x="350" y="445" fill="#8b949e" font-size="10">ESTADO:  ⏳ PENDIENTE</text>
+  <text x="55" y="467" fill="#c9d1d9" font-size="10">🗣️ LiveKit Agents en Oracle FRA: STT/TTS + telephony real + multi-agent handoff</text>
+  <text x="55" y="484" fill="#c9d1d9" font-size="10">🏆 HITO: Cliente llama al hotel de tu amiga → open-pax contesta con voz natural, sabe de que habitacion hablar</text>
+
+  <!-- FASE 5 -->
+  <rect x="15" y="506" width="970" height="72" rx="8" fill="url(#pending)" opacity="0.06" stroke="url(#pending)" stroke-width="1.5"/>
+  <rect x="25" y="514" width="18" height="18" rx="9" fill="url(#pending)"/>
+  <text x="34" y="528" text-anchor="middle" fill="#8b949e" font-size="11">5</text>
+  <text x="55" y="527" fill="#c9d1d9" font-size="13" font-weight="bold">FASE 5 — Manos en la web · 1 sesion</text>
+  <text x="350" y="527" fill="#8b949e" font-size="10">ESTADO:  ⏳ PENDIENTE</text>
+  <text x="55" y="549" fill="#c9d1d9" font-size="10">🌐 browser-use 3.0 en laptop (RTX 3050): navega webs, rellena formularios, crea cuentas</text>
+  <text x="55" y="566" fill="#c9d1d9" font-size="10">🏆 HITO: "Crea una cuenta en X para el hotel" → lo hace (con confirmacion tuya)</text>
+
+  <!-- FASE 6 -->
+  <rect x="15" y="588" width="970" height="55" rx="8" fill="url(#pending)" opacity="0.06" stroke="url(#pending)" stroke-width="1.5"/>
+  <rect x="25" y="596" width="18" height="18" rx="9" fill="url(#pending)"/>
+  <text x="34" y="610" text-anchor="middle" fill="#8b949e" font-size="11">6</text>
+  <text x="55" y="609" fill="#c9d1d9" font-size="13" font-weight="bold">FASE 6 — Hardening (produccion real) · 1 sesion</text>
+  <text x="350" y="609" fill="#8b949e" font-size="10">ESTADO:  ⏳ PENDIENTE</text>
+  <text x="55" y="631" fill="#c9d1d9" font-size="10">🔒 HMAC webhooks · rate-limit · ramas de error · LangGraph durable execution · watchdog kill-switch</text>
+
+  <!-- FASE 7 -->
+  <rect x="15" y="653" width="970" height="55" rx="8" fill="url(#pending)" opacity="0.04" stroke="url(#pending)" stroke-width="0.8" stroke-dasharray="5,3"/>
+  <rect x="25" y="661" width="18" height="18" rx="9" fill="#30363d"/>
+  <text x="34" y="675" text-anchor="middle" fill="#484f58" font-size="11">7</text>
+  <text x="55" y="674" fill="#8b949e" font-size="13" font-weight="bold">FASE 7 — Extensiones · cuando quieras</text>
+  <text x="350" y="674" fill="#484f58" font-size="10">ESTADO:  🔮 FUTURO</text>
+  <text x="55" y="696" fill="#8b949e" font-size="10">🎥 Avatares de video · 👁️ Vision (Gemini Live) · 📚 RAG personal (tus documentos) · 📊 Dashboard visual de proyectos</text>
+
+  <!-- Tiempo estimado -->
+  <rect x="15" y="725" width="970" height="15" rx="3" fill="url(#progress)" opacity="0.06"/>
+  <text x="500" y="736" text-anchor="middle" fill="#58a6ff" font-size="9">Tiempo estimado total: ~10 sesiones · Cada sesion ~1-2h · open-pax operativo basico desde Fase 1 (proxima sesion)</text>
+
+</svg>

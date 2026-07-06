@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang='es'><head><meta charset='UTF-8'>
+<title>Capacidades por método de implementación</title>
+<style>
+@page { size: A4 landscape; margin: 12mm; }
+* { font-family: 'Segoe UI', Arial, sans-serif; }
+body { margin:0; color:#1a1a1a; font-size:11px; }
+.cover { text-align:center; padding:40px 0 20px; border-bottom:3px solid #2563eb; margin-bottom:20px; }
+.cover h1 { font-size:30px; color:#1e3a5f; margin:0 0 8px; }
+.cover .sub { font-size:14px; color:#555; margin-bottom:4px; }
+.cover .meta { font-size:11px; color:#888; }
+.stats { display:flex; gap:12px; margin:18px 0; }
+.stat { flex:1; padding:14px; border-radius:8px; color:#fff; text-align:center; }
+.stat .n { font-size:26px; font-weight:bold; }
+.stat .l { font-size:11px; }
+.sA { background:#16a34a; }
+.sR { background:#2563eb; }
+.sAR { background:#d97706; }
+.sNA { background:#dc2626; }
+h2 { color:#1e3a5f; border-bottom:2px solid #2563eb; padding-bottom:4px; margin-top:24px; font-size:16px; }
+h3 { color:#555; font-size:13px; margin-bottom:6px; }
+table { border-collapse:collapse; width:100%; margin-bottom:14px; }
+th { background:#1e3a5f; color:#fff; padding:6px 8px; text-align:left; font-size:10px; }
+td { padding:5px 8px; border-bottom:1px solid #e5e7eb; font-size:10px; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+.mA { background:#dcfce7; color:#15803d; padding:1px 6px; border-radius:4px; font-weight:bold; }
+.mR { background:#dbeafe; color:#1d4ed8; padding:1px 6px; border-radius:4px; font-weight:bold; }
+.mAR { background:#fef3c7; color:#b45309; padding:1px 6px; border-radius:4px; font-weight:bold; }
+.mNA { background:#fee2e2; color:#b91c1c; padding:1px 6px; border-radius:4px; font-weight:bold; }
+.legend { background:#f3f4f6; padding:10px; border-radius:6px; margin:12px 0; font-size:11px; }
+.legend b { color:#1e3a5f; }
+.rec-box { background:#eff6ff; border-left:4px solid #2563eb; padding:10px 14px; margin:10px 0; }
+.note { font-size:10px; color:#666; font-style:italic; }
+</style>
+</head><body>
+<div class='cover'>
+<h1>Capacidades por método de implementación</h1>
+<div class='sub'>¿Serie de acciones (workflow) o exclusiva de un recurso (activo)?</div>
+<div class='meta'>316 capacidades · reclasificadas · 5-jul-2026 · open-pax/documentos/08</div>
+</div>
+<div class='stats'>
+<div class='stat sA'><div class='n'>91</div><div class='l'>A · Serie de acciones<br/>(construir workflow)</div></div>
+<div class='stat sR'><div class='n'>74</div><div class='l'>R · Exclusiva de recurso<br/>(provisionar activo)</div></div>
+<div class='stat sAR'><div class='n'>94</div><div class='l'>A+R · Mixto<br/>(recurso + workflow)</div></div>
+<div class='stat sNA'><div class='n'>57</div><div class='l'>N/A · No replicable<br/>(asistir/delegar)</div></div>
+</div>
+<div class='legend'>
+<b>Marco de clasificación</b><br/>
+<span class='mA'>A</span> Serie de acciones (workflow) — nace de orquestar pasos. Solo lógica + datos + APIs estándar. → construir en n8n/Letta/scripts.<br/>
+<span class='mR'>R</span> Exclusiva de un recurso — la otorga poseer un activo concreto (LLM, modelo visión, DB, sensor, API, credencial). Sin ese recurso, imposible. → provisionar.<br/>
+<span class='mAR'>A+R</span> Mixto — un recurso ejecuta acciones (LLM + workflow, sensor + pipeline). → provisionar recurso Y construir orquestación.<br/>
+<span class='mNA'>N/A</span> No replicable — biológica/corporal/subjetiva humana. → asistir (recordatorios/info) o delegar al humano.
+</div>
+<h2>Recursos más demandados</h2>
+<table><tr><th>Recurso</th><th>Capacidades que lo requieren</th></tr>
+<tr><td>LLM</td><td>56</td></tr>
+<tr><td>LLM + workflow</td><td>14</td></tr>
+<tr><td>LLM analítica</td><td>5</td></tr>
+<tr><td>Modelo visión</td><td>3</td></tr>
+<tr><td>Modelo audio</td><td>3</td></tr>
+<tr><td>Log + LLM</td><td>3</td></tr>
+<tr><td>LLM + tool</td><td>3</td></tr>
+<tr><td>TTS</td><td>2</td></tr>
+<tr><td>STT</td><td>2</td></tr>
+<tr><td>LLM + plantilla</td><td>2</td></tr>
+<tr><td>Modelo multimodal</td><td>2</td></tr>
+<tr><td>LLM + sandbox</td><td>2</td></tr>
+<tr><td>Generador de imágenes</td><td>2</td></tr>
+<tr><td>API banco</td><td>2</td></tr>
+<tr><td>API + workflow</td><td>2</td></tr>
+<tr><td>Nudge LLM</td><td>2</td></tr>
+<tr><td>Wearable</td><td>2</td></tr>
+<tr><td>LLM + search</td><td>2</td></tr>
+<tr><td>Schedule + IoT</td><td>2</td></tr>
+<tr><td>Sensor + modelo multimodal</td><td>1</td></tr>
+<tr><td>DB / memoria de sesión</td><td>1</td></tr>
+<tr><td>DB vectorial (pgvector)</td><td>1</td></tr>
+<tr><td>DB + timestamps</td><td>1</td></tr>
+<tr><td>Proceso batch + DB</td><td>1</td></tr>
+<tr><td>LLM/MT</td><td>1</td></tr>
+<tr><td>STT + LLM</td><td>1</td></tr>
+<tr><td>TTS + telefonía API</td><td>1</td></tr>
+<tr><td>Cámara + video API</td><td>1</td></tr>
+<tr><td>Cámara + modelo visión</td><td>1</td></tr>
+<tr><td>OCR/visión</td><td>1</td></tr>
+<tr><td>Visión/profundidad</td><td>1</td></tr>
+<tr><td>Visión</td><td>1</td></tr>
+<tr><td>Micrófono + STT</td><td>1</td></tr>
+<tr><td>Micrófono array</td><td>1</td></tr>
+<tr><td>Generador de imágenes + plotter</td><td>1</td></tr>
+<tr><td>IoT actuador + workflow</td><td>1</td></tr>
+<tr><td>RPA/autonomación</td><td>1</td></tr>
+<tr><td>Gestor credenciales</td><td>1</td></tr>
+<tr><td>Identidad/credencial</td><td>1</td></tr>
+<tr><td>Servicio captcha/AI</td><td>1</td></tr>
+<tr><td>LLM coder + sandbox</td><td>1</td></tr>
+<tr><td>LLM + tool de diseño</td><td>1</td></tr>
+<tr><td>ffmpeg + modelos</td><td>1</td></tr>
+<tr><td>Sensor/actuador IoT</td><td>1</td></tr>
+<tr><td>API broker + algoritmo</td><td>1</td></tr>
+<tr><td>API broker</td><td>1</td></tr>
+<tr><td>API/RPA + pago</td><td>1</td></tr>
+<tr><td>Modelo predictivo</td><td>1</td></tr>
+<tr><td>Agente/humano</td><td>1</td></tr>
+<tr><td>Input + LLM</td><td>1</td></tr>
+<tr><td>API salud</td><td>1</td></tr>
+<tr><td>LLM guía</td><td>1</td></tr>
+<tr><td>Audio/LLM</td><td>1</td></tr>
+<tr><td>LLM empático</td><td>1</td></tr>
+<tr><td>LLM de texto/voz</td><td>1</td></tr>
+<tr><td>Modelo video + edición</td><td>1</td></tr>
+<tr><td>RAG</td><td>1</td></tr>
+<tr><td>RL/feedback loop</td><td>1</td></tr>
+<tr><td>LLM + ejercicios</td><td>1</td></tr>
+<tr><td>Search + scrape + LLM</td><td>1</td></tr>
+<tr><td>LLM + app</td><td>1</td></tr>
+<tr><td>Search + LLM</td><td>1</td></tr>
+<tr><td>API e-sign</td><td>1</td></tr>
+<tr><td>Gov API/RPA</td><td>1</td></tr>
+<tr><td>API fiscal</td><td>1</td></tr>
+<tr><td>Wallet/credencial</td><td>1</td></tr>
+<tr><td>IoT diagnóstico</td><td>1</td></tr>
+<tr><td>Sensor IoT</td><td>1</td></tr>
+<tr><td>IoT + schedule</td><td>1</td></tr>
+<tr><td>Cámara/sensor</td><td>1</td></tr>
+<tr><td>LLM + API</td><td>1</td></tr>
+<tr><td>API seguros</td><td>1</td></tr>
+<tr><td>GPS/maps</td><td>1</td></tr>
+<tr><td>LLM + métricas</td><td>1</td></tr>
+<tr><td>LLM + routing</td><td>1</td></tr>
+<tr><td>LLM + log</td><td>1</td></tr>
+</table>
+<h2>Sección <span class="mA">A</span> — Serie de acciones (workflow)</h2>
+<div class='rec-box'>Capacidades que se obtienen orquestando pasos. No requieren un recurso especial.</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Qué es</th><th>Recurso clave</th></tr>
+<tr><td>1.2</td><td>Atender / concentrarse</td><td>Foco sostenido en una tarea</td><td>—</td></tr>
+<tr><td>1.7</td><td>Olvidar selectivamente</td><td>Descartar lo irrelevante</td><td>—</td></tr>
+<tr><td>1.12</td><td>Planificar multi-paso</td><td>Secuencia hacia meta</td><td>—</td></tr>
+<tr><td>1.13</td><td>Tomar decisiones</td><td>Elegir entre opciones</td><td>—</td></tr>
+<tr><td>1.14</td><td>Priorizar</td><td>Ordenar por importancia</td><td>—</td></tr>
+<tr><td>1.15</td><td>Comparar / evaluar</td><td>Sopesar alternativas</td><td>—</td></tr>
+<tr><td>1.19</td><td>Categorizar / clasificar</td><td>Agrupar por similitud</td><td>—</td></tr>
+<tr><td>1.20</td><td>Calcular / matemáticas</td><td>Operaciones numéricas</td><td>—</td></tr>
+<tr><td>2.3</td><td>Leer texto</td><td>Decodificar símbolos escritos</td><td>—</td></tr>
+<tr><td>2.14</td><td>Dar instrucciones</td><td>Indicar cómo hacer</td><td>—</td></tr>
+<tr><td>2.20</td><td>Comunicar por escrito (mensajería)</td><td>Chat, email</td><td>—</td></tr>
+<tr><td>5.1</td><td>Usar computadora</td><td>Teclado, ratón, OS</td><td>RPA</td></tr>
+<tr><td>5.2</td><td>Usar smartphone</td><td>Apps, táctil</td><td>RPA</td></tr>
+<tr><td>5.3</td><td>Navegar internet</td><td>Abrir webs, links</td><td>browser-use</td></tr>
+<tr><td>5.4</td><td>Buscar información web</td><td>Google, búsquedas</td><td>—</td></tr>
+<tr><td>5.5</td><td>Leer contenido web</td><td>Extraer info de páginas</td><td>Scraping</td></tr>
+<tr><td>5.7</td><td>Rellenar formularios web</td><td>Escribir campos, seleccionar</td><td>—</td></tr>
+<tr><td>5.10</td><td>Usar apps específicas</td><td>Excel, Notion, etc</td><td>RPA/API</td></tr>
+<tr><td>5.13</td><td>Ejecutar código y ver resultado</td><td>Correr programas</td><td>Sandbox</td></tr>
+<tr><td>5.14</td><td>Usar git / versionado</td><td>Gestionar repositorios</td><td>—</td></tr>
+<tr><td>5.15</td><td>Manejar bases de datos</td><td>Consultar, insertar, actualizar</td><td>—</td></tr>
+<tr><td>5.16</td><td>Manejar APIs (REST/GraphQL)</td><td>Consumir servicios web</td><td>—</td></tr>
+<tr><td>5.17</td><td>Scraping web</td><td>Extraer datos de páginas</td><td>—</td></tr>
+<tr><td>5.18</td><td>Descargar / subir archivos</td><td>Transferir datos</td><td>—</td></tr>
+<tr><td>5.19</td><td>Configurar servidores / infra</td><td>Sistemas, redes</td><td>IaC</td></tr>
+<tr><td>6.1</td><td>Anotar gastos</td><td>Registrar lo que se gasta</td><td>DB</td></tr>
+<tr><td>6.2</td><td>Categorizar gastos</td><td>Clasificar por tipo</td><td>—</td></tr>
+<tr><td>6.3</td><td>Hacer presupuesto</td><td>Planear ingresos/gastos</td><td>—</td></tr>
+<tr><td>6.4</td><td>Comparar precios</td><td>Buscar la mejor oferta</td><td>Scraping</td></tr>
+<tr><td>6.10</td><td>Calcular impuestos</td><td>Determinar obligaciones fiscales</td><td>—</td></tr>
+<tr><td>6.11</td><td>Generar estados financieros</td><td>Balance, P&L, flujo de caja</td><td>—</td></tr>
+<tr><td>6.12</td><td>Calcular rentabilidad (TIR/VAN)</td><td>Evaluación de proyectos</td><td>—</td></tr>
+<tr><td>6.13</td><td>Hacer facturas</td><td>Emitir comprobantes</td><td>—</td></tr>
+<tr><td>6.18</td><td>Gestionar suscripciones</td><td>Alta/baja servicios recurrentes</td><td>API</td></tr>
+<tr><td>6.19</td><td>Detectar gastos hormiga</td><td>Identificar micro-gastos</td><td>Analytics</td></tr>
+<tr><td>7.1</td><td>Anotar citas / eventos</td><td>Registrar en agenda</td><td>Calendar API</td></tr>
+<tr><td>7.2</td><td>Recordar compromisos</td><td>No olvidar lo agendado</td><td>Notificaciones</td></tr>
+<tr><td>7.3</td><td>Programar recordatorios</td><td>Alertas a futuras horas</td><td>—</td></tr>
+<tr><td>7.4</td><td>Priorizar tareas</td><td>Decidir qué antes</td><td>—</td></tr>
+<tr><td>7.5</td><td>Hacer listas de tareas</td><td>Todo list</td><td>—</td></tr>
+<tr><td>7.7</td><td>Calendarizar / bloquear tiempo</td><td>Asignar slots</td><td>—</td></tr>
+<tr><td>7.8</td><td>Reprogramar</td><td>Mover citas/tareas</td><td>—</td></tr>
+<tr><td>7.10</td><td>Seguir progreso de proyectos</td><td>Track de avance</td><td>—</td></tr>
+<tr><td>7.11</td><td>Detectar retrasos</td><td>Notar desviaciones</td><td>—</td></tr>
+<tr><td>7.12</td><td>Gestionar múltiples proyectos</td><td>Coordinar varios frentes</td><td>—</td></tr>
+<tr><td>7.13</td><td>Sincronizar calendarios</td><td>Google, Outlook, etc</td><td>API</td></tr>
+<tr><td>7.14</td><td>Gestionar zonas horarias</td><td>Coordinar entre países</td><td>—</td></tr>
+<tr><td>8.1</td><td>Recordar medicación</td><td>No olvidar tomar pastillas</td><td>—</td></tr>
+<tr><td>8.4</td><td>Sugerir pausas</td><td>Toma 10 min</td><td>—</td></tr>
+<tr><td>8.5</td><td>Recordar hidratación</td><td>Tomar agua</td><td>—</td></tr>
+<tr><td>8.11</td><td>Recordar seguimientos médicos</td><td>Próximas revisiones</td><td>—</td></tr>
+<tr><td>8.19</td><td>Llevar diario emocional</td><td>Registro de sentimientos</td><td>DB</td></tr>
+<tr><td>8.20</td><td>Recordar chequeos preventivos</td><td>Anuales, rutina</td><td>—</td></tr>
+<tr><td>9.1</td><td>Mantener contacto</td><td>Saludar, escribir, llamar</td><td>Msg API</td></tr>
+<tr><td>9.2</td><td>Recordar cumpleaños / fechas</td><td>No olvidar eventos de otros</td><td>—</td></tr>
+<tr><td>9.3</td><td>Coordinar encuentros</td><td>Organizar reuniones</td><td>—</td></tr>
+<tr><td>9.11</td><td>Mantener relaciones a distancia</td><td>Llamadas, mensajes</td><td>—</td></tr>
+<tr><td>9.13</td><td>Gestión de contactos</td><td>CRM personal</td><td>DB</td></tr>
+<tr><td>11.5</td><td>Memorizar / estudiar</td><td>Repaso activo</td><td>Spaced repetition</td></tr>
+<tr><td>11.14</td><td>Seguir tendencias / novedades</td><td>Estar al día</td><td>Scraping</td></tr>
+<tr><td>12.1</td><td>Cumplir leyes / normativas</td><td>Acatar marco legal</td><td>Compliance check</td></tr>
+<tr><td>12.11</td><td>Archivar documentos importantes</td><td>Guardar papeles</td><td>Storage</td></tr>
+<tr><td>12.13</td><td>Comparar seguros / coberturas</td><td>Protección financiera</td><td>Scraping</td></tr>
+<tr><td>12.15</td><td>Cumplir obligaciones contractuales</td><td>Honrar acuerdos</td><td>—</td></tr>
+<tr><td>13.2</td><td>Hacer lista de compras</td><td>Qué comprar</td><td>—</td></tr>
+<tr><td>13.9</td><td>Gestionar inventario hogar</td><td>Saber qué hay</td><td>DB</td></tr>
+<tr><td>14.3</td><td>Proteger información digital</td><td>Seguridad informática</td><td>Sec ops</td></tr>
+<tr><td>14.5</td><td>Gestionar contraseñas</td><td>Credenciales seguras</td><td>Vault</td></tr>
+<tr><td>14.6</td><td>Hacer backups</td><td>Respaldo de datos</td><td>—</td></tr>
+<tr><td>14.7</td><td>Cifrar / proteger comunicaciones</td><td>Privacidad</td><td>—</td></tr>
+<tr><td>14.8</td><td>Monitorear intrusiones</td><td>Detectar accesos no autorizados</td><td>SIEM</td></tr>
+<tr><td>14.11</td><td>Detectar anomalías</td><td>Comportamiento inusual</td><td>Analytics</td></tr>
+<tr><td>14.12</td><td>Auditar / revisar permisos</td><td>Control de accesos</td><td>—</td></tr>
+<tr><td>14.13</td><td>Planear recuperación ante desastres</td><td>Continuidad</td><td>—</td></tr>
+<tr><td>15.9</td><td>Adaptar horarios a estaciones</td><td>Ritmo circadiano estacional</td><td>—</td></tr>
+<tr><td>15.10</td><td>Detectar recursos disponibles</td><td>Qué tengo a mano</td><td>Inventory</td></tr>
+<tr><td>16.1</td><td>Automonitoreo</td><td>Cómo voy</td><td>—</td></tr>
+<tr><td>16.4</td><td>Gestionar energía / fatiga</td><td>No agotarse</td><td>—</td></tr>
+<tr><td>16.5</td><td>Reiniciar / resetear</td><td>Empezar de cero</td><td>—</td></tr>
+<tr><td>16.6</td><td>Detectar cuando algo falla</td><td>Diagnóstico</td><td>—</td></tr>
+<tr><td>16.8</td><td>Documentar lo hecho</td><td>Bitácora</td><td>—</td></tr>
+<tr><td>16.9</td><td>Versionar / dejar revertible</td><td>Poder deshacer</td><td>—</td></tr>
+<tr><td>16.10</td><td>Supervisar procesos autónomos</td><td>Vigilar que todo va bien</td><td>—</td></tr>
+<tr><td>16.11</td><td>Detener / pausar algo que corre</td><td>Kill switch</td><td>—</td></tr>
+<tr><td>16.12</td><td>Recuperarse de fallos</td><td>Resiliencia de sistema</td><td>—</td></tr>
+<tr><td>16.14</td><td>Detectar sobre-esfuerzo / desperdicio</td><td>Eficiencia</td><td>—</td></tr>
+<tr><td>16.15</td><td>Planear vs ejecutar</td><td>Separar diseño de acción</td><td>—</td></tr>
+<tr><td>17.2</td><td>Distinguir útil/inútil</td><td>Juicio pragmático</td><td>—</td></tr>
+<tr><td>17.5</td><td>Distinguir relevante/irrelevante</td><td>Juicio de prioridad</td><td>—</td></tr>
+<tr><td>17.7</td><td>Distinguir urgente/no urgente</td><td>Juicio temporal</td><td>—</td></tr>
+<tr><td>17.8</td><td>Distinguir confidencial/público</td><td>Juicio de privacidad</td><td>—</td></tr>
+</table>
+<h2>Sección <span class="mR">R</span> — Exclusivas de un recurso</h2>
+<div class='rec-box'>Capacidades que exigen poseer un activo concreto.</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Qué es</th><th>Recurso clave</th></tr>
+<tr><td>1.3</td><td>Memorizar a corto plazo</td><td>Retener info segundos-minutos</td><td>DB / memoria de sesión</td></tr>
+<tr><td>1.4</td><td>Memorizar a largo plazo</td><td>Recordar hechos, eventos, habilidades</td><td>DB vectorial (pgvector)</td></tr>
+<tr><td>1.5</td><td>Recordar con contexto temporal</td><td>Cuándo pasó X, qué cambió</td><td>DB + timestamps</td></tr>
+<tr><td>1.8</td><td>Razonar deductivo</td><td>A→B, silogismos</td><td>LLM</td></tr>
+<tr><td>1.9</td><td>Razonar inductivo</td><td>Generalizar desde ejemplos</td><td>LLM</td></tr>
+<tr><td>1.10</td><td>Razonar abductivo</td><td>La mejor explicación para...</td><td>LLM</td></tr>
+<tr><td>1.16</td><td>Abstraer</td><td>Extraer patrones</td><td>LLM</td></tr>
+<tr><td>1.21</td><td>Estimar / aproximar</td><td>Juicio rápido sin datos</td><td>LLM</td></tr>
+<tr><td>1.22</td><td>Pensamiento crítico</td><td>Cuestionar, falacias</td><td>LLM</td></tr>
+<tr><td>1.23</td><td>Pensamiento lateral / creativo</td><td>Salir del camino obvio</td><td>LLM</td></tr>
+<tr><td>1.24</td><td>Razonamiento contrafactual</td><td>Qué pasaría si...</td><td>LLM</td></tr>
+<tr><td>2.1</td><td>Hablar (producir voz)</td><td>Articulación de sonidos</td><td>TTS</td></tr>
+<tr><td>2.2</td><td>Escuchar (comprender voz)</td><td>Procesar lenguaje hablado</td><td>STT</td></tr>
+<tr><td>2.6</td><td>Traducir idiomas</td><td>Convertir idioma</td><td>LLM/MT</td></tr>
+<tr><td>2.7</td><td>Resumir</td><td>Comprimir manteniendo esencia</td><td>LLM</td></tr>
+<tr><td>2.8</td><td>Parafrasear</td><td>Decir lo mismo otras palabras</td><td>LLM</td></tr>
+<tr><td>2.9</td><td>Argumentar / persuadir</td><td>Defender con razones</td><td>LLM</td></tr>
+<tr><td>2.10</td><td>Narrar / contar historias</td><td>Estructurar eventos</td><td>LLM</td></tr>
+<tr><td>2.11</td><td>Explicar</td><td>Hacer comprensible lo complejo</td><td>LLM</td></tr>
+<tr><td>2.13</td><td>Debatir</td><td>Defender y refutar</td><td>LLM</td></tr>
+<tr><td>2.17</td><td>Leer entre líneas (inferir)</td><td>Entender lo no dicho</td><td>LLM</td></tr>
+<tr><td>2.18</td><td>Detectar ironía/sarcasmo</td><td>Significado no literal</td><td>LLM</td></tr>
+<tr><td>2.19</td><td>Adaptar registro (formal/informal)</td><td>Cambiar tono según contexto</td><td>LLM</td></tr>
+<tr><td>3.1</td><td>Ver (visión)</td><td>Percibir luz, formas, color</td><td>Cámara + modelo visión</td></tr>
+<tr><td>3.2</td><td>Reconocer objetos visuales</td><td>Identificar qué es</td><td>Modelo visión</td></tr>
+<tr><td>3.3</td><td>Reconocer rostros</td><td>Identificar personas</td><td>Modelo visión</td></tr>
+<tr><td>3.4</td><td>Leer texto de imágenes (OCR)</td><td>Extraer texto de foto</td><td>OCR/visión</td></tr>
+<tr><td>3.5</td><td>Interpretar imágenes / fotos</td><td>Entender contenido visual</td><td>Modelo multimodal</td></tr>
+<tr><td>3.6</td><td>Ver video / movimiento</td><td>Seguir acción en tiempo real</td><td>Modelo visión</td></tr>
+<tr><td>3.7</td><td>Estimar distancias / profundidad</td><td>Juzgar espacio 3D</td><td>Visión/profundidad</td></tr>
+<tr><td>3.8</td><td>Detectar movimiento</td><td>Notar desplazamiento</td><td>Visión</td></tr>
+<tr><td>3.9</td><td>Escuchar (audición)</td><td>Percibir sonidos</td><td>Micrófono + STT</td></tr>
+<tr><td>3.10</td><td>Reconocer sonidos</td><td>Identificar qué sonido</td><td>Modelo audio</td></tr>
+<tr><td>3.11</td><td>Reconocer música / melodías</td><td>Distinguir canciones</td><td>Modelo audio</td></tr>
+<tr><td>3.12</td><td>Localizar sonido (dirección)</td><td>De dónde viene</td><td>Micrófono array</td></tr>
+<tr><td>5.9</td><td>Resolver captchas</td><td>Demostrar que es humano</td><td>Servicio captcha/AI</td></tr>
+<tr><td>5.22</td><td>Generar imágenes con IA</td><td>DALL-E, Stable Diffusion</td><td>Generador de imágenes</td></tr>
+<tr><td>5.23</td><td>Generar voz con IA (TTS)</td><td>Sintetizar habla</td><td>TTS</td></tr>
+<tr><td>5.24</td><td>Transcribir audio a texto (STT)</td><td>Whisper, etc</td><td>STT</td></tr>
+<tr><td>5.25</td><td>Operar dispositivos IoT</td><td>Sensores, actuadores</td><td>Sensor/actuador IoT</td></tr>
+<tr><td>7.6</td><td>Estimar duración de tareas</td><td>Predecir cuánto tomará</td><td>LLM</td></tr>
+<tr><td>8.7</td><td>Trackear sueño</td><td>Horas y calidad</td><td>Wearable</td></tr>
+<tr><td>8.16</td><td>Hacer meditación guiada</td><td>Conducir práctica</td><td>Audio/LLM</td></tr>
+<tr><td>8.17</td><td>Monitorear signos vitales</td><td>Pulso, presión</td><td>Wearable</td></tr>
+<tr><td>9.6</td><td>Detectar estado emocional ajeno</td><td>Leer cómo está el otro</td><td>LLM de texto/voz</td></tr>
+<tr><td>9.14</td><td>Detectar manipulación / mentiras</td><td>Reconocer dolo</td><td>LLM</td></tr>
+<tr><td>10.1</td><td>Generar ideas nuevas</td><td>Lluvia de ideas</td><td>LLM</td></tr>
+<tr><td>10.2</td><td>Conectar conceptos lejanos</td><td>Ver relaciones inesperadas</td><td>LLM</td></tr>
+<tr><td>10.3</td><td>Escribir creativo (ficción, poesía)</td><td>Literatura original</td><td>LLM</td></tr>
+<tr><td>10.4</td><td>Componer música</td><td>Crear melodías/armonía</td><td>Modelo audio</td></tr>
+<tr><td>10.5</td><td>Improvisar</td><td>Actuar sin guión</td><td>LLM</td></tr>
+<tr><td>10.6</td><td>Hacer humor / chistes</td><td>Provocar risa</td><td>LLM</td></tr>
+<tr><td>10.8</td><td>Crear metáforas / analogías</td><td>Explicar con imágenes verbales</td><td>LLM</td></tr>
+<tr><td>10.9</td><td>Producir arte visual</td><td>Pintura, ilustración digital</td><td>Generador de imágenes</td></tr>
+<tr><td>10.16</td><td>Sorprender / romper expectativas</td><td>Subvertir lo esperado</td><td>LLM</td></tr>
+<tr><td>11.2</td><td>Aprender de videos</td><td>Absorber audiovisual</td><td>Modelo multimodal</td></tr>
+<tr><td>11.8</td><td>Sintetizar conocimiento</td><td>Integrar múltiples fuentes</td><td>LLM</td></tr>
+<tr><td>11.15</td><td>Detectar obsolescencia</td><td>Esto ya no sirve</td><td>LLM</td></tr>
+<tr><td>11.17</td><td>Hacer preguntas críticas</td><td>Cuestionar lo establecido</td><td>LLM</td></tr>
+<tr><td>11.19</td><td>Aprender de errores ajenos</td><td>No caer en lo mismo</td><td>LLM</td></tr>
+<tr><td>12.2</td><td>Conocer derechos propios</td><td>Saber a qué se tiene derecho</td><td>LLM</td></tr>
+<tr><td>12.9</td><td>Gestionar identidad documental</td><td>Pasaporte, INE, etc</td><td>Wallet/credencial</td></tr>
+<tr><td>12.10</td><td>Comprender jerga legal</td><td>Entender contratos</td><td>LLM</td></tr>
+<tr><td>12.12</td><td>Detectar estafas / fraudes</td><td>Protegerse de dolo</td><td>LLM</td></tr>
+<tr><td>13.10</td><td>Controlar consumo (luz, agua)</td><td>Monitorear servicios</td><td>Sensor IoT</td></tr>
+<tr><td>14.1</td><td>Detectar peligros físicos</td><td>Notar riesgo inminente</td><td>Cámara/sensor</td></tr>
+<tr><td>14.4</td><td>Detectar phishing / engaños</td><td>Reconocer intentos de robo</td><td>LLM</td></tr>
+<tr><td>15.1</td><td>Orientarse / no perderse</td><td>Navegar espacios</td><td>GPS/maps</td></tr>
+<tr><td>15.6</td><td>Aprender cultura / costumbres nuevas</td><td>Integrarse</td><td>LLM</td></tr>
+<tr><td>17.1</td><td>Distinguir bien/mal</td><td>Juicio moral</td><td>LLM</td></tr>
+<tr><td>17.3</td><td>Distinguir bello/feo</td><td>Juicio estético</td><td>LLM</td></tr>
+<tr><td>17.4</td><td>Distinguir verdad/mentira</td><td>Juicio epistémico</td><td>LLM</td></tr>
+<tr><td>17.6</td><td>Distinguir seguro/peligroso</td><td>Juicio de riesgo</td><td>LLM</td></tr>
+<tr><td>17.15</td><td>Detectar conflicto de interés</td><td>Reconocer sesgos</td><td>LLM</td></tr>
+</table>
+<h2>Sección <span class="mAR">A+R</span> — Mixto (recurso + acciones)</h2>
+<div class='rec-box'>Requieren un recurso que ejecuta acciones. Lo más común en open-pax.</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Qué es</th><th>Recurso clave</th></tr>
+<tr><td>1.1</td><td>Percibir (notar, darse cuenta)</td><td>Captar estímulos del entorno</td><td>Sensor + modelo multimodal</td></tr>
+<tr><td>1.6</td><td>Consolidar / dormir sobre algo</td><td>Procesar offline, integrar</td><td>Proceso batch + DB</td></tr>
+<tr><td>1.11</td><td>Resolver problemas</td><td>Encontrar solución</td><td>LLM + workflow</td></tr>
+<tr><td>1.17</td><td>Analizar (descomponer)</td><td>Entender partes del todo</td><td>LLM + workflow</td></tr>
+<tr><td>1.18</td><td>Sintetizar (componer)</td><td>Unir partes coherente</td><td>LLM + workflow</td></tr>
+<tr><td>2.4</td><td>Escribir texto</td><td>Producir símbolos escritos</td><td>LLM + plantilla</td></tr>
+<tr><td>2.5</td><td>Redactar documentos</td><td>Componer textos estructurados</td><td>LLM + workflow</td></tr>
+<tr><td>2.12</td><td>Negociar</td><td>Llegar a acuerdos</td><td>LLM + workflow</td></tr>
+<tr><td>2.15</td><td>Hacer preguntas</td><td>Indagar, solicitar info</td><td>LLM + workflow</td></tr>
+<tr><td>2.16</td><td>Escuchar activamente</td><td>Atender + responder empático</td><td>STT + LLM</td></tr>
+<tr><td>2.21</td><td>Comunicar por voz (teléfono)</td><td>Llamada hablada</td><td>TTS + telefonía API</td></tr>
+<tr><td>2.22</td><td>Comunicar por video</td><td>Videollamada, cuerpo visible</td><td>Cámara + video API</td></tr>
+<tr><td>4.5</td><td>Dibujar / ilustrar</td><td>Imágenes manuales</td><td>Generador de imágenes + plotter</td></tr>
+<tr><td>4.15</td><td>Operar maquinaria</td><td>Controlar equipos industriales</td><td>IoT actuador + workflow</td></tr>
+<tr><td>4.16</td><td>Manipular pantallas/dispositivos</td><td>Tocar, clic, scroll</td><td>RPA/autonomación</td></tr>
+<tr><td>5.6</td><td>Iniciar sesión en webs</td><td>Login usuario/contraseña</td><td>Gestor credenciales</td></tr>
+<tr><td>5.8</td><td>Crear cuentas en servicios</td><td>Registrarse en plataformas</td><td>Identidad/credencial</td></tr>
+<tr><td>5.11</td><td>Programar / escribir código</td><td>Crear software</td><td>LLM coder + sandbox</td></tr>
+<tr><td>5.12</td><td>Depurar código (debug)</td><td>Encontrar y corregir errores</td><td>LLM + sandbox</td></tr>
+<tr><td>5.20</td><td>Diseñar (UI/UX, gráficos)</td><td>Crear visuales digitales</td><td>LLM + tool de diseño</td></tr>
+<tr><td>5.21</td><td>Editar imágenes / video / audio</td><td>Manipular media digital</td><td>ffmpeg + modelos</td></tr>
+<tr><td>6.6</td><td>Invertir</td><td>Colocar dinero para crecer</td><td>API broker + algoritmo</td></tr>
+<tr><td>6.7</td><td>Pagar facturas / servicios</td><td>Cumplir obligaciones</td><td>API banco</td></tr>
+<tr><td>6.8</td><td>Transferir dinero</td><td>Mover fondos entre cuentas</td><td>API banco</td></tr>
+<tr><td>6.9</td><td>Monitorear inversiones</td><td>Seguir portafolio</td><td>API broker</td></tr>
+<tr><td>6.14</td><td>Cobrar a clientes</td><td>Gestión de cobranza</td><td>API + workflow</td></tr>
+<tr><td>6.15</td><td>Negociar precios / descuentos</td><td>Convenir términos</td><td>LLM</td></tr>
+<tr><td>6.16</td><td>Comprar online</td><td>Adquirir productos por internet</td><td>API/RPA + pago</td></tr>
+<tr><td>6.17</td><td>Vender online</td><td>Publicar y vender productos</td><td>API + workflow</td></tr>
+<tr><td>6.20</td><td>Hacer forecast financiero</td><td>Proyectar futuro</td><td>Modelo predictivo</td></tr>
+<tr><td>7.9</td><td>Delegar</td><td>Asignar a otros</td><td>Agente/humano</td></tr>
+<tr><td>7.15</td><td>Hacer retrospectivas</td><td>Revisar qué pasó y aprender</td><td>LLM</td></tr>
+<tr><td>8.2</td><td>Monitorear estado de ánimo</td><td>Cómo me siento hoy</td><td>Input + LLM</td></tr>
+<tr><td>8.3</td><td>Detectar bajones prolongados</td><td>3+ días mal → alertar</td><td>LLM analítica</td></tr>
+<tr><td>8.6</td><td>Fomentar ejercicio</td><td>Motivar movimiento</td><td>Nudge LLM</td></tr>
+<tr><td>8.8</td><td>Trackear alimentación</td><td>Lo que como</td><td>Log + LLM</td></tr>
+<tr><td>8.9</td><td>Trackear síntomas físicos</td><td>Dolor, malestar</td><td>Log + LLM</td></tr>
+<tr><td>8.10</td><td>Agendar citas médicas</td><td>Pedir hora con doctor</td><td>API salud</td></tr>
+<tr><td>8.12</td><td>Detectar patrones de salud</td><td>Cuando duermes mal, comes peor</td><td>LLM analítica</td></tr>
+<tr><td>8.13</td><td>Gestionar estrés</td><td>Técnicas de relajación</td><td>LLM guía</td></tr>
+<tr><td>8.14</td><td>Fomentar hábitos (streaks)</td><td>Racha sin castigo</td><td>Nudge LLM</td></tr>
+<tr><td>8.15</td><td>Detectar señales de alarma</td><td>Síntomas que requieren atención</td><td>LLM</td></tr>
+<tr><td>8.18</td><td>Gestionar crisis de ansiedad</td><td>Técnicas de regulación</td><td>LLM</td></tr>
+<tr><td>9.5</td><td>Consolar / apoyar emocional</td><td>Estar para alguien</td><td>LLM empático</td></tr>
+<tr><td>9.7</td><td>Resolver conflictos</td><td>Mediar desacuerdos</td><td>LLM</td></tr>
+<tr><td>9.8</td><td>Dar feedback</td><td>Evaluar constructivamente</td><td>LLM</td></tr>
+<tr><td>9.9</td><td>Recibir feedback</td><td>Aceptar críticas</td><td>LLM</td></tr>
+<tr><td>9.10</td><td>Hacer networking</td><td>Conectar profesionalmente</td><td>LLM + workflow</td></tr>
+<tr><td>9.12</td><td>Organizar eventos sociales</td><td>Fiestas, reuniones</td><td>LLM + workflow</td></tr>
+<tr><td>9.18</td><td>Enseñar / transmitir conocimiento</td><td>Educar a otros</td><td>LLM</td></tr>
+<tr><td>9.20</td><td>Detectar soledad / aislamiento</td><td>Notar falta de contacto</td><td>LLM analítica</td></tr>
+<tr><td>10.7</td><td>Diseñar estética</td><td>Decidir qué se ve bien</td><td>LLM + tool</td></tr>
+<tr><td>10.10</td><td>Producir video / cine</td><td>Narrativa audiovisual</td><td>Modelo video + edición</td></tr>
+<tr><td>10.11</td><td>Diseñar productos / inventos</td><td>Idear objetos útiles</td><td>LLM + workflow</td></tr>
+<tr><td>10.12</td><td>Estilizar / branded look</td><td>Identidad visual</td><td>LLM + tool</td></tr>
+<tr><td>10.13</td><td>Curar / seleccionar lo mejor</td><td>Elegir de entre mucho</td><td>LLM</td></tr>
+<tr><td>10.14</td><td>Remixar / combinar existente</td><td>Lo nuevo desde lo viejo</td><td>LLM + tool</td></tr>
+<tr><td>11.1</td><td>Aprender de la lectura</td><td>Absorber de textos</td><td>RAG</td></tr>
+<tr><td>11.3</td><td>Aprender de la experiencia</td><td>Trial and error</td><td>RL/feedback loop</td></tr>
+<tr><td>11.4</td><td>Aprender de mentor / maestro</td><td>Por instrucción guiada</td><td>LLM + workflow</td></tr>
+<tr><td>11.6</td><td>Practicar / entrenar</td><td>Repetición deliberada</td><td>LLM + ejercicios</td></tr>
+<tr><td>11.7</td><td>Investigar un tema</td><td>Búsqueda profunda</td><td>Search + scrape + LLM</td></tr>
+<tr><td>11.9</td><td>Enseñar lo aprendido</td><td>Transmitir</td><td>LLM</td></tr>
+<tr><td>11.10</td><td>Evaluar propio progreso</td><td>Medir avance</td><td>LLM analítica</td></tr>
+<tr><td>11.11</td><td>Detectar propias debilidades</td><td>Metacognición aplicada</td><td>LLM</td></tr>
+<tr><td>11.12</td><td>Adaptarse a cambios</td><td>Aprender nuevo entorno</td><td>LLM</td></tr>
+<tr><td>11.13</td><td>Aprender idiomas</td><td>Comunicar en otra lengua</td><td>LLM + app</td></tr>
+<tr><td>11.16</td><td>Validar información</td><td>Confirmar si es cierta</td><td>Search + LLM</td></tr>
+<tr><td>11.18</td><td>Aprender de errores propios</td><td>No repetir</td><td>Log + LLM</td></tr>
+<tr><td>11.20</td><td>Identificar mentores / modelos</td><td>Buscar a quién imitar</td><td>LLM + search</td></tr>
+<tr><td>12.3</td><td>Redactar contratos</td><td>Documentos legales</td><td>LLM + plantilla</td></tr>
+<tr><td>12.4</td><td>Firmar documentos legalmente</td><td>Firma válida</td><td>API e-sign</td></tr>
+<tr><td>12.5</td><td>Hacer trámites burocráticos</td><td>Gestiones con instituciones</td><td>Gov API/RPA</td></tr>
+<tr><td>12.6</td><td>Pagar impuestos</td><td>Cumplir obligación fiscal</td><td>API fiscal</td></tr>
+<tr><td>12.7</td><td>Reclamar / defender derechos</td><td>Quejas, demandas</td><td>LLM + workflow</td></tr>
+<tr><td>12.14</td><td>Gestionar herencias / testamentos</td><td>Sucesión de bienes</td><td>LLM + workflow</td></tr>
+<tr><td>13.1</td><td>Planear comidas / menú semanal</td><td>Qué comer cada día</td><td>LLM</td></tr>
+<tr><td>13.8</td><td>Mantener electrodomésticos</td><td>Cuidar equipos</td><td>IoT diagnóstico</td></tr>
+<tr><td>13.12</td><td>Cuidar plantas / jardín</td><td>Mantener vegetación</td><td>IoT + schedule</td></tr>
+<tr><td>13.13</td><td>Cuidar mascotas</td><td>Animales de compañía</td><td>Schedule + IoT</td></tr>
+<tr><td>13.15</td><td>Hacer mantenimiento preventivo</td><td>Revisar antes de que falle</td><td>Schedule + IoT</td></tr>
+<tr><td>14.9</td><td>Reaccionar a emergencias</td><td>Protocolos de crisis</td><td>LLM + workflow</td></tr>
+<tr><td>14.10</td><td>Verificar identidad de otros</td><td>Confirmar quién es quién</td><td>LLM + API</td></tr>
+<tr><td>14.14</td><td>Defensa legal / reportar delitos</td><td>Acciones legales</td><td>LLM + workflow</td></tr>
+<tr><td>14.15</td><td>Seguro / cobertura de riesgos</td><td>Transferir riesgo</td><td>API seguros</td></tr>
+<tr><td>15.2</td><td>Adaptarse a nuevo entorno</td><td>Ajustarse a cambio</td><td>LLM</td></tr>
+<tr><td>15.3</td><td>Explorar lo desconocido</td><td>Curiosidad activa</td><td>LLM + search</td></tr>
+<tr><td>15.4</td><td>Detectar oportunidades</td><td>Ver dónde hay potencial</td><td>LLM analítica</td></tr>
+<tr><td>16.2</td><td>Auto-reparación</td><td>Corregir errores propios</td><td>LLM + sandbox</td></tr>
+<tr><td>16.3</td><td>Auto-mejora continua</td><td>Optimizar con el tiempo</td><td>LLM + métricas</td></tr>
+<tr><td>16.7</td><td>Pedir ayuda / escalar</td><td>Saber cuándo delegar</td><td>LLM + routing</td></tr>
+<tr><td>16.13</td><td>Explicar por qué se hizo algo</td><td>Trazabilidad</td><td>LLM + log</td></tr>
+<tr><td>17.10</td><td>Ceder / transigir</td><td>Concesiones</td><td>LLM</td></tr>
+<tr><td>17.13</td><td>Equilibrar corto vs largo plazo</td><td>Visión estratégica</td><td>LLM</td></tr>
+</table>
+<h2>Sección <span class="mNA">N/A</span> — No replicables (asistir/delegar)</h2>
+<div class='rec-box'>Capacidades biológicas/corporales/subjetivas. open-pax no las adquiere.</div>
+<table><tr><th>#</th><th>Capacidad</th><th>Qué es</th><th>Bloqueo</th></tr>
+<tr><td>1.25</td><td>Meta-cognición</td><td>Pensar sobre el pensamiento</td><td>Biología/subjetivo</td></tr>
+<tr><td>2.23</td><td>Lenguaje corporal / gestos</td><td>Comunicar con el cuerpo</td><td>Cuerpo humano</td></tr>
+<tr><td>2.24</td><td>Comunicar no-verbal (expresión)</td><td>Miradas, postura, microexpresiones</td><td>Cuerpo humano</td></tr>
+<tr><td>3.13</td><td>Tocar (tacto)</td><td>Textura, presión, temperatura</td><td>Sensor táctil/HMD</td></tr>
+<tr><td>3.14</td><td>Oler (olfato)</td><td>Percibir olores</td><td>Sensor químico</td></tr>
+<tr><td>3.15</td><td>Gustar (gusto)</td><td>Percibir sabores</td><td>Sensor químico</td></tr>
+<tr><td>3.16</td><td>Sentir dolor</td><td>Percibir daño</td><td>Biología</td></tr>
+<tr><td>3.17</td><td>Equilibrio / propiocepción</td><td>Sentir posición del cuerpo</td><td>Biología</td></tr>
+<tr><td>3.18</td><td>Sentir paso del tiempo</td><td>Percepción subjetiva duración</td><td>Biología/subjetivo</td></tr>
+<tr><td>4.1</td><td>Caminar / desplazarse</td><td>Moverse a otro lugar</td><td>Robot/vehículo</td></tr>
+<tr><td>4.2</td><td>Correr</td><td>Movimiento rápido</td><td>Robot</td></tr>
+<tr><td>4.3</td><td>Manipular objetos con manos</td><td>Agarrar, girar, presionar</td><td>Brazo robótico</td></tr>
+<tr><td>4.4</td><td>Escribir a mano</td><td>Texto con lapicera</td><td>Brazo robótico/plotter</td></tr>
+<tr><td>4.6</td><td>Construir / ensamblar físico</td><td>Unir piezas materiales</td><td>Robot ensamblador</td></tr>
+<tr><td>4.7</td><td>Reparar objetos físicos</td><td>Arreglar algo material</td><td>Robot</td></tr>
+<tr><td>4.8</td><td>Cocinar</td><td>Preparar alimentos</td><td>Robot cocina</td></tr>
+<tr><td>4.9</td><td>Limpiar / ordenar espacio físico</td><td>Mantener un lugar</td><td>Robot limpiador</td></tr>
+<tr><td>4.10</td><td>Conducir vehículos</td><td>Operar auto, moto</td><td>Vehículo autónomo</td></tr>
+<tr><td>4.11</td><td>Operar herramientas manuales</td><td>Taladro, martillo</td><td>Actuador robótico</td></tr>
+<tr><td>4.12</td><td>Cargar / transportar peso</td><td>Mover cosas pesadas</td><td>Robot</td></tr>
+<tr><td>4.13</td><td>Actividad física / deporte</td><td>Ejercicio, atletismo</td><td>Cuerpo humano</td></tr>
+<tr><td>4.14</td><td>Gesticular / expresar con cuerpo</td><td>Mímica, danza</td><td>Cuerpo humano</td></tr>
+<tr><td>6.5</td><td>Ahorrar / decidir no gastar</td><td>Postergar consumo</td><td>Voluntad humana</td></tr>
+<tr><td>9.4</td><td>Empatizar</td><td>Sentir lo que el otro siente</td><td>Subjetivo/biología</td></tr>
+<tr><td>9.15</td><td>Establecer límites</td><td>Decir no</td><td>Voluntad humana</td></tr>
+<tr><td>9.16</td><td>Liderar / dirigir grupos</td><td>Conducir equipos</td><td>Carisma humano</td></tr>
+<tr><td>9.17</td><td>Hacer presentaciones en público</td><td>Exponer ante audiencia</td><td>Cuerpo humano</td></tr>
+<tr><td>9.19</td><td>Acompañar en duelo / pérdidas</td><td>Estar presente en dolor</td><td>Presencia humana</td></tr>
+<tr><td>10.15</td><td>Tener estilo personal / voz</td><td>Identidad creativa propia</td><td>Subjetivo</td></tr>
+<tr><td>12.8</td><td>Votar / participar cívicamente</td><td>Ejercicio ciudadano</td><td>Cuerpo/cívico</td></tr>
+<tr><td>13.3</td><td>Cocinar</td><td>Preparar alimentos</td><td>Robot cocina</td></tr>
+<tr><td>13.4</td><td>Limpiar el hogar</td><td>Mantener orden</td><td>Robot limpiador</td></tr>
+<tr><td>13.5</td><td>Lavar ropa</td><td>Ropa limpia</td><td>Robot lavadora</td></tr>
+<tr><td>13.6</td><td>Hacer compras físicas</td><td>Ir a tiendas</td><td>Cuerpo humano</td></tr>
+<tr><td>13.7</td><td>Recibir compras / paquetes</td><td>Estar en casa</td><td>Presencia humana</td></tr>
+<tr><td>13.11</td><td>Decorar / personalizar espacio</td><td>Hacerlo agradable</td><td>Cuerpo/gusto</td></tr>
+<tr><td>13.14</td><td>Gestionar residuos / reciclaje</td><td>Separar basura</td><td>Cuerpo/robot</td></tr>
+<tr><td>14.2</td><td>Protegerse de ataques físicos</td><td>Defenderse</td><td>Cuerpo/actuador</td></tr>
+<tr><td>15.5</td><td>Migrar / mudarse</td><td>Cambiar de lugar</td><td>Cuerpo humano</td></tr>
+<tr><td>15.7</td><td>Viajar</td><td>Desplazarse a otros lugares</td><td>Cuerpo/vehículo</td></tr>
+<tr><td>15.8</td><td>Sobrevivir en condiciones extremas</td><td>Resiliencia física</td><td>Cuerpo humano</td></tr>
+<tr><td>17.9</td><td>Tener principios / valores</td><td>Ética personal</td><td>Subjetivo</td></tr>
+<tr><td>17.11</td><td>Perdonar</td><td>Soltar resentimiento</td><td>Subjetivo</td></tr>
+<tr><td>17.12</td><td>Mantener integridad bajo presión</td><td>No ceder a coacción</td><td>Voluntad humana</td></tr>
+<tr><td>17.14</td><td>Asumir responsabilidad</td><td>Hacerse cargo</td><td>Voluntad humana</td></tr>
+<tr><td>18.1</td><td>Respirar</td><td>Intercambio de gases</td><td>Biología</td></tr>
+<tr><td>18.2</td><td>Alimentarse / digerir</td><td>Procesar nutrientes</td><td>Biología</td></tr>
+<tr><td>18.3</td><td>Dormir / descansar</td><td>Recuperación fisiológica</td><td>Biología</td></tr>
+<tr><td>18.4</td><td>Reproducirse</td><td>Generar descendencia</td><td>Biología</td></tr>
+<tr><td>18.5</td><td>Crecer / desarrollarse</td><td>Maduración biológica</td><td>Biología</td></tr>
+<tr><td>18.6</td><td>Sanar / regenerarse</td><td>Recuperación de daño</td><td>Biología</td></tr>
+<tr><td>18.7</td><td>Envejecer</td><td>Cambio biológico temporal</td><td>Biología</td></tr>
+<tr><td>18.8</td><td>Tener instintos</td><td>Respuestas innatas</td><td>Biología</td></tr>
+<tr><td>18.9</td><td>Tener emociones primarias</td><td>Miedo, alegría, ira, tristeza</td><td>Biología</td></tr>
+<tr><td>18.10</td><td>Sentir placer / displacer</td><td>Experiencia subjetiva</td><td>Biología</td></tr>
+<tr><td>18.11</td><td>Tener consciencia</td><td>Experiencia subjetiva de existir</td><td>Biología</td></tr>
+<tr><td>18.12</td><td>Morir</td><td>Fin de la vida biológica</td><td>Biología</td></tr>
+</table>
+<h2>Anexo — Catálogo de recursos necesarios</h2>
+<div class='rec-box'>Para open-pax: cada recurso es algo que hay que <b>provisionar</b> (desplegar, contratar, comprar). Mientras más capacidades concentre un recurso, más rentable es adquirido.</div>
+<table><tr><th>Recurso</th><th>Tipo</th><th>Capacidades</th><th>Ejemplo en open-pax</th></tr>
+<tr><td>LLM (texto/razonamiento)</td><td>Modelo IA</td><td>56</td><td>cerebropax (LiteLLM)</td></tr>
+<tr><td>Modelo multimodal (visión/audio)</td><td>Modelo IA</td><td>11</td><td>Ollama multimodal / API</td></tr>
+<tr><td>Generador de imágenes</td><td>Modelo IA</td><td>2</td><td>Stable Diffusion local / API</td></tr>
+<tr><td>TTS</td><td>Modelo IA</td><td>2</td><td>Piper / Ollama TTS</td></tr>
+<tr><td>STT</td><td>Modelo IA</td><td>2</td><td>Whisper local</td></tr>
+<tr><td>DB vectorial (pgvector)</td><td>Infra</td><td>3</td><td>Postgres+pgvector (Letta)</td></tr>
+<tr><td>Sensor / wearable / IoT</td><td>Hardware</td><td>7</td><td>Wearable + cámara IP + mic</td></tr>
+<tr><td>API externa (banco/gob/salud)</td><td>Servicio</td><td>9</td><td>Open Finance / SAT / e-sign</td></tr>
+<tr><td>Credencial / identidad</td><td>Activo</td><td>3</td><td>Vault + identity wallet</td></tr>
+<tr><td>Servicio captcha/AI</td><td>Servicio</td><td>1</td><td>2captcha / AI solver</td></tr>
+<tr><td>GPS/maps</td><td>Servicio</td><td>1</td><td>OSM / Google Maps API</td></tr>
+<tr><td>Generador de imágenes + plotter</td><td>Hardware</td><td>1</td><td>Plotter / impresora 3D</td></tr>
+<tr><td>Telefonía API</td><td>Servicio</td><td>2</td><td>Twilio / LiveKit</td></tr>
+<tr><td>Modelo predictivo</td><td>Modelo IA</td><td>2</td><td>ML propio /forecast</td></tr>
+<tr><td>IaC / sandbox</td><td>Infra</td><td>3</td><td>Docker + Terraform</td></tr>
+</table>
+<p class='note'>Generado automáticamente por gen_metodo.py · open-pax/documentos/08 · 5-jul-2026</p>
+</body></html>

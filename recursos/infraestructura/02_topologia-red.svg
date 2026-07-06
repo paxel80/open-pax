@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="monospace" font-size="13">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#238636"/>
+      <stop offset="100%" stop-color="#3fb950"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f6feb"/>
+      <stop offset="100%" stop-color="#58a6ff"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6e40c9"/>
+      <stop offset="100%" stop-color="#a371f7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="700" fill="url(#bg)"/>
+
+  <!-- Titulo -->
+  <text x="450" y="30" text-anchor="middle" fill="#c9d1d9" font-size="16" font-weight="bold">Topologia de Red — open-pax (5-jul-2026)</text>
+
+  <!-- INTERNET -->
+  <rect x="250" y="50" width="400" height="35" rx="8" fill="none" stroke="#30363d" stroke-width="2"/>
+  <text x="450" y="73" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold">INTERNET</text>
+
+  <!-- Cloudflare + GitHub -->
+  <rect x="250" y="100" width="180" height="45" rx="8" fill="url(#blue)" opacity="0.15" stroke="url(#blue)" stroke-width="1.5"/>
+  <text x="340" y="118" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">Cloudflare</text>
+  <text x="340" y="134" text-anchor="middle" fill="#8b949e" font-size="10">DNS . Tunnel . CDN</text>
+
+  <rect x="470" y="100" width="180" height="45" rx="8" fill="url(#purple)" opacity="0.15" stroke="url(#purple)" stroke-width="1.5"/>
+  <text x="560" y="118" text-anchor="middle" fill="#a371f7" font-size="11" font-weight="bold">GitHub Pages</text>
+  <text x="560" y="134" text-anchor="middle" fill="#8b949e" font-size="10">lainconclusa.com</text>
+
+  <line x1="340" y1="100" x2="340" y2="85" stroke="#30363d" stroke-width="1"/>
+  <line x1="560" y1="100" x2="560" y2="85" stroke="#30363d" stroke-width="1"/>
+
+  <!-- TAILSCALE BAR -->
+  <rect x="30" y="170" width="840" height="28" rx="5" fill="#1f6feb" opacity="0.08" stroke="#58a6ff" stroke-width="1"/>
+  <text x="450" y="189" text-anchor="middle" fill="#58a6ff" font-size="12" font-weight="bold">TAILSCALE — 4 nodos vivos — Red privada de Erik ($0)</text>
+
+  <!-- LAPTOP -->
+  <rect x="30" y="220" width="200" height="100" rx="10" fill="url(#green)" opacity="0.08" stroke="url(#green)" stroke-width="1.5"/>
+  <text x="130" y="242" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">LAPTOP</text>
+  <text x="130" y="260" text-anchor="middle" fill="#c9d1d9" font-size="10">ASUS TUF · i5-11400H · RTX 3050</text>
+  <text x="130" y="275" text-anchor="middle" fill="#c9d1d9" font-size="10">7.7 GB RAM · Win11 + Ubuntu</text>
+  <text x="130" y="290" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.120.229.112</text>
+  <text x="130" y="308" text-anchor="middle" fill="#8b949e" font-size="9">Plan de control · NO 24/7</text>
+
+  <!-- ORACLE SP -->
+  <rect x="255" y="220" width="200" height="100" rx="10" fill="url(#green)" opacity="0.08" stroke="url(#green)" stroke-width="1.5"/>
+  <text x="355" y="242" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">ORACLE SP</text>
+  <text x="355" y="260" text-anchor="middle" fill="#c9d1d9" font-size="10">MOSTRADOR · 24/7 · $0</text>
+  <text x="355" y="275" text-anchor="middle" fill="#c9d1d9" font-size="10">4 OCPU · 24 GB ARM</text>
+  <text x="355" y="290" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.73.84.93</text>
+  <text x="355" y="308" text-anchor="middle" fill="#8b949e" font-size="9">Cuenta esposa · WhatsApp/TG · PAXELMEM</text>
+
+  <!-- ORACLE FRA -->
+  <rect x="480" y="220" width="200" height="100" rx="10" fill="url(#green)" opacity="0.08" stroke="url(#green)" stroke-width="1.5"/>
+  <text x="580" y="242" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">ORACLE FRA</text>
+  <text x="580" y="260" text-anchor="middle" fill="#c9d1d9" font-size="10">TALLER · 24/7 · $0</text>
+  <text x="580" y="275" text-anchor="middle" fill="#c9d1d9" font-size="10">4 OCPU · 24 GB ARM</text>
+  <text x="580" y="290" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.75.24.115</text>
+  <text x="580" y="308" text-anchor="middle" fill="#8b949e" font-size="9">Cuenta amigo · LangGraph · Mem0 · LiveKit</text>
+
+  <!-- XIAOMI -->
+  <rect x="705" y="220" width="165" height="100" rx="10" fill="url(#green)" opacity="0.08" stroke="url(#green)" stroke-width="1.5"/>
+  <text x="787" y="242" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">XIAOMI 14T Pro</text>
+  <text x="787" y="260" text-anchor="middle" fill="#c9d1d9" font-size="10">Android 16 · HyperOS</text>
+  <text x="787" y="275" text-anchor="middle" fill="#c9d1d9" font-size="10">~3.6 GB libre · Termux</text>
+  <text x="787" y="290" text-anchor="middle" fill="#c9d1d9" font-size="10">TS 100.85.146.98</text>
+  <text x="787" y="308" text-anchor="middle" fill="#8b949e" font-size="9">Nodo ligero · worker · cron</text>
+
+  <!-- Conexiones Tailscale -->
+  <line x1="130" y1="198" x2="130" y2="220" stroke="#1f6feb" stroke-width="1" opacity="0.4"/>
+  <line x1="355" y1="198" x2="355" y2="220" stroke="#1f6feb" stroke-width="1" opacity="0.4"/>
+  <line x1="580" y1="198" x2="580" y2="220" stroke="#1f6feb" stroke-width="1" opacity="0.4"/>
+  <line x1="787" y1="198" x2="787" y2="220" stroke="#1f6feb" stroke-width="1" opacity="0.4"/>
+
+  <!-- MUERTOS -->
+  <rect x="30" y="350" width="840" height="40" rx="6" fill="#da3633" opacity="0.06" stroke="#da3633" stroke-width="0.8" stroke-dasharray="6,4"/>
+  <text x="450" y="375" text-anchor="middle" fill="#da3633" font-size="11">CAIDOS: OVH 100.89.131.4 (jun-2026) · Hetzner 178.105.28.215 (2-jul-2026) — modelos grandes + LiteLLM + n8n + Qdrant perdidos</text>
+
+  <!-- Servicios corriendo -->
+  <rect x="30" y="410" width="840" height="140" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="450" y="432" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold">Servicios Activos</text>
+
+  <text x="50" y="455" fill="#3fb950" font-size="10">Constelacion (WhatsApp bidireccional + Telegram)</text>
+  <text x="50" y="472" fill="#3fb950" font-size="10">Cloudflare Quick Tunnel (wa.constelacion)</text>
+  <text x="50" y="489" fill="#3fb950" font-size="10">Ollama <=4B (qwen3-abliterated, laptop)</text>
+  <text x="50" y="506" fill="#3fb950" font-size="10">Fabrica de Codigo (5 obreros, laptop)</text>
+
+  <text x="320" y="455" fill="#8b949e" font-size="10">APIs gratuitas: Groq, NVIDIA NIM, DeepSeek</text>
+  <text x="320" y="472" fill="#8b949e" font-size="10">Oracle 23ai PAXELMEM (SP, sin probar)</text>
+  <text x="320" y="489" fill="#8b949e" font-size="10">lainconclusa.com (GitHub Pages)</text>
+
+  <text x="620" y="455" fill="#8b949e" font-size="10">SSH Tailscale: laptop + 2 VMs + celular</text>
+  <text x="620" y="472" fill="#8b949e" font-size="10">Montar-GoogleDrive.bat (Z:)</text>
+  <text x="620" y="489" fill="#8b949e" font-size="10">Supabase (DB + auth)</text>
+
+  <!-- Futuro -->
+  <rect x="30" y="565" width="840" height="30" rx="5" fill="#1f6feb" opacity="0.04" stroke="#1f6feb" stroke-width="0.5" stroke-dasharray="4,2"/>
+  <text x="450" y="585" text-anchor="middle" fill="#58a6ff" font-size="10">open-pax: Migrar Constelacion a SP (F1) + LiteLLM+LangGraph+Mem0 en FRA (F2-F3) + LiveKit+browser-use (F4-F5)</text>
+
+  <!-- Leyenda -->
+  <rect x="290" y="650" width="12" height="12" rx="3" fill="url(#green)"/>
+  <text x="308" y="662" fill="#3fb950" font-size="9">Vivo / Gratis ($0)</text>
+  <rect x="430" y="650" width="12" height="12" rx="3" fill="#da3633"/>
+  <text x="448" y="662" fill="#da3633" font-size="9">Caido / Muerto</text>
+  <rect x="550" y="650" width="12" height="12" rx="3" fill="#1f6feb"/>
+  <text x="568" y="662" fill="#58a6ff" font-size="9">Tailscale (privado)</text>
+</svg>

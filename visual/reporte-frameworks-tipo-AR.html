@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang='es'><head><meta charset='UTF-8'><title>Frameworks — Tipo A+R</title>
+
+<style>
+@page { size: A4 landscape; margin: 10mm; }
+* { font-family: 'Segoe UI', Arial, sans-serif; }
+body { margin:0; color:#1a1a1a; font-size:11px; }
+.cover { text-align:center; padding:30px 0 16px; border-bottom:3px solid #7c3aed; margin-bottom:16px; }
+.cover h1 { font-size:26px; color:#5b21b6; margin:0 0 6px; }
+.cover .sub { font-size:13px; color:#555; }
+.cover .meta { font-size:11px; color:#888; }
+h2 { color:#5b21b6; border-bottom:2px solid #7c3aed; padding-bottom:4px; margin-top:22px; font-size:15px; }
+table { border-collapse:collapse; width:100%; margin-bottom:12px; }
+th { background:#5b21b6; color:#fff; padding:6px 8px; text-align:left; font-size:10px; }
+td { padding:5px 8px; border-bottom:1px solid #e5e7eb; font-size:10px; vertical-align:top; }
+tr:nth-child(even) td { background:#faf5ff; }
+.fw { font-weight:bold; padding:1px 6px; border-radius:4px; color:#fff; font-size:9px; }
+.fw-n8n { background:#16a34a; }
+.fw-letta { background:#2563eb; }
+.fw-lang { background:#7c3aed; }
+.fw-crew { background:#d97706; }
+.rec { color:#6b7280; }
+.bar { background:#faf5ff; border-left:4px solid #7c3aed; padding:10px 14px; margin:10px 0; }
+.note { font-size:10px; color:#666; font-style:italic; }
+.stats { display:flex; gap:10px; margin:14px 0; }
+.stat { flex:1; padding:12px; border-radius:8px; color:#fff; text-align:center; }
+.stat .n { font-size:22px; font-weight:bold; }
+.stat .l { font-size:10px; }
+</style>
+</head><body>
+<div class='cover'>
+<h1>Frameworks + recursos + proveedores — Tipo A+R</h1>
+<div class='sub'>Mixto (recurso + acciones) · asignación uno a uno</div>
+<div class='meta'>94 capacidades · 5-jul-2026 · open-pax/documentos/11</div>
+</div>
+<div class='stats'>
+<div class='stat' style='background:#7c3aed'><div class='n'>38</div><div class='l'>LangChain</div></div>
+<div class='stat' style='background:#16a34a'><div class='n'>32</div><div class='l'>n8n</div></div>
+<div class='stat' style='background:#2563eb'><div class='n'>17</div><div class='l'>Letta</div></div>
+<div class='stat' style='background:#d97706'><div class='n'>7</div><div class='l'>CrewAI</div></div>
+</div>
+<h2>Marco de frameworks</h2>
+<table><tr><th>Framework</th><th>Rol</th><th>Cuándo se usa</th></tr>
+<tr><td class='fw fw-n8n'>n8n</td><td>Orquestación visual sin código</td><td>Workflows con APIs, cron, sensores, RPA. Erik ve el flujo (R4).</td></tr>
+<tr><td class='fw fw-letta'>Letta</td><td>Agente con memoria + tool calling</td><td>Conversación, autonomía, TDAH (un solo paso), seguimiento personal.</td></tr>
+<tr><td class='fw fw-lang'>LangChain</td><td>Cadena LLM + tools programática</td><td>RAG complejo, pipelines IA, análisis con tools, investigación.</td></tr>
+<tr><td class='fw fw-crew'>CrewAI</td><td>Multi-agente (roles que deliberan)</td><td>Negociación, debate, defensa legal, diseño colaborativo.</td></tr>
+</table>
+<div class='bar'>
+<b>Conclusión:</b> LangChain domina (pipelines IA + RAG). n8n orquesta sensores/APIs/finanzas. 
+Letta = punto de contacto humano (TDAH, conversación). CrewAI = deliberación multi-agente. 
+<b>Aquí LangChain y CrewAI SÍ aparecen</b> — a diferencia de tipo A. El trío de agentes + n8n cubre las 94 A+R.
+</div>
+<h2>Tabla completa (uno a uno)</h2>
+<table><tr><th>#</th><th>Capacidad</th><th>Framework</th><th>Recurso + proveedor</th><th>Notas</th></tr>
+<tr><td>1.1</td><td>Percibir (notar, darse cuenta)</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Sensor (ESP32/IPCámara) + LLaVA vía Ollama (2do equipo)</td><td>n8n escucha eventos del sensor → LLaVA interpreta imagen → decision.</td></tr>
+<tr><td>1.6</td><td>Consolidar / dormir sobre algo</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>pgvector + cron batch</td><td>Cron nocturno: n8n consolida memorias del día en pgvector.</td></tr>
+<tr><td>1.11</td><td>Resolver problemas</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3-abliterated:14b) + tools</td><td>Pipeline: LLM planifica → tools ejecutan → LLM evalúa resultado.</td></tr>
+<tr><td>1.17</td><td>Analizar (descomponer)</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (extraccion)</td><td>LangChain descompone; n8n extrae subdatos; LLM sintetiza.</td></tr>
+<tr><td>1.18</td><td>Sintetizar (componer)</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (agregacion)</td><td>n8n reúne partes → LangChain sintetiza con LLM.</td></tr>
+<tr><td>2.4</td><td>Escribir texto</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:4b) + plantilla</td><td>Letta conversa con Erik → genera texto con plantilla.</td></tr>
+<tr><td>2.5</td><td>Redactar documentos</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (plantillas)</td><td>LangChain redacta por secciones; n8n ensambla documento final.</td></tr>
+<tr><td>2.12</td><td>Negociar</td><td><span class='fw fw-crew'>CrewAI</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (comms)</td><td>CrewAI: agente vendedor + agente comprador deliberan; n8n envía mensajes.</td></tr>
+<tr><td>2.15</td><td>Hacer preguntas</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:4b) + n8n (search tool)</td><td>Letta pregunta con tool calling (search, DB); n8n ejecuta tools.</td></tr>
+<tr><td>2.16</td><td>Escuchar activamente</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>faster-whisper (STT) + cerebropax (qwen3:14b)</td><td>Letta escucha vía Telegram voice → Whisper transcribe → LLM responde empático.</td></tr>
+<tr><td>2.21</td><td>Comunicar por voz (teléfono)</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Piper (TTS) + Twilio/LiveKit (free trial)</td><td>n8n dispara llamada → Piper sintetiza voz → Twilio conecta. 🟡 Twilio tiene costo.</td></tr>
+<tr><td>2.22</td><td>Comunicar por video</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Cámara + LiveKit (open source self-hosted)</td><td>LiveKit self-hosted en nube2 (free, Docker); n8n orquesta. 🟡 avatar video = 🔴 difícil.</td></tr>
+<tr><td>4.5</td><td>Dibujar / ilustrar</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Stable Diffusion 1.5 (local) + plotter/impresora</td><td>n8n → SD genera imagen → envía a impresora/plotter. 🟡 plotter = hardware.</td></tr>
+<tr><td>4.15</td><td>Operar maquinaria</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>ESP32/relay (IoT) + Home Assistant</td><td>n8n → HA → ESP32 actúa relay. DIY económico.</td></tr>
+<tr><td>4.16</td><td>Manipular pantallas/dispositivos</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Playwright (RPA) + ADB (móvil)</td><td>n8n orquesta; Playwright/ADB ejecutan automatización UI.</td></tr>
+<tr><td>5.6</td><td>Iniciar sesión en webs</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Vaultwarden (credenciales) + Playwright</td><td>n8n lee credencial de Vault → Playwright hace login.</td></tr>
+<tr><td>5.8</td><td>Crear cuentas en servicios</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Vaultwarden + Playwright + email temp</td><td>n8n: genera email → Playwright rellena form → Vaultwarden guarda credencial. 🟡 captcha puede bloquear.</td></tr>
+<tr><td>5.11</td><td>Programar / escribir código</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b) + Docker sandbox</td><td>Letta con tool calling: LLM escribe código → sandbox ejecuta → LLM corrige.</td></tr>
+<tr><td>5.12</td><td>Depurar código (debug)</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b) + Docker sandbox</td><td>Letta: LLM analiza error → propone fix → sandbox prueba → iteración.</td></tr>
+<tr><td>5.20</td><td>Diseñar (UI/UX, gráficos)</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (Excalidraw/SVG)</td><td>LangChain genera specs → n8n renderiza SVG/Excalidraw.</td></tr>
+<tr><td>5.21</td><td>Editar imágenes / video / audio</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>ffmpeg + SD/Whisper (local)</td><td>n8n orquesta: ffmpeg corta/une → SD edita frames → Whisper subtitula.</td></tr>
+<tr><td>6.6</td><td>Invertir</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>API broker (Alpaca/Interactive Brokers) + modelo predictivo</td><td>LangChain: modelo predice → LLM decide → API broker ejecuta. 🟡 R6: Erik aprueba trades.</td></tr>
+<tr><td>6.7</td><td>Pagar facturas / servicios</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API banco (Open Finance MX) + cron</td><td>n8n: cron vencimiento → API banco paga → notify. 🟡 R6: confirmar pagos.</td></tr>
+<tr><td>6.8</td><td>Transferir dinero</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API banco + Vaultwarden</td><td>n8n: lee cuenta destino → API banco transfiere. 🟡 R6: confirmar.</td></tr>
+<tr><td>6.9</td><td>Monitorear inversiones</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API broker + Metabase</td><td>n8n: poll API → guarda en DB → Metabase dashboard vivo.</td></tr>
+<tr><td>6.14</td><td>Cobrar a clientes</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API (Stripe/facturador) + LLM (recordatorios)</td><td>n8n: detecta facturas vencidas → LLM redacta recordatorio → envía.</td></tr>
+<tr><td>6.15</td><td>Negociar precios / descuentos</td><td><span class='fw fw-crew'>CrewAI</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (comms)</td><td>CrewAI: agente vendedor + agente cliente negocian; n8n entrega resultado a Erik.</td></tr>
+<tr><td>6.16</td><td>Comprar online</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Playwright (RPA) + API pago</td><td>n8n: busca producto → Playwright añade al carrito → API pago checkout. 🟡 R6: confirmar.</td></tr>
+<tr><td>6.17</td><td>Vender online</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API marketplace (MercadoLibre) + LLM (descripciones)</td><td>n8n: LLM redacta descripción → API publica → gestiona pedidos.</td></tr>
+<tr><td>6.20</td><td>Hacer forecast financiero</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>Python (statsmodels) + cerebropax (qwen3:14b)</td><td>LangChain: modelo estadístico proyecta → LLM interpreta y explica.</td></tr>
+<tr><td>7.9</td><td>Delegar</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Router LLM (Letta) + humanos/subagentes</td><td>n8n: LLM clasifica tarea → enruta a agente/humano apropiado.</td></tr>
+<tr><td>7.15</td><td>Hacer retrospectivas</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + pgvector (memoria)</td><td>LangChain: consulta historial en pgvector → LLM sintetiza lecciones.</td></tr>
+<tr><td>8.2</td><td>Monitorear estado de ánimo</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>Telegram input + cerebropax (qwen3:4b)</td><td>Letta: Erik responde check-in diario → LLM analiza tendencia.</td></tr>
+<tr><td>8.3</td><td>Detectar bajones prolongados</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>cerebropax (qwen3:14b) + pgvector + cron</td><td>n8n: cron revisa historial → LLM detecta patrón → alerta a Erik/contacto.</td></tr>
+<tr><td>8.6</td><td>Fomentar ejercicio</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>Nudge LLM (qwen3:4b) + cron</td><td>Letta: cron sugiere ejercicio según historial; nudges sin castigo (R7).</td></tr>
+<tr><td>8.8</td><td>Trackear alimentación</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>Telegram log + cerebropax (qwen3:4b)</td><td>Letta: Erik foto/log comida → LLM clasifica + analiza patrones.</td></tr>
+<tr><td>8.9</td><td>Trackear síntomas físicos</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>Telegram log + cerebropax (qwen3:14b)</td><td>Letta: Erik registra síntoma → LLM correlaciona con historial.</td></tr>
+<tr><td>8.10</td><td>Agendar citas médicas</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API salud (Docplanner/Medic) + Calendar API</td><td>n8n: busca disponibilidad → agenda → reminder. 🟡 API MX limitada.</td></tr>
+<tr><td>8.12</td><td>Detectar patrones de salud</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + pgvector</td><td>LangChain: correlaciona variables → LLM halla patrones → explica.</td></tr>
+<tr><td>8.13</td><td>Gestionar estrés</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b) + Piper TTS</td><td>Letta: detecta estrés → guía respiración vía texto/voz (Piper).</td></tr>
+<tr><td>8.14</td><td>Fomentar hábitos (streaks)</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>Nudge LLM (qwen3:4b) + DB streaks</td><td>Letta: tracking racha; sin culpa si se rompe (R7 TDAH).</td></tr>
+<tr><td>8.15</td><td>Detectar señales de alarma</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>cerebropax (qwen3:14b) + cron + notify</td><td>n8n: LLM evalúa síntomas → si alarma → notify urgente a Erik/contacto médico.</td></tr>
+<tr><td>8.18</td><td>Gestionar crisis de ansiedad</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b) + Piper TTS (urgente)</td><td>Letta: Erik dispara crisis → LLM guía respiración grounding; modo urgente.</td></tr>
+<tr><td>9.5</td><td>Consolar / apoyar emocional</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b) empático</td><td>Letta: conversa empático; NO reemplaza humano (R6). R8: limitación honesta.</td></tr>
+<tr><td>9.7</td><td>Resolver conflictos</td><td><span class='fw fw-crew'>CrewAI</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (comms)</td><td>CrewAI: agentes representan partes → median → proponen solución.</td></tr>
+<tr><td>9.8</td><td>Dar feedback</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG (contexto)</td><td>LangChain: RAG recupera contexto → LLM redacta feedback constructivo.</td></tr>
+<tr><td>9.9</td><td>Recibir feedback</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b)</td><td>Letta: recibe feedback → LLM lo procesa + propone acción.</td></tr>
+<tr><td>9.10</td><td>Hacer networking</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (LinkedIn API/email)</td><td>LangChain: LLM identifica conexiones relevantes → n8n envía mensajes.</td></tr>
+<tr><td>9.12</td><td>Organizar eventos sociales</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>cerebropax (qwen3:14b) + Calendar + invite API</td><td>n8n: LLM propone fecha/lugar → envía invites → recopula RSVP.</td></tr>
+<tr><td>9.18</td><td>Enseñar / transmitir conocimiento</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG</td><td>LangChain: RAG recupera material → LLM genera lección adaptada.</td></tr>
+<tr><td>9.20</td><td>Detectar soledad / aislamiento</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>cerebropax (qwen3:14b) + pgvector (log social)</td><td>n8n: cron analiza frecuencia de contacto → LLM detecta aislamiento → sugiere.</td></tr>
+<tr><td>10.7</td><td>Diseñar estética</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (Excalidraw)</td><td>LangChain: LLM propone estética → n8n renderiza preview.</td></tr>
+<tr><td>10.10</td><td>Producir video / cine</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>Modelo video (CogVideo/Runway free) + ffmpeg + LLM</td><td>LangChain: LLM escribe guion → modelo video genera clips → ffmpeg une. 🟡 modelo video pesado → API.</td></tr>
+<tr><td>10.11</td><td>Diseñar productos / inventos</td><td><span class='fw fw-crew'>CrewAI</span></td><td class='rec'>cerebropax (qwen3:14b) + FreeCAD (paramétrico)</td><td>CrewAI: agente diseñador + agente ingeniero deliberan → FreeCAD modela.</td></tr>
+<tr><td>10.12</td><td>Estilizar / branded look</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + SD (local)</td><td>LangChain: LLM define paleta/tipografía → SD genera mocks de marca.</td></tr>
+<tr><td>10.13</td><td>Curar / seleccionar lo mejor</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG</td><td>LangChain: RAG recupera candidatos → LLM ranquea y justifica.</td></tr>
+<tr><td>10.14</td><td>Remixar / combinar existente</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + SD + n8n</td><td>LangChain: LLM propone combinación → SD genera → n8n ensambla.</td></tr>
+<tr><td>11.1</td><td>Aprender de la lectura</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>RAG (pgvector + qwen3:14b)</td><td>LangChain: textbook → chunk → embed → LLM explica + cuestiona.</td></tr>
+<tr><td>11.3</td><td>Aprender de la experiencia</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>RL feedback loop (qwen3:14b) + log</td><td>LangChain: registra resultados → LLM aprende patrones → ajusta estrategia.</td></tr>
+<tr><td>11.4</td><td>Aprender de mentor / maestro</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG</td><td>Letta: conversación socrática; LLM actúa como mentor adaptativo.</td></tr>
+<tr><td>11.6</td><td>Practicar / entrenar</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:4b) + spaced repetition + n8n</td><td>LangChain: LLM genera ejercicios → n8n programa repaso (SR).</td></tr>
+<tr><td>11.7</td><td>Investigar un tema</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>Search (Brave/SerpAPI) + scrape (n8n) + qwen3:14b</td><td>LangChain: planifica búsqueda → n8n scrapea → LLM sintetiza con citas.</td></tr>
+<tr><td>11.9</td><td>Enseñar lo aprendido</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG</td><td>LangChain: recupera conocimiento aprendido → LLM genera material didáctico.</td></tr>
+<tr><td>11.10</td><td>Evaluar propio progreso</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + DB progreso</td><td>LangChain: consulta DB → LLM mide avance vs objetivos → reporta.</td></tr>
+<tr><td>11.11</td><td>Detectar propias debilidades</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + log errores</td><td>LangChain: analiza historial de errores → LLM identifica patrones de debilidad.</td></tr>
+<tr><td>11.12</td><td>Adaptarse a cambios</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG entorno</td><td>LangChain: RAG sobre nuevo entorno → LLM genera plan de adaptación.</td></tr>
+<tr><td>11.13</td><td>Aprender idiomas</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + spaced repetition + Whisper</td><td>LangChain: LLM genera lecciones → SR repasa → Whisper evalúa pronunciación.</td></tr>
+<tr><td>11.16</td><td>Validar información</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>Search + scrape (n8n) + qwen3:14b</td><td>LangChain: LLM formula búsqueda → n8n scrapea fuentes → LLM verifica con citas.</td></tr>
+<tr><td>11.18</td><td>Aprender de errores propios</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + pgvector (log errores)</td><td>LangChain: consulta log de errores → LLM extrae lección → guarda en memoria.</td></tr>
+<tr><td>11.20</td><td>Identificar mentores / modelos</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + Search + n8n</td><td>LangChain: LLM define criterios → n8n busca perfiles → LLM ranquea.</td></tr>
+<tr><td>12.3</td><td>Redactar contratos</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG legal MX + plantilla</td><td>LangChain: RAG legal + plantilla → LLM redacta cláusulas. 🟡 R6: abogado humano revisa.</td></tr>
+<tr><td>12.4</td><td>Firmar documentos legalmente</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API e-sign (DocuSign/Hellosign free tier) + Vaultwarden</td><td>n8n: prepara doc → API e-sign → guarda firma en vault. 🟡 free tier limitado.</td></tr>
+<tr><td>12.5</td><td>Hacer trámites bucráticos</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Gov API (SAT/gob.mx) + Playwright RPA</td><td>n8n: API o RPA llena formularios → sigue estado. 🟡 R6: Erik confirma.</td></tr>
+<tr><td>12.6</td><td>Pagar impuestos</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API fiscal (SAT) + Python (cálculo)</td><td>n8n: Python calcula → API SAT declara → notify. 🟡 R6: Erik aprueba.</td></tr>
+<tr><td>12.7</td><td>Reclamar / defender derechos</td><td><span class='fw fw-crew'>CrewAI</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG legal + n8n</td><td>CrewAI: agente legal investiga + agente redacta demanda → n8n presenta. 🟡 R6: abogado revisa.</td></tr>
+<tr><td>12.14</td><td>Gestionar herencias / testamentos</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG legal + Vaultwarden</td><td>LangChain: RAG legal + LLM explica pasos. 🟡 R6: notario humano.</td></tr>
+<tr><td>13.1</td><td>Planear comidas / menú semanal</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:4b) + DB inventario</td><td>Letta: Erik gusta/preferencias → LLM genera menú según inventario.</td></tr>
+<tr><td>13.8</td><td>Mantener electrodomésticos</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>IoT (HA + sensores) + cron diagnóstico</td><td>n8n: cron lee sensores → si anómalo → alerta + programa mant.</td></tr>
+<tr><td>13.12</td><td>Cuidar plantas / jardín</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>IoT (sensor humedad ESP32) + cron + HA</td><td>n8n: sensor humedad → si bajo → riego auto (relay) o alerta.</td></tr>
+<tr><td>13.13</td><td>Cuidar mascotas</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Schedule + IoT (dispensador ESP32) + LLM recordatorios</td><td>n8n: cron alimentación → dispensador auto → LLM recordatorio vet.</td></tr>
+<tr><td>13.15</td><td>Hacer mantenimiento preventivo</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Schedule + IoT + LLM (prioridades)</td><td>n8n: cron por electrodoméstico → checklist → LLM prioriza urgentes.</td></tr>
+<tr><td>14.9</td><td>Reaccionar a emergencias</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>cerebropax (qwen3:14b) + Frigate + notify urgente</td><td>n8n: Frigate detecta intruso → LLM evalúa severidad → notify + protocolo.</td></tr>
+<tr><td>14.10</td><td>Verificar identidad de otros</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + API identidad (FaceID/InsightFace)</td><td>LangChain: LLM evalúa contexto → API比对 → LLM concluye.</td></tr>
+<tr><td>14.14</td><td>Defensa legal / reportar delitos</td><td><span class='fw fw-crew'>CrewAI</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG legal + n8n</td><td>CrewAI: agente investiga + agente redacta denuncia → n8n presenta. 🟡 R6: abogado.</td></tr>
+<tr><td>14.15</td><td>Seguro / cobertura de riesgos</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>API seguros + LLM (comparador)</td><td>n8n: LLM compara coberturas → API contrata → notify. 🟡 R6: Erik aprueba.</td></tr>
+<tr><td>15.2</td><td>Adaptarse a nuevo entorno</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + RAG entorno</td><td>LangChain: RAG sobre nuevo entorno → LLM genera plan adaptación.</td></tr>
+<tr><td>15.3</td><td>Explorar lo desconocido</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + Search (n8n)</td><td>LangChain: LLM formula hipótesis → n8n busca → LLM evalúa resultados.</td></tr>
+<tr><td>15.4</td><td>Detectar oportunidades</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n (scraping tendencias)</td><td>LangChain: n8n scrapea tendencias → LLM detecta oportunidades para Erik.</td></tr>
+<tr><td>16.2</td><td>Auto-reparación</td><td><span class='fw fw-letta'>Letta</span></td><td class='rec'>cerebropax (qwen3:14b) + Docker sandbox</td><td>Letta: LLM diagnostica error → sandbox prueba fix → aplica si pasa.</td></tr>
+<tr><td>16.3</td><td>Auto-mejora continua</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + Metabase (métricas)</td><td>LangChain: analiza métricas → LLM propone optimización → aplica + mide.</td></tr>
+<tr><td>16.7</td><td>Pedir ayuda / escalar</td><td><span class='fw fw-n8n'>n8n</span></td><td class='rec'>Router LLM (Letta) + routing humano/agente</td><td>n8n: LLM evalúa confianza → si baja → escala a Erik o agente experto.</td></tr>
+<tr><td>16.13</td><td>Explicar por qué se hizo algo</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + log (pgvector)</td><td>LangChain: consulta log de acciones → LLM redacta explicación legible.</td></tr>
+<tr><td>17.10</td><td>Ceder / transigir</td><td><span class='fw fw-crew'>CrewAI</span></td><td class='rec'>cerebropax (qwen3:14b) + n8n</td><td>CrewAI: agentes negocian concesiones → n8n entrega propuesta a Erik.</td></tr>
+<tr><td>17.13</td><td>Equilibrar corto vs largo plazo</td><td><span class='fw fw-lang'>LangChain</span></td><td class='rec'>cerebropax (qwen3:14b) + pgvector (historial)</td><td>LangChain: analiza histórico → LLM equilibra corto/largo → propone estrategia.</td></tr>
+</table>
+<h2>Anexo — n8n (32 caps)</h2>
+<table><tr><th>#</th><th>Capacidad</th><th>Recurso + proveedor</th></tr>
+<tr><td>1.1</td><td>Percibir (notar, darse cuenta)</td><td class='rec'>Sensor (ESP32/IPCámara) + LLaVA vía Ollama (2do equipo)</td></tr>
+<tr><td>1.6</td><td>Consolidar / dormir sobre algo</td><td class='rec'>pgvector + cron batch</td></tr>
+<tr><td>2.21</td><td>Comunicar por voz (teléfono)</td><td class='rec'>Piper (TTS) + Twilio/LiveKit (free trial)</td></tr>
+<tr><td>2.22</td><td>Comunicar por video</td><td class='rec'>Cámara + LiveKit (open source self-hosted)</td></tr>
+<tr><td>4.5</td><td>Dibujar / ilustrar</td><td class='rec'>Stable Diffusion 1.5 (local) + plotter/impresora</td></tr>
+<tr><td>4.15</td><td>Operar maquinaria</td><td class='rec'>ESP32/relay (IoT) + Home Assistant</td></tr>
+<tr><td>4.16</td><td>Manipular pantallas/dispositivos</td><td class='rec'>Playwright (RPA) + ADB (móvil)</td></tr>
+<tr><td>5.6</td><td>Iniciar sesión en webs</td><td class='rec'>Vaultwarden (credenciales) + Playwright</td></tr>
+<tr><td>5.8</td><td>Crear cuentas en servicios</td><td class='rec'>Vaultwarden + Playwright + email temp</td></tr>
+<tr><td>5.21</td><td>Editar imágenes / video / audio</td><td class='rec'>ffmpeg + SD/Whisper (local)</td></tr>
+<tr><td>6.7</td><td>Pagar facturas / servicios</td><td class='rec'>API banco (Open Finance MX) + cron</td></tr>
+<tr><td>6.8</td><td>Transferir dinero</td><td class='rec'>API banco + Vaultwarden</td></tr>
+<tr><td>6.9</td><td>Monitorear inversiones</td><td class='rec'>API broker + Metabase</td></tr>
+<tr><td>6.14</td><td>Cobrar a clientes</td><td class='rec'>API (Stripe/facturador) + LLM (recordatorios)</td></tr>
+<tr><td>6.16</td><td>Comprar online</td><td class='rec'>Playwright (RPA) + API pago</td></tr>
+<tr><td>6.17</td><td>Vender online</td><td class='rec'>API marketplace (MercadoLibre) + LLM (descripciones)</td></tr>
+<tr><td>7.9</td><td>Delegar</td><td class='rec'>Router LLM (Letta) + humanos/subagentes</td></tr>
+<tr><td>8.3</td><td>Detectar bajones prolongados</td><td class='rec'>cerebropax (qwen3:14b) + pgvector + cron</td></tr>
+<tr><td>8.10</td><td>Agendar citas médicas</td><td class='rec'>API salud (Docplanner/Medic) + Calendar API</td></tr>
+<tr><td>8.15</td><td>Detectar señales de alarma</td><td class='rec'>cerebropax (qwen3:14b) + cron + notify</td></tr>
+<tr><td>9.12</td><td>Organizar eventos sociales</td><td class='rec'>cerebropax (qwen3:14b) + Calendar + invite API</td></tr>
+<tr><td>9.20</td><td>Detectar soledad / aislamiento</td><td class='rec'>cerebropax (qwen3:14b) + pgvector (log social)</td></tr>
+<tr><td>12.4</td><td>Firmar documentos legalmente</td><td class='rec'>API e-sign (DocuSign/Hellosign free tier) + Vaultwarden</td></tr>
+<tr><td>12.5</td><td>Hacer trámites bucráticos</td><td class='rec'>Gov API (SAT/gob.mx) + Playwright RPA</td></tr>
+<tr><td>12.6</td><td>Pagar impuestos</td><td class='rec'>API fiscal (SAT) + Python (cálculo)</td></tr>
+<tr><td>13.8</td><td>Mantener electrodomésticos</td><td class='rec'>IoT (HA + sensores) + cron diagnóstico</td></tr>
+<tr><td>13.12</td><td>Cuidar plantas / jardín</td><td class='rec'>IoT (sensor humedad ESP32) + cron + HA</td></tr>
+<tr><td>13.13</td><td>Cuidar mascotas</td><td class='rec'>Schedule + IoT (dispensador ESP32) + LLM recordatorios</td></tr>
+<tr><td>13.15</td><td>Hacer mantenimiento preventivo</td><td class='rec'>Schedule + IoT + LLM (prioridades)</td></tr>
+<tr><td>14.9</td><td>Reaccionar a emergencias</td><td class='rec'>cerebropax (qwen3:14b) + Frigate + notify urgente</td></tr>
+<tr><td>14.15</td><td>Seguro / cobertura de riesgos</td><td class='rec'>API seguros + LLM (comparador)</td></tr>
+<tr><td>16.7</td><td>Pedir ayuda / escalar</td><td class='rec'>Router LLM (Letta) + routing humano/agente</td></tr>
+</table>
+<h2>Anexo — Letta (17 caps)</h2>
+<table><tr><th>#</th><th>Capacidad</th><th>Recurso + proveedor</th></tr>
+<tr><td>2.4</td><td>Escribir texto</td><td class='rec'>cerebropax (qwen3:4b) + plantilla</td></tr>
+<tr><td>2.15</td><td>Hacer preguntas</td><td class='rec'>cerebropax (qwen3:4b) + n8n (search tool)</td></tr>
+<tr><td>2.16</td><td>Escuchar activamente</td><td class='rec'>faster-whisper (STT) + cerebropax (qwen3:14b)</td></tr>
+<tr><td>5.11</td><td>Programar / escribir código</td><td class='rec'>cerebropax (qwen3:14b) + Docker sandbox</td></tr>
+<tr><td>5.12</td><td>Depurar código (debug)</td><td class='rec'>cerebropax (qwen3:14b) + Docker sandbox</td></tr>
+<tr><td>8.2</td><td>Monitorear estado de ánimo</td><td class='rec'>Telegram input + cerebropax (qwen3:4b)</td></tr>
+<tr><td>8.6</td><td>Fomentar ejercicio</td><td class='rec'>Nudge LLM (qwen3:4b) + cron</td></tr>
+<tr><td>8.8</td><td>Trackear alimentación</td><td class='rec'>Telegram log + cerebropax (qwen3:4b)</td></tr>
+<tr><td>8.9</td><td>Trackear síntomas físicos</td><td class='rec'>Telegram log + cerebropax (qwen3:14b)</td></tr>
+<tr><td>8.13</td><td>Gestionar estrés</td><td class='rec'>cerebropax (qwen3:14b) + Piper TTS</td></tr>
+<tr><td>8.14</td><td>Fomentar hábitos (streaks)</td><td class='rec'>Nudge LLM (qwen3:4b) + DB streaks</td></tr>
+<tr><td>8.18</td><td>Gestionar crisis de ansiedad</td><td class='rec'>cerebropax (qwen3:14b) + Piper TTS (urgente)</td></tr>
+<tr><td>9.5</td><td>Consolar / apoyar emocional</td><td class='rec'>cerebropax (qwen3:14b) empático</td></tr>
+<tr><td>9.9</td><td>Recibir feedback</td><td class='rec'>cerebropax (qwen3:14b)</td></tr>
+<tr><td>11.4</td><td>Aprender de mentor / maestro</td><td class='rec'>cerebropax (qwen3:14b) + RAG</td></tr>
+<tr><td>13.1</td><td>Planear comidas / menú semanal</td><td class='rec'>cerebropax (qwen3:4b) + DB inventario</td></tr>
+<tr><td>16.2</td><td>Auto-reparación</td><td class='rec'>cerebropax (qwen3:14b) + Docker sandbox</td></tr>
+</table>
+<h2>Anexo — LangChain (38 caps)</h2>
+<table><tr><th>#</th><th>Capacidad</th><th>Recurso + proveedor</th></tr>
+<tr><td>1.11</td><td>Resolver problemas</td><td class='rec'>cerebropax (qwen3-abliterated:14b) + tools</td></tr>
+<tr><td>1.17</td><td>Analizar (descomponer)</td><td class='rec'>cerebropax (qwen3:14b) + n8n (extraccion)</td></tr>
+<tr><td>1.18</td><td>Sintetizar (componer)</td><td class='rec'>cerebropax (qwen3:14b) + n8n (agregacion)</td></tr>
+<tr><td>2.5</td><td>Redactar documentos</td><td class='rec'>cerebropax (qwen3:14b) + n8n (plantillas)</td></tr>
+<tr><td>5.20</td><td>Diseñar (UI/UX, gráficos)</td><td class='rec'>cerebropax (qwen3:14b) + n8n (Excalidraw/SVG)</td></tr>
+<tr><td>6.6</td><td>Invertir</td><td class='rec'>API broker (Alpaca/Interactive Brokers) + modelo predictivo</td></tr>
+<tr><td>6.20</td><td>Hacer forecast financiero</td><td class='rec'>Python (statsmodels) + cerebropax (qwen3:14b)</td></tr>
+<tr><td>7.15</td><td>Hacer retrospectivas</td><td class='rec'>cerebropax (qwen3:14b) + pgvector (memoria)</td></tr>
+<tr><td>8.12</td><td>Detectar patrones de salud</td><td class='rec'>cerebropax (qwen3:14b) + pgvector</td></tr>
+<tr><td>9.8</td><td>Dar feedback</td><td class='rec'>cerebropax (qwen3:14b) + RAG (contexto)</td></tr>
+<tr><td>9.10</td><td>Hacer networking</td><td class='rec'>cerebropax (qwen3:14b) + n8n (LinkedIn API/email)</td></tr>
+<tr><td>9.18</td><td>Enseñar / transmitir conocimiento</td><td class='rec'>cerebropax (qwen3:14b) + RAG</td></tr>
+<tr><td>10.7</td><td>Diseñar estética</td><td class='rec'>cerebropax (qwen3:14b) + n8n (Excalidraw)</td></tr>
+<tr><td>10.10</td><td>Producir video / cine</td><td class='rec'>Modelo video (CogVideo/Runway free) + ffmpeg + LLM</td></tr>
+<tr><td>10.12</td><td>Estilizar / branded look</td><td class='rec'>cerebropax (qwen3:14b) + SD (local)</td></tr>
+<tr><td>10.13</td><td>Curar / seleccionar lo mejor</td><td class='rec'>cerebropax (qwen3:14b) + RAG</td></tr>
+<tr><td>10.14</td><td>Remixar / combinar existente</td><td class='rec'>cerebropax (qwen3:14b) + SD + n8n</td></tr>
+<tr><td>11.1</td><td>Aprender de la lectura</td><td class='rec'>RAG (pgvector + qwen3:14b)</td></tr>
+<tr><td>11.3</td><td>Aprender de la experiencia</td><td class='rec'>RL feedback loop (qwen3:14b) + log</td></tr>
+<tr><td>11.6</td><td>Practicar / entrenar</td><td class='rec'>cerebropax (qwen3:4b) + spaced repetition + n8n</td></tr>
+<tr><td>11.7</td><td>Investigar un tema</td><td class='rec'>Search (Brave/SerpAPI) + scrape (n8n) + qwen3:14b</td></tr>
+<tr><td>11.9</td><td>Enseñar lo aprendido</td><td class='rec'>cerebropax (qwen3:14b) + RAG</td></tr>
+<tr><td>11.10</td><td>Evaluar propio progreso</td><td class='rec'>cerebropax (qwen3:14b) + DB progreso</td></tr>
+<tr><td>11.11</td><td>Detectar propias debilidades</td><td class='rec'>cerebropax (qwen3:14b) + log errores</td></tr>
+<tr><td>11.12</td><td>Adaptarse a cambios</td><td class='rec'>cerebropax (qwen3:14b) + RAG entorno</td></tr>
+<tr><td>11.13</td><td>Aprender idiomas</td><td class='rec'>cerebropax (qwen3:14b) + spaced repetition + Whisper</td></tr>
+<tr><td>11.16</td><td>Validar información</td><td class='rec'>Search + scrape (n8n) + qwen3:14b</td></tr>
+<tr><td>11.18</td><td>Aprender de errores propios</td><td class='rec'>cerebropax (qwen3:14b) + pgvector (log errores)</td></tr>
+<tr><td>11.20</td><td>Identificar mentores / modelos</td><td class='rec'>cerebropax (qwen3:14b) + Search + n8n</td></tr>
+<tr><td>12.3</td><td>Redactar contratos</td><td class='rec'>cerebropax (qwen3:14b) + RAG legal MX + plantilla</td></tr>
+<tr><td>12.14</td><td>Gestionar herencias / testamentos</td><td class='rec'>cerebropax (qwen3:14b) + RAG legal + Vaultwarden</td></tr>
+<tr><td>14.10</td><td>Verificar identidad de otros</td><td class='rec'>cerebropax (qwen3:14b) + API identidad (FaceID/InsightFace)</td></tr>
+<tr><td>15.2</td><td>Adaptarse a nuevo entorno</td><td class='rec'>cerebropax (qwen3:14b) + RAG entorno</td></tr>
+<tr><td>15.3</td><td>Explorar lo desconocido</td><td class='rec'>cerebropax (qwen3:14b) + Search (n8n)</td></tr>
+<tr><td>15.4</td><td>Detectar oportunidades</td><td class='rec'>cerebropax (qwen3:14b) + n8n (scraping tendencias)</td></tr>
+<tr><td>16.3</td><td>Auto-mejora continua</td><td class='rec'>cerebropax (qwen3:14b) + Metabase (métricas)</td></tr>
+<tr><td>16.13</td><td>Explicar por qué se hizo algo</td><td class='rec'>cerebropax (qwen3:14b) + log (pgvector)</td></tr>
+<tr><td>17.13</td><td>Equilibrar corto vs largo plazo</td><td class='rec'>cerebropax (qwen3:14b) + pgvector (historial)</td></tr>
+</table>
+<h2>Anexo — CrewAI (7 caps)</h2>
+<table><tr><th>#</th><th>Capacidad</th><th>Recurso + proveedor</th></tr>
+<tr><td>2.12</td><td>Negociar</td><td class='rec'>cerebropax (qwen3:14b) + n8n (comms)</td></tr>
+<tr><td>6.15</td><td>Negociar precios / descuentos</td><td class='rec'>cerebropax (qwen3:14b) + n8n (comms)</td></tr>
+<tr><td>9.7</td><td>Resolver conflictos</td><td class='rec'>cerebropax (qwen3:14b) + n8n (comms)</td></tr>
+<tr><td>10.11</td><td>Diseñar productos / inventos</td><td class='rec'>cerebropax (qwen3:14b) + FreeCAD (paramétrico)</td></tr>
+<tr><td>12.7</td><td>Reclamar / defender derechos</td><td class='rec'>cerebropax (qwen3:14b) + RAG legal + n8n</td></tr>
+<tr><td>14.14</td><td>Defensa legal / reportar delitos</td><td class='rec'>cerebropax (qwen3:14b) + RAG legal + n8n</td></tr>
+<tr><td>17.10</td><td>Ceder / transigir</td><td class='rec'>cerebropax (qwen3:14b) + n8n</td></tr>
+</table>
+<p class='note'>Generado por gen_frameworks_AR.py · open-pax/documentos/11 · 5-jul-2026</p>
+</body></html>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #333; stroke-width: 1.5; rx: 10; }
+      .title { font-size: 17px; font-weight: bold; fill: #222; }
+      .label { font-size: 13px; fill: #333; }
+      .small { font-size: 11px; fill: #666; }
+      .salud { fill: #e8f5e9; stroke: #2e7d32; }
+      .dinero { fill: #fff8e1; stroke: #f57f17; }
+      .agenda { fill: #e3f2fd; stroke: #1565c0; }
+      .habitos { fill: #f3e5f5; stroke: #7b1fa2; }
+      .core { fill: #fce4ec; stroke: #c2185b; stroke-width: 2; }
+      .priv { fill: #f5f5f5; stroke: #616161; stroke-dasharray: 5,3; }
+    </style>
+  </defs>
+
+  <!-- Título -->
+  <text x="450" y="30" text-anchor="middle" class="title">personalpax — el área 💚 Personal de open-pax</text>
+  <text x="450" y="50" text-anchor="middle" class="small">Cuida tu dinero, tu mente, tu tiempo y tus hábitos. Por Telegram, 24/7, sin agobiar.</text>
+
+  <!-- Erik arriba -->
+  <rect x="370" y="75" width="160" height="45" class="box core"/>
+  <text x="450" y="103" text-anchor="middle" class="label">👑 Erik (Telegram)</text>
+
+  <!-- Letta -->
+  <rect x="360" y="145" width="180" height="50" class="box core"/>
+  <text x="450" y="170" text-anchor="middle" class="label">🧠 Letta (open-pax agent)</text>
+  <text x="450" y="187" text-anchor="middle" class="small">ya responde · se le añaden flujos</text>
+
+  <!-- Flecha Erik → Letta -->
+  <line x1="450" y1="120" x2="450" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 4 áreas -->
+  <text x="450" y="220" text-anchor="middle" class="title">Las 4 áreas (una a la vez)</text>
+
+  <!-- Salud mental (1) -->
+  <rect x="40" y="240" width="190" height="130" class="box salud"/>
+  <text x="135" y="265" text-anchor="middle" class="title">🧘 Salud mental</text>
+  <text x="135" y="285" text-anchor="middle" class="small" font-weight="bold">PRIORIDAD 1 — la base</text>
+  <text x="55" y="310" class="small">• Recordar medicación TDAH/ACC</text>
+  <text x="55" y="328" class="small">• Check-in de ánimo diario</text>
+  <text x="55" y="346" class="small">• Pausas sugeridas</text>
+  <text x="55" y="364" class="small">• Anclar a sueño</text>
+
+  <!-- Finanzas (2) -->
+  <rect x="245" y="240" width="190" height="130" class="box dinero"/>
+  <text x="340" y="265" text-anchor="middle" class="title">💵 Finanzas</text>
+  <text x="340" y="285" text-anchor="middle" class="small" font-weight="bold">PRIORIDAD 2</text>
+  <text x="260" y="310" class="small">• Registrar gasto por TG</text>
+  <text x="260" y="328" class="small">• Reporte semanal</text>
+  <text x="260" y="346" class="small">• Presupuesto + alerta 80%</text>
+  <text x="260" y="364" class="small">• Tracking suscripciones</text>
+
+  <!-- Agenda (3) -->
+  <rect x="450" y="240" width="190" height="130" class="box agenda"/>
+  <text x="545" y="265" text-anchor="middle" class="title">📅 Agenda</text>
+  <text x="545" y="285" text-anchor="middle" class="small" font-weight="bold">PRIORIDAD 3</text>
+  <text x="465" y="310" class="small">• Guardar cita por TG</text>
+  <text x="465" y="328" class="small">• "Hoy tienes: X, Y, Z"</text>
+  <text x="465" y="346" class="small">• Reprogramar</text>
+  <text x="465" y="364" class="small">• Sync Google Calendar 🔴</text>
+
+  <!-- Hábitos (4) -->
+  <rect x="655" y="240" width="190" height="130" class="box habitos"/>
+  <text x="750" y="265" text-anchor="middle" class="title">🔁 Hábitos</text>
+  <text x="750" y="285" text-anchor="middle" class="small" font-weight="bold">PRIORIDAD 4</text>
+  <text x="670" y="310" class="small">• Tracker de sueño</text>
+  <text x="670" y="328" class="small">• Streak (sin castigo)</text>
+  <text x="670" y="346" class="small">• Patrones semanales</text>
+  <text x="670" y="364" class="small">• Anclaje a ritmos</text>
+
+  <!-- Flechas Letta → áreas -->
+  <line x1="400" y1="195" x2="135" y2="240" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="430" y1="195" x2="340" y2="240" stroke="#f57f17" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="470" y1="195" x2="545" y2="240" stroke="#1565c0" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="500" y1="195" x2="750" y2="240" stroke="#7b1fa2" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Capa de privacidad -->
+  <rect x="200" y="410" width="500" height="55" class="box priv"/>
+  <text x="450" y="435" text-anchor="middle" class="label">🔒 Capa de privacidad</text>
+  <text x="450" y="453" text-anchor="middle" class="small">Datos sensibles cifrados · NUNCA en git · LLM recibe contexto mínimo anonimizado</text>
+
+  <!-- Flechas áreas → privacidad -->
+  <line x1="135" y1="370" x2="300" y2="410" stroke="#616161" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="340" y1="370" x2="370" y2="410" stroke="#616161" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="545" y1="370" x2="530" y2="410" stroke="#616161" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="750" y1="370" x2="600" y2="410" stroke="#616161" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- Cron 24/7 -->
+  <rect x="310" y="495" width="280" height="45" class="box"/>
+  <text x="450" y="522" text-anchor="middle" class="label">⏰ Cron 24/7 (ubicación por definir)</text>
+
+  <line x1="450" y1="465" x2="450" y2="495" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Leyenda lateral -->
+  <text x="450" y="552" text-anchor="middle" class="small">personalpax NO es terapia — es un asistente que recuerda y acompaña. Diseñado para TDAH: un mensaje, una pregunta, cero presión.</text>
+</svg>

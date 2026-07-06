@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>open-pax — Panorama visual (nodos tipo n8n)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    overflow: auto;
+    min-height: 100vh;
+  }
+  .header {
+    text-align: center;
+    padding: 20px 16px 8px;
+  }
+  .header h1 { color: #f0f6fc; font-size: 22px; margin-bottom: 4px; }
+  .header .sub { color: #8b949e; font-size: 13px; }
+  .header .meta { color: #58a6ff; font-size: 12px; margin-top: 4px; }
+  .canvas {
+    position: relative;
+    width: 1280px;
+    height: 920px;
+    margin: 10px auto;
+    background:
+      radial-gradient(circle, rgba(88,166,255,0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+      #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+  }
+
+  /* Nodos estilo n8n */
+  .node {
+    position: absolute;
+    width: 200px;
+    background: #161b22;
+    border: 1.5px solid #30363d;
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+  .node .top {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 6px;
+  }
+  .node .icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .node .titles { flex: 1; min-width: 0; }
+  .node .name { font-weight: 600; color: #f0f6fc; font-size: 13px; line-height: 1.2; }
+  .node .where { color: #8b949e; font-size: 10px; }
+  .node .detail { color: #b1bac4; font-size: 11px; line-height: 1.35; margin-top: 4px; }
+  .node .status {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 10px; margin-top: 6px;
+  }
+  .st-green { background: rgba(46,160,67,0.15); color: #3fb950; border:1px solid rgba(46,160,67,0.4); }
+  .st-yellow { background: rgba(187,128,9,0.15); color: #d29922; border:1px solid rgba(187,128,9,0.4); }
+  .st-red { background: rgba(248,81,73,0.15); color: #f85149; border:1px solid rgba(248,81,73,0.4); }
+  .st-gray { background: rgba(139,148,158,0.12); color: #8b949e; border:1px solid rgba(139,148,158,0.3); }
+
+  /* colores de icono por tipo */
+  .ic-infra { background: #1f6feb33; }
+  .ic-service { background: #23863633; }
+  .ic-sub { background: #8957e533; }
+  .ic-cloud { background: #d2992233; }
+  .ic-person { background: #f778ba33; }
+  .ic-user { background: #58a6ff33; }
+
+  /* Grupo / caja agrupadora */
+  .group {
+    position: absolute;
+    border: 1px dashed #30363d;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.015);
+    z-index: 1;
+  }
+  .group .glabel {
+    position: absolute; top: -11px; left: 14px;
+    background: #0d1117; padding: 0 8px;
+    color: #8b949e; font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+  }
+
+  svg.connections {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+
+  .legend {
+    position: absolute; bottom: 14px; left: 16px;
+    background: #161b22; border:1px solid #30363d; border-radius: 8px;
+    padding: 10px 12px; font-size: 11px; z-index: 5;
+  }
+  .legend .row { display:flex; align-items:center; gap:6px; margin:3px 0; }
+  .legend .dot { width:10px; height:10px; border-radius:50%; }
+
+  .footer-note {
+    text-align:center; color:#6e7681; font-size:11px; padding: 8px 0 20px;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🧠 open-pax — Panorama visual del estado actual</h1>
+  <div class="sub">Nodos tipo n8n · infraestructura + servicios + subproyectos · estado verificado en vivo</div>
+  <div class="meta">5-jul-2026 · Letta respondiendo por Telegram · 3 subproyectos activos · costo $0/mes</div>
+</div>
+
+<div class="canvas">
+  <!-- ===== Conexiones SVG ===== -->
+  <svg class="connections" viewBox="0 0 1280 920" preserveAspectRatio="none">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/>
+      </marker>
+      <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#3fb950"/>
+      </marker>
+      <marker id="arrp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#f778ba"/>
+      </marker>
+    </defs>
+    <!-- Telegram → Letta -->
+    <path d="M 140 96 C 240 96, 280 96, 360 96" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#arr)"/>
+    <!-- Letta → OpenCode Zen -->
+    <path d="M 560 120 C 700 120, 820 120, 920 120" fill="none" stroke="#3fb950" stroke-width="2" marker-end="url(#arrg)"/>
+    <!-- Letta → pgvector -->
+    <path d="M 460 145 C 460 200, 300 220, 300 270" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+    <!-- Letta → Ollama -->
+    <path d="M 460 145 C 460 200, 540 220, 540 270" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+    <!-- SP group incluye -->
+    <!-- Ollama → modelos locales -->
+    <path d="M 540 320 C 540 360, 460 380, 460 420" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Letta → personalpax (flujos personales) -->
+    <path d="M 460 145 C 460 480, 200 520, 180 560" fill="none" stroke="#f778ba" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrp)"/>
+
+    <!-- Tailscale conecta todos los nodos infra -->
+    <path d="M 1100 96 C 980 96, 560 96, 460 96" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"/>
+    <path d="M 1100 250 C 900 250, 700 320, 560 320" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"/>
+    <path d="M 1100 430 C 900 430, 700 430, 560 430" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"/>
+
+    <!-- subproyectos → expediente padre -->
+    <path d="M 280 690 C 360 760, 500 790, 560 800" fill="none" stroke="#8957e5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5"/>
+    <path d="M 640 690 C 640 740, 640 770, 640 800" fill="none" stroke="#8957e5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5"/>
+    <path d="M 1000 690 C 900 760, 800 790, 720 800" fill="none" stroke="#8957e5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5"/>
+  </svg>
+
+  <!-- ===== Grupos ===== -->
+  <div class="group" style="left:255px; top:60px; width:330px; height:300px;">
+    <div class="glabel">☁️ ORACLE SÃO PAULO (nube1) · 24/7 · $0</div>
+  </div>
+  <div class="group" style="left:905px; top:60px; width:240px; height:120px;">
+    <div class="glabel">🌐 EXTERNOS (APIs)</div>
+  </div>
+  <div class="group" style="left:905px; top:220px; width:240px; height:120px;">
+    <div class="glabel">💻 LAPTOP (plano de control)</div>
+  </div>
+  <div class="group" style="left:905px; top:400px; width:240px; height:120px;">
+    <div class="glabel">☁️ ORACLE FRANKFURT (nube2)</div>
+  </div>
+  <div class="group" style="left:40px; top:540px; width:1200px; height:170px;">
+    <div class="glabel">🧩 SUBPROYECTOS (en paralelo)</div>
+  </div>
+
+  <!-- ===== Nodos ===== -->
+
+  <!-- Erik + Telegram -->
+  <div class="node" style="left:30px; top:70px;">
+    <div class="top">
+      <div class="icon ic-user">👑</div>
+      <div class="titles"><div class="name">Erik</div><div class="where">@LaInconclusa80_bot</div></div>
+    </div>
+    <div class="detail">Cerebro creativo. Imagina y decide. TDAH + ACC.</div>
+    <span class="status st-green">🟢 usuario activo</span>
+  </div>
+
+  <!-- Letta -->
+  <div class="node" style="left:370px; top:70px;">
+    <div class="top">
+      <div class="icon ic-service">🧠</div>
+      <div class="titles"><div class="name">Letta</div><div class="where">SP :8283 · v0.16.8</div></div>
+    </div>
+    <div class="detail">Agente open-pax · modelo big-pickle · 11 msgs en memoria</div>
+    <span class="status st-green">🟢 responde 24/7</span>
+  </div>
+
+  <!-- Telegram bridge -->
+  <div class="node" style="left:370px; top:180px; width:185px;">
+    <div class="top">
+      <div class="icon ic-service">📲</div>
+      <div class="titles"><div class="name">Telegram bridge</div><div class="where">SP</div></div>
+    </div>
+    <div class="detail">Conecta bot ↔ Letta REST</div>
+    <span class="status st-green">🟢 UP 20 min</span>
+  </div>
+
+  <!-- pgvector -->
+  <div class="node" style="left:255px; top:255px; width:170px;">
+    <div class="top">
+      <div class="icon ic-service">🗄️</div>
+      <div class="titles"><div class="name">pgvector</div><div class="where">SP · pg16</div></div>
+    </div>
+    <div class="detail">BD de memoria del agente</div>
+    <span class="status st-green">🟢 healthy</span>
+  </div>
+
+  <!-- Ollama -->
+  <div class="node" style="left:475px; top:255px; width:170px;">
+    <div class="top">
+      <div class="icon ic-service">🦙</div>
+      <div class="titles"><div class="name">Ollama</div><div class="where">SP · respaldo</div></div>
+    </div>
+    <div class="detail">llama3.1:8b (local, sin red)</div>
+    <span class="status st-green">🟢 UP 2h</span>
+  </div>
+
+  <!-- Modelos locales -->
+  <div class="node" style="left:380px; top:400px; width:180px;">
+    <div class="top">
+      <div class="icon ic-cloud">🤖</div>
+      <div class="titles"><div class="name">Modelos locales</div><div class="where">Ollama</div></div>
+    </div>
+    <div class="detail">llama3.1:8b (SP) · qwen3-abl:4b (laptop)</div>
+    <span class="status st-yellow">🟡 14b/27b pendientes</span>
+  </div>
+
+  <!-- OpenCode Zen -->
+  <div class="node" style="left:920px; top:80px; width:200px;">
+    <div class="top">
+      <div class="icon ic-cloud">⚡</div>
+      <div class="titles"><div class="name">OpenCode Zen</div><div class="where">gateway externo</div></div>
+    </div>
+    <div class="detail">big-pickle (gratis) · /zen/v1</div>
+    <span class="status st-green">🟢 Letta usa este</span>
+  </div>
+
+  <!-- Laptop -->
+  <div class="node" style="left:920px; top:240px; width:200px;">
+    <div class="top">
+      <div class="icon ic-infra">💻</div>
+      <div class="titles"><div class="name">Laptop ASUS TUF</div><div class="where">RTX 3050 · 7.7GB</div></div>
+    </div>
+    <div class="detail">Fábrica de Código · Constelación WA</div>
+    <span class="status st-yellow">🟡 se apaga de noche</span>
+  </div>
+
+  <!-- Frankfurt -->
+  <div class="node" style="left:920px; top:420px; width:200px;">
+    <div class="top">
+      <div class="icon ic-infra">☁️</div>
+      <div class="titles"><div class="name">Oracle FRA</div><div class="where">workspace · 24GB</div></div>
+    </div>
+    <div class="detail">VACÍO · 36GB disco libre · listo</div>
+    <span class="status st-green">🟢 vivo, esperando</span>
+  </div>
+
+  <!-- Xiaomi -->
+  <div class="node" style="left:660px; top:420px; width:180px;">
+    <div class="top">
+      <div class="icon ic-infra">📱</div>
+      <div class="titles"><div class="name">Xiaomi 14T Pro</div><div class="where">nodo ligero</div></div>
+    </div>
+    <div class="detail">Termux · panel de control</div>
+    <span class="status st-green">🟢 4º nodo Tailscale</span>
+  </div>
+
+  <!-- Tailscale -->
+  <div class="node" style="left:1100px; top:70px; width:140px;">
+    <div class="top">
+      <div class="icon ic-infra">🕸️</div>
+      <div class="titles"><div class="name">Tailscale</div><div class="where">malla 4 nodos</div></div>
+    </div>
+    <div class="detail">red privada · $0</div>
+    <span class="status st-green">🟢</span>
+  </div>
+
+  <!-- ===== SUBPROYECTOS ===== -->
+
+  <!-- cerebropax -->
+  <div class="node" style="left:60px; top:565px; width:230px;">
+    <div class="top">
+      <div class="icon ic-sub">🧠</div>
+      <div class="titles"><div class="name">cerebropax</div><div class="where">banco de cerebros</div></div>
+    </div>
+    <div class="detail">LiteLLM en FRA · 10 proveedores · 16 modelos · una sola puerta</div>
+    <span class="status st-yellow">🟡 Fase 0 ✅ · Fase 1 pendiente</span>
+  </div>
+
+  <!-- recursospax -->
+  <div class="node" style="left:525px; top:565px; width:230px;">
+    <div class="top">
+      <div class="icon ic-sub">🗃️</div>
+      <div class="titles"><div class="name">recursospax</div><div class="where">bitácora de recursos</div></div>
+    </div>
+    <div class="detail">Caja fuerte técnica · APIs, claves, cuentas, modelos · 7 categorías</div>
+    <span class="status st-yellow">🟡 Fase 0 ✅ · Fase 1 pendiente</span>
+  </div>
+
+  <!-- personalpax -->
+  <div class="node" style="left:890px; top:565px; width:230px;">
+    <div class="top">
+      <div class="icon ic-person">💚</div>
+      <div class="titles"><div class="name">personalpax</div><div class="where">área personal</div></div>
+    </div>
+    <div class="detail">🧘 salud mental · 💵 finanzas · 📅 agenda · 🔁 hábitos · por Telegram</div>
+    <span class="status st-yellow">🟡 Fase 0 ✅ · Fase 1 pendiente</span>
+  </div>
+
+  <!-- open-pax padre -->
+  <div class="node" style="left:520px; top:790px; width:240px;">
+    <div class="top">
+      <div class="icon ic-sub">📁</div>
+      <div class="titles"><div class="name">open-pax (padre)</div><div class="where">EXPEDIENTE-MAESTRO</div></div>
+    </div>
+    <div class="detail">Fuente única de verdad · 4 áreas · 8 reglas de oro</div>
+    <span class="status st-green">🟢 Fase 1 (24/7) casi lista</span>
+  </div>
+
+  <!-- Leyenda -->
+  <div class="legend">
+    <div class="row"><div class="dot" style="background:#3fb950"></div>🟢 Funcionando / vivo</div>
+    <div class="row"><div class="dot" style="background:#d29922"></div>🟡 En progreso / parcial</div>
+    <div class="row"><div class="dot" style="background:#f85149"></div>🔴 Caído / pendiente</div>
+    <div class="row" style="margin-top:6px"><div class="dot" style="background:#58a6ff;width:18px;height:2px;border-radius:0"></div>flujo de datos</div>
+    <div class="row"><div class="dot" style="background:#f778ba;width:18px;height:2px;border-radius:0"></div>flujo personal</div>
+    <div class="row"><div class="dot" style="background:#58a6ff;width:18px;height:2px;border-radius:0;opacity:.5"></div>red Tailscale</div>
+  </div>
+</div>
+
+<div class="footer-note">
+  Diagrama simbólico tipo n8n · estado verificado en vivo el 5-jul-2026 · <b>Letta respondiendo por Telegram</b> · 3 subproyectos en paralelo · costo $0/mes
+</div>
+</body>
+</html>
