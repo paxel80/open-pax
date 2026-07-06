@@ -1,32 +1,50 @@
-# 🧠 open-pax — EXPEDIENTE-MAESTRO v3
+# 🧠 open-pax — EXPEDIENTE-MAESTRO v4
 
-> **Fuente única de verdad.** Rediseñado 5-jul-2026 desde el veredicto del Consejo de 18 miembros.
+> **Fuente única de verdad.** Re-encuadrado 6-jul-2026 (docs 21-24): open-pax = **lóbulo frontal externo de Erik** (no agente autónomo de 316 caps).
 > Repo: https://github.com/paxel80/open-pax
-> **El objetivo máximo es la autonomía. Nada es dogma, excepto el objetivo.**
+> **El objetivo es vencer el TDAH de Erik con andamiaje, no sustituir su función frontal.**
 
 ---
 
 ## ¿Qué es open-pax?
 
-**Un agente autónomo de propósito general** que opera sin supervisión humana continua.
-Aspira a adquirir/replicar un espectro amplio de capacidades humanas — cognición, comunicación, percepción, memoria, acción digital, creatividad, aprendizaje, autogestión, razonamiento social, juicio ético.
+**El lóbulo frontal externo de Erik.** Erik tiene ACC (Altas Capacidades Cognitivas) + TDAH. Su cerebro genera ideas potentes pero la función ejecutiva (iniciación, seguimiento, priorización) falla por hipofrontalidad. open-pax es el andamiaje externo que **dirige y recuerda**, no ejecuta por Erik.
 
-| Área                       | Qué cubre                                                       |
-| --------------------------- | ---------------------------------------------------------------- |
-| 🗂️**Organización** | Proyectos, priorización, deadlines, conexiones                  |
-| 🔬**Investigación**  | Escaneo de tendencias 24/7, alerta de obsolescencia, validación |
-| 🛠️**Trabajo**       | Construcción de código, dossiers, proyectos reales             |
-| 💚**Personal**        | Finanzas, salud mental (TDAH/ACC), agenda, hábitos, relaciones  |
+| Función frontal | TDAH la rompe | open-pax la cubre |
+|---|---|---|
+| 📌 **Iniciación** | "no me dan ganas de arrancar" | partir la tarea en pasos de 5-10 min |
+| 🧠 **Memoria de trabajo** | "¿en qué iba ayer?" | recordar contexto entre sesiones |
+| 🎯 **Planificación** | "todo es urgente o nada" | leer tablero, elegir 1 sola tarea |
+| 🔄 **Flexibilidad** | "me clavo horas en una" | cron que avisa si llevas mucho tiempo |
+| 🛑 **Inhibición** | "se me ocurre idea Y y me voy" | cajón-ideas: "¿la anoto para el domingo?" |
+| ✅ **Seguimiento** | "no siento que avanzo" | bitácora de cerrados + celebración |
+| 💚 **Reg. emocional** 🟡 | "me frustro y lo dejo" | solo contención suave, NO terapia |
 
-**Erik = diseñador ex-ante + auditor ex-post.** Define objetivos e invariantes una vez, revisa trazas después.
-**open-pax = agente autónomo.** Razona, actúa, se verifica y se corrige solo, dentro de un perímetro de acciones reversibles.
+**Erik = ejecuta.** open-pax = dirige + recuerda + frena (andamiaje, no muleta).
+**Motor = Hermes** (no Letta). Ver docs 22-24.
 
 ---
 
-## 🎯 OBJETIVO MÁXIMO — El Paradigma
+## 🎯 OBJETIVO — El lóbulo frontal (re-encuadre docs 21-24)
 
-> **Establecido por el Consejo de 18 miembros (15/16 unánime, 3 rondas, autonomía máxima).**
-> Ver veredicto completo: `documentos/14_veredicto-consejo-estado-del-arte.md`
+> **Re-encuadrado 6-jul-2026.** El paradigma single-agent+autoverify+reversible (doc 14) sigue como arquitectura,
+> pero el PROPÓSITO cambió de "agente autónomo 316 caps" a "lóbulo frontal de Erik en Hermes".
+> Ver: `documentos/23_lobulo-frontal-spec.md` (encuadre fundacional)
+
+### Andamiaje, no muleta
+
+| Muleta (prohibido) | Andamiaje (obligatorio) |
+|---|---|
+| "Hermes, hazme la tarea" | "Hermes, ¿qué toca? ¿la partimos? avísame cada 20 min" |
+| Hermes ejecuta, Erik mira | Erik ejecuta, Hermes dirige + recuerda |
+| Atrofia el lóbulo frontal real | Entrena el lóbulo frontal real |
+| Dependencia creciente | Autonomía creciente (andamiaje se retira gradual) |
+
+### Barbell 90/10 (doc 21)
+
+- **90% Yésika** = ingreso real de Erik ($3-5k/sem). open-pax potencia Yésika, no compite.
+- **10% open-pax** = configurar Hermes para las 7 funciones frontales, no construir infra.
+- **Kill switch del veredicto:** si en 30 días open-pax consume >10% del tiempo de Erik sin transferir a Yésika → pausar open-pax, 100% a Yésika.
 
 ### Single-agent + Autoverify + Reversible
 
@@ -146,11 +164,11 @@ UN solo siguiente paso para Erik. Sin listas abrumadoras. El sistema autónomo p
 
 | Recurso                   | Especificación                                      | Estado                                              |
 | ------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
-| Oracle nube1 (São Paulo) | 4 vCPU ARM, 24 GB RAM                                | 🟢 Viva, Tailscale, Letta desplegado                |
-| Oracle nube2 (Frankfurt)  | 4 vCPU ARM, 24 GB RAM                                | 🟢 Viva, Tailscale, LiteLLM desplegado (cerebropax) |
-| Laptop ASUS               | i5-11400H, 7.7 GB RAM, RTX 3050 4 GB VRAM            | 🟢 Activa                                           |
+| Laptop ASUS               | i5-11400H, 7.7 GB RAM, RTX 3050 4 GB VRAM            | 🟢 Activa · **Hermes instalado** (AppData\Local\hermes) |
+| Xiaomi 14T Pro            | Nodo Tailscale, panel de control                     | 🟢 Activo · Erik habla con Hermes por Telegram |
+| Oracle nube2 (Frankfurt)  | 4 vCPU ARM, 24 GB RAM                                | 🟢 Viva, Tailscale, LiteLLM desplegado (cerebropax, 25 modelos) |
+| Oracle nube1 (São Paulo) | 4 vCPU ARM, 24 GB RAM                                | 🟡 Viva, Tailscale · Letta archivado (doc 22) |
 | 2do equipo Tailscale      | Ollama con qwen3-abliterated:14b + embeddings bge-m3 | 🟢 Accesible                                        |
-| Xiaomi 14T Pro            | Nodo Tailscale, panel de control                     | 🟢 Activo                                           |
 
 ### APIs y servicios
 
@@ -180,28 +198,35 @@ $$
 
 ---
 
-## 🏗️ Arquitectura objetivo (alineada al paradigma)
+## 🏗️ Arquitectura (re-encuadrada: Hermes + LiteLLM)
 
-### Componentes del paradigma single-agent+autoverify+reversible
+> **Re-encuadre 6-jul-2026 (docs 22-24):** motor = Hermes (no Letta). LiteLLM sigue como router de modelos.
 
-| Componente                        | Rol                          | Estado actual                     | Estado objetivo                                  |
-| --------------------------------- | ---------------------------- | --------------------------------- | ------------------------------------------------ |
-| **LLM núcleo**             | Razonamiento + tool-calling  | Letta con OpenCode Zen big-pickle | LiteLLM/cerebropax enruta a Qwen3/Llama-4 + APIs |
-| **Tool-calling (MCP)**      | Estándar de herramientas    | Pendiente                         | MCP server con tools reversibles                 |
-| **Memoria legible**         | Audit trail + contexto       | pgvector (Letta)                  | pgvector + Qdrant + logs estructurados           |
-| **Auto-verificador**        | 2º pase adversarial + tests | Pendiente                         | LLM-as-judge (modelo distinto) + eval suite      |
-| **Sandbox reversible**      | Ejecución con undo          | Pendiente                         | Docker + git checkpoint + dry-run                |
-| **Kill-switch automático** | Watchdog por invariantes     | Pendiente                         | Watchdog determinista por invariantes            |
+### Componentes actuales
 
-### Asignación a nodos
+| Componente | Rol | Estado | Dónde |
+|---|---|---|---|
+| **Hermes** | Lóbulo frontal: cognición, memoria, skills, cron, gateway TG | 🟢 Instalado, 22 skills, state.db 68MB | Laptop (AppData\Local\hermes) |
+| **LiteLLM/cerebropax** | Router de 25 modelos (12 proveedores) | 🟢 Desplegado, 4 proveedores verificados | nube2 (Frankfurt) |
+| **Telegram gateway** | Canal de comunicación con Erik | 🟢 Configurado en Hermes (token descomentado) | Laptop → @LaInconclusa80_bot |
+| **mi-tablero.html** | Kanban de Erik (localStorage) | 🟢 Activo, 17KB | paxel80\Contexto-IA\ |
+| **tablero.json** | Export del tablero para Hermes | 🟢 Creado (seed inicial) | paxel80\Contexto-IA\ |
+| **SOUL.md** | Identidad del agente = lóbulo frontal de Erik | 🟢 Personalizado | AppData\Local\hermes\ |
+| **Letta** | ~~Motor del agente~~ | 🔴 Archivado (doc 22) | documentos/_archivados/letta-no-desplegado/ |
 
-| Nodo               | Aloja                                     | Por qué                       |
-| ------------------ | ----------------------------------------- | ------------------------------ |
-| nube1 (SP, 24 GB)  | Letta (agente + memoria)                  | Ya desplegado, memoria activa  |
-| nube2 (FRA, 24 GB) | LiteLLM/cerebropax + sandbox + watchdog   | Workspace, más RAM disponible |
-| Laptop             | Modelos locales (Qwen3:4b) + SD + Whisper | GPU local                      |
-| 2do equipo         | Modelos grandes (Qwen3:14b)               | Más VRAM/cómputo             |
-| Xiaomi             | Panel de control + notificaciones         | Siempre con Erik               |
+### Asignación a nodos (docs 22-24)
+
+| Nodo | Aloja | Por qué |
+|---|---|---|
+| **Laptop** (propio) | Hermes + skills + sesión de día | Sustrato propio, reversible, GPU local |
+| **Xiaomi** (propio) | Erik habla con Hermes por Telegram | Siempre con Erik |
+| nube2 (FRA, ajeno) | LiteLLM/cerebropax (router modelos) | 24GB RAM, Tailscale |
+| nube1 (SP, ajeno) | (futuro) Hermes 24/7 o n8n Fase 2 | Letta archivado |
+
+### n8n (Fase 2, NO ahora)
+
+> Doc 24: n8n se despliega solo cuando una skill de Hermes necesite una API externa que no tenga nativa.
+> Vive en VM Oracle (no laptop — 7.7GB RAM al límite). Webhook interno solo por Tailscale.
 
 ---
 
@@ -231,78 +256,52 @@ $$
 
 ---
 
-## 🚧 Hoja de ruta (alineada al paradigma)
+## 🚧 Hoja de ruta (re-encuadrada: lóbulo frontal en Hermes)
 
 ### Fase 0 — Fundación 🟢 COMPLETA
+- [x] 2 VMs Oracle A1 4/24 ARM vivas, Tailscale
+- [x] Xiaomi 14T Pro como nodo Tailscale
+- [x] LiteLLM/cerebropax desplegado en nube2 (25 modelos, 4 proveedores verificados)
+- [x] Hermes instalado en laptop (22 skills, state.db 68MB, memories, cron)
 
-- [X] 2 VMs Oracle A1 4/24 ARM vivas, Tailscale
-- [X] Xiaomi 14T Pro como nodo Tailscale
-- [X] Letta desplegado en nube1 con pgvector + Telegram bridge
-- [X] Timeout resuelto (migrado a OpenCode Zen big-pickle)
+### Fase 1 — Lóbulo frontal en Hermes ⏳ ACTUAL
 
-### Fase 1 — Núcleo autónomo ⏳ ACTUAL
+> Docs 22-24. Fase 1 = SOLO Hermes, sin n8n. 7 funciones frontales con skills nativas.
 
-> Roadmap de ejecución detallado: `documentos/20_roadmap-fase-1.md` (Consejo quick: Torvalds 1.5× + Musashi + Feynman).
-> Ejecutado por bootstrap-builder (R8): un agente IA construye los componentes, no Erik.
+- [x] SOUL.md personalizado (lóbulo frontal de Erik, no asistente genérico)
+- [x] Telegram configurado en Hermes (token descomentado del .env)
+- [x] tablero.json creado (seed inicial del tablero Kanban)
+- [x] Skill #1 `que-toca-hoy` creada y verificada (lee tablero.json, devuelve 1 tarea)
+- [x] Letta archivado a `_archivados/letta-no-desplegado/` (doc 22 Paso 4)
+- [ ] Skill #2 `partir-en-pasos` (parte tarea en 5-10 min)
+- [ ] Cron de avisos TDAH (avisa cada X min si no avanza)
+- [ ] Skill #3 `bitacora-cierre` (celebrar cerrados + actualizar tablero)
+- [ ] Skill #4 `cajon-ideas` (inhibición de impulsos)
+- [ ] Conectar Hermes a AGENTS.md como system prompt (doc 22 Paso 5)
+- [ ] **Hito:** Erik pregunta "¿qué toca?" por Telegram → Hermes responde con 1 tarea → Erik la parte en pasos → cron avisa → Erik cierra → Hermes celebra
 
-FASE 1A — Cerebro (secuencial, bloqueante)
+### Fase 2 — Hermes + n8n (cuando lo necesites, ~mes 2)
+- [ ] Desplegar n8n en VM Oracle (no laptop — RAM)
+- [ ] Conectar Hermes ↔ n8n vía webhook (Tailscale, no internet)
+- [ ] n8n solo para integraciones que Hermes no tenga nativas (Gmail, Calendar, Notion)
+- [ ] **Regla de activación:** solo cuando una skill necesite una API externa
 
-- [X] 1. Desplegar LiteLLM/cerebropax en nube2 → 24 modelos cargados, accesible vía Tailscale ✅
-- [ ] 2. Cablear Letta→LiteLLM → agente enruta vía cerebropax
-
-FASE 1B — Cuerpo (paralelo, mismo builder)
-
-- [ ] 3a. Sandbox reversible (git init + cwd restricto)
-- [ ] 3b. Tool MCP `write_file` + `undo` (git reset --hard HEAD~1)
-
-FASE 1C — Juicio mínimo (secuencial tras 1B)
-
-- [ ] 4. Auto-verificador: subprocess `ruff check` (LLM adversarial → Fase 2)
-
-FASE 1D — Defensa mínima (secuencial tras 1C)
+### Fase 3 — 24/7 (cuando la laptop se quede corta)
+- [ ] Migrar Hermes a VM Oracle para 24/7
+- [ ] Sync de memories entre laptop y VM
+- [ ] Watchdog con invariantes I1-I5 (doc 19)
 
 - [ ] 5. Watchdog mínimo: I5 (0 irreversibles) + logging (I1-I4 → Fase 2)
 
-**Hito Fase 1:** agente ejecuta "crea hola.py" → escribe → ruff → revierte si falla → notifica a Telegram — sin intervención humana, con trazas, sin violar I5.
-
-### Fase 2 — Capacidades autónomas ⏳
-
-- [ ] 10 capacidades tipo A con verificador objetivo (código, configs, SQL)
-- [ ] Memoria legible con poda automática
-- [ ] Sub-agentes para tareas acotadas (research, finanzas, organización)
-- [ ] **Hito:** "investiga X y dame el reporte" → autónomo end-to-end
-
-### Fase 3 — Profundidad ⏳
-
-- [ ] Capacidades tipo A+R (mixto) con auto-verificación
-- [ ] Voz natural (TTS/STT) integrada al agente
-- [ ] Salud mental autónoma (recordatorios, tracking, alertas)
-- [ ] **Hito:** "gestiona mi agenda esta semana" → autónomo
-
-### Fase 4 — Percepción ⏳
-
-- [ ] Visión multimodal (cámara + LLaVA)
-- [ ] browser-use integrado como tool reversible
-- [ ] **Hito:** "lee esta página y extrae los datos" → autónomo
-
-### Fase 5 — Hardening antifragil ⏳
-
-- [ ] Barbell: 90% reversible + 10% irreversible con dead-man's switch
-- [ ] Telemetría de falsos negativos del verificador
-- [ ] Auto-recalibración de umbrales por tasa de error
-- [ ] **Hito:** sistema opera 30 días sin intervención, auditando sus propias trazas
-
-### Fase 6+ — Lo que descubramos 🔮
-
-- [ ] Lo que el estado del arte permita cuando lleguemos
+**Hito Fase 1:** Erik pregunta "¿qué toca?" por Telegram → Hermes responde con 1 tarea → Erik la parte en pasos → cron avisa → Erik cierra → Hermes celebra.
 
 ---
 
 ## 📚 Documentos del proyecto
 
-| Documento                                                     | Qué es                                                                                                     |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `EXPEDIENTE-MAESTRO.md`                                     | Fuente única de verdad (este archivo, v3)                                                                  |
+| Documento | Qué es |
+|---|---|
+| `EXPEDIENTE-MAESTRO.md` | Fuente única de verdad (este archivo, v4) |
 | `SIGUIENTE-PASO.md`                                         | 1 archivo, 1 comando — lo que Erik ejecuta hoy para avanzar                                                |
 | `documentos/06_capacidades-humanas-universales.md`          | Taxonomía: 316 capacidades en 18 grupos                                                                    |
 | `documentos/07_capacidades-cuerpo-fisico-filtro.md`         | Filtro: 48 capacidades que requieren cuerpo físico                                                         |
@@ -318,6 +317,10 @@ FASE 1D — Defensa mínima (secuencial tras 1C)
 | `documentos/18_expediente-personalpax.md`                   | Expediente histórico: área personal — ahora integrado como capacidades del agente                        |
 | `documentos/19_invariantes-operativos.md`                   | Invariantes numéricos (presupuesto, blast radius, tasa error) + DAG de Fase 1                              |
 | `documentos/20_roadmap-fase-1.md`                           | **Roadmap de ejecución de Fase 1** — orden de los 6 pasos, qué paralelizar, anti-over-engineering  |
+| `documentos/21_auditoria-ecc-council.md`                    | **Auditoría ECC + Council:** barbell 90/10, agente narrow, Yésika primero, regenerar claves |
+| `documentos/22_decision-agente-narrow-hermes.md`            | **Decisión: Hermes reemplaza Letta** — 5 capacidades narrow, gateway TG nativo |
+| `documentos/23_lobulo-frontal-spec.md`                      | **Encuadre fundacional:** open-pax = lóbulo frontal de Erik (7 funciones frontales, no 316 caps) |
+| `documentos/24_hermes-mas-n8n-arquitectura.md`              | Hermes + n8n (cerebro + manos) — Fase 1 solo Hermes, n8n en Fase 2 |
 | `codigo/letta/`                                             | Stack Letta: Docker Compose + Telegram bridge + setup                                                       |
 | `codigo/cerebropax/`                                        | LiteLLM: config.yaml + docker-compose + deploy + test                                                       |
 | `recursos/bitacora/`                                        | Bitácora de APIs LLM (claves, saldos, canónicas)                                                          |
@@ -383,4 +386,26 @@ FASE 1D — Defensa mínima (secuencial tras 1C)
 
 ---
 
-*open-pax v3 · 5-jul-2026 · Paradigma: single-agent + autoverify + reversible · Consejo de 18 miembros*
+## 🧠 Re-encuadre del propósito (6-jul-2026) — ver `documentos/22`, `23`, `24`
+
+> Tras la auditoría, Erik aclaró el propósito real: open-pax NO es un agente autónomo de 316 capacidades — es su **asistente personal para ejecución+seguimiento de tareas** (TDAH + Altas Capacidades Cognitivas), re-encuadrado como su **lóbulo frontal externo** (TDAH = hipofrontalidad).
+
+**Tres decisiones en cadena (todas a disco):**
+
+- **`documentos/22` — Motor: Hermes, no Letta, no OpenClaw.** Hermes ya está instalado en `AppData\Local\hermes\` con `state.db`, `memories\`, `cron\`, `skills\`, `sandboxes\` vivos + gateway nativo a Telegram/Discord/Slack/WhatsApp/Signal. Hace nativamente todo lo que Letta+bridge custom construirían → elimina 4 de 6 hallazgos 🔴 de la auditoría. Costo de cambio = 0.
+
+- **`documentos/23` — Spec fundacional: open-pax = lóbulo frontal de Erik.** 7 funciones frontales (iniciación, memoria de trabajo, planificación, flexibilidad, inhibición, seguimiento, regulación emocional 🟡límite-ético). Principio de diseño #1: **andamiaje, no muleta** — Hermes dirige/recuerda/frena (entrena el lóbulo frontal real), NUNCA ejecuta por Erik (lo atrofiaría). Sigue el paradigma single-agent+autoverify+reversible como arquitectura, pero el propósito cambia de "robot autónomo 316 caps" a "lóbulo frontal de Erik implementado en Hermes".
+
+- **`documentos/24` — Arquitectura: Hermes + n8n (cerebro + manos).** n8n (orquestador de workflows determinista) complementa a Hermes (cognición). Patrón: `Erik → Hermes (decide) → n8n (ejecuta APIs) → Hermes (interpreta) → Erik`. Anti-TDAH: **fasear, NO sumar de golpe** — Fase 1 = solo Hermes (80% del valor), Fase 2 = n8n SOLO cuando una skill de Hermes necesite una API externa que no tenga nativa. n8n ya existió en el Hetzner (caído 2-jul); `N8N_API_KEY` aún en `keys.env` pero sin instancia. Desplegar en VM Oracle (NO laptop, RAM al límite), webhook interno solo por Tailscale.
+
+**Pendientes vigentes (de la cadena 22-24):**
+1. Verificar si Hermes gateway a Telegram ya está configurado (doc 22 Paso 1).
+2. Conectar Hermes a `AGENTS.md` (Contexto-IA) para que sepa quién es Erik.
+3. Construir skill #1 "¿qué toca hoy?" (función frontal #3, lee `mi-tablero.html`).
+4. Archivar `codigo/letta/` a `_archivados/letta-no-desplegado/` (mover, no borrar).
+5. Mini-autodiagnóstico de las 7 funciones frontales (decide cuál skill construir primero).
+6. 🔴 HOY: cerrar Ollama 11434 al internet (doc 21 Paso 1) + regenerar claves.
+
+---
+
+*open-pax v3 · 5-jul-2026 (actualizado 6-jul-2026 con re-encuadre lóbulo frontal docs 22-24) · Paradigma: single-agent + autoverify + reversible · Motor: Hermes · Orquestador: n8n (Fase 2) · Consejo de 18 miembros*
