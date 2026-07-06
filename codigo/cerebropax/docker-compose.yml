@@ -15,6 +15,9 @@ services:
     image: ghcr.io/berriai/litellm:main-latest
     container_name: cerebropax-litellm
     restart: unless-stopped
+    # Corregido 6-jul-2026: el entrypoint por defecto no incluye --config,
+    # por lo que /v1/models salia vacio. Forzamos la lectura del config.yaml.
+    command: --config /app/config.yaml --port 4000 --num_workers 1
     ports:
       # Escucha en TODAS las interfaces, pero ufw solo permite Tailscale + localhost.
       # No exponer al internet público. Ver deploy.sh para reglas de ufw.
@@ -25,8 +28,10 @@ services:
     env_file:
       - .env
     environment:
-      # Solo variables no sensibles o derivadas; el resto entra via .env
+      # Fase 1: STORE_MODEL_IN_DB=true. LiteLLM main-latest requiere DB
+      # para funcionar (incluso /v1/models y chat completions).
       - STORE_MODEL_IN_DB=true
+      - LITELLM_CONFIG_FILE_PATH=/app/config.yaml
     depends_on:
       litellm_db:
         condition: service_healthy
@@ -47,6 +52,7 @@ services:
 
   # ---------------------------------------------------------------------------
   # PostgreSQL — guarda logs, claves virtuales, uso por modelo
+  # LiteLLM main-latest requiere DB para funcionar.
   # ---------------------------------------------------------------------------
   litellm_db:
     image: postgres:16-alpine

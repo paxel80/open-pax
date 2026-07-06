@@ -26,15 +26,21 @@ model_list:
 
   # ===========================================================================
   # NVIDIA NIM — ~121 modelos gratis, muy capaces (tareas difíciles)
+  # LiteLLM usa el prefijo nvidia_nim/ para NVIDIA NIM
   # ===========================================================================
   - model_name: nvidia/qwen3-next-80b
     litellm_params:
-      model: nvidia/qwen/qwen3-next-80b-a3b-instruct
+      model: nvidia_nim/qwen/qwen3-next-80b-a3b-instruct
       api_key: ${NVIDIA_API_KEY}
       api_base: https://integrate.api.nvidia.com/v1
   - model_name: nvidia/llama-3.1-nemotron-70b
     litellm_params:
-      model: nvidia/nvidia/llama-3.1-nemotron-70b-instruct
+      model: nvidia_nim/nvidia/llama-3.1-nemotron-70b-instruct
+      api_key: ${NVIDIA_API_KEY}
+      api_base: https://integrate.api.nvidia.com/v1
+  - model_name: nvidia/llama-3.1-nemotron-70b
+    litellm_params:
+      model: nvidia/llama-3.1-nemotron-70b-instruct
       api_key: ${NVIDIA_API_KEY}
       api_base: https://integrate.api.nvidia.com/v1
 
@@ -222,4 +228,6 @@ litellm_settings:
 general_settings:
   master_key: ${LITELLM_MASTER_KEY}
   ui_token: ${LITELLM_UI_TOKEN}
-  database_url: ${LITELLM_DATABASE_URL}
+  # database_url removido para Fase 1: la validacion de esquema de LiteLLM
+  # entra en conflicto con --config. La DB se reintroduce en Fase 2 via
+  # variable DATABASE_URL del entorno (no via config.yaml).
