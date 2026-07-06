@@ -1,154 +1,159 @@
 # =============================================================================
-# cerebropax — Banco de cerebros de open-pax
-# Configuración LiteLLM: define todos los modelos disponibles y sus rutas.
+# cerebropax â€” Banco de cerebros de open-pax
+# ConfiguraciÃ³n LiteLLM: define todos los modelos disponibles y sus rutas.
 # =============================================================================
-# Las LLAVES van en .env (NUNCA subir a git). Aquí solo referencias ${VAR}.
+# Las LLAVES van en .env (NUNCA subir a git). AquÃ­ solo referencias os.environ/VAR.
 # Docs: https://docs.litellm.ai/docs/proxy/configs
 # =============================================================================
 
 model_list:
 
   # ===========================================================================
-  # GROQ — gratis, lo más rápido que existe (chat instantáneo)
+  # GROQ â€” gratis, lo mÃ¡s rÃ¡pido que existe (chat instantÃ¡neo)
   # ===========================================================================
   - model_name: groq/llama-3.3-70b
     litellm_params:
       model: groq/llama-3.3-70b-versatile
-      api_key: ${GROQ_API_KEY}
+      api_key: os.environ/GROQ_API_KEY
   - model_name: groq/llama-3.1-8b-instant
     litellm_params:
       model: groq/llama-3.1-8b-instant
-      api_key: ${GROQ_API_KEY}
+      api_key: os.environ/GROQ_API_KEY
   - model_name: groq/mixtral-8x7b
     litellm_params:
       model: groq/mixtral-8x7b-32768
-      api_key: ${GROQ_API_KEY}
+      api_key: os.environ/GROQ_API_KEY
 
   # ===========================================================================
-  # NVIDIA NIM — ~121 modelos gratis, muy capaces (tareas difíciles)
+  # NVIDIA NIM â€” ~121 modelos gratis, muy capaces (tareas difÃ­ciles)
   # LiteLLM usa el prefijo nvidia_nim/ para NVIDIA NIM
   # ===========================================================================
   - model_name: nvidia/qwen3-next-80b
     litellm_params:
       model: nvidia_nim/qwen/qwen3-next-80b-a3b-instruct
-      api_key: ${NVIDIA_API_KEY}
+      api_key: os.environ/NVIDIA_API_KEY
       api_base: https://integrate.api.nvidia.com/v1
   - model_name: nvidia/llama-3.1-nemotron-70b
     litellm_params:
       model: nvidia_nim/nvidia/llama-3.1-nemotron-70b-instruct
-      api_key: ${NVIDIA_API_KEY}
+      api_key: os.environ/NVIDIA_API_KEY
       api_base: https://integrate.api.nvidia.com/v1
   - model_name: nvidia/llama-3.1-nemotron-70b
     litellm_params:
       model: nvidia/llama-3.1-nemotron-70b-instruct
-      api_key: ${NVIDIA_API_KEY}
+      api_key: os.environ/NVIDIA_API_KEY
       api_base: https://integrate.api.nvidia.com/v1
 
   # ===========================================================================
-  # DEEPSEEK — centavos, código baratísimo + razonamiento (deepseek-reasoner)
+  # DEEPSEEK â€” centavos, cÃ³digo baratÃ­simo + razonamiento (deepseek-reasoner)
   # ===========================================================================
   - model_name: deepseek/chat
     litellm_params:
       model: deepseek/deepseek-chat
-      api_key: ${DEEPSEEK_API_KEY}
+      api_key: os.environ/DEEPSEEK_API_KEY
   - model_name: deepseek/coder
     litellm_params:
       model: deepseek/deepseek-coder
-      api_key: ${DEEPSEEK_API_KEY}
+      api_key: os.environ/DEEPSEEK_API_KEY
   - model_name: deepseek/reasoner
     litellm_params:
       model: deepseek/deepseek-reasoner
-      api_key: ${DEEPSEEK_API_KEY}
+      api_key: os.environ/DEEPSEEK_API_KEY
 
   # ===========================================================================
-  # GEMINI — gratis, ve imágenes + texto (multimodal)
+  # GEMINI â€” gratis, ve imÃ¡genes + texto (multimodal)
   # ===========================================================================
   - model_name: gemini/2.0-flash
     litellm_params:
       model: gemini/gemini-2.0-flash-001
-      api_key: ${GEMINI_API_KEY}
+      api_key: os.environ/GEMINI_API_KEY
   - model_name: gemini/2.5-flash
     litellm_params:
       model: gemini/gemini-2.5-flash
-      api_key: ${GEMINI_API_KEY}
+      api_key: os.environ/GEMINI_API_KEY
 
   # ===========================================================================
-  # CEREBRAS — gratis, rival de Groq en velocidad
+  # CEREBRAS â€” gratis, rival de Groq en velocidad
+  # Modelos actualizados 6-jul-2026: Cerebras reemplazo llama3.1 por nuevos
   # ===========================================================================
-  - model_name: cerebras/llama-3.1-8b
+  - model_name: cerebras/gpt-oss-120b
     litellm_params:
-      model: cerebras/llama3.1-8b
-      api_key: ${CEREBRAS_API_KEY}
-  - model_name: cerebras/llama-3.1-70b
+      model: cerebras/gpt-oss-120b
+      api_key: os.environ/CEREBRAS_API_KEY
+  - model_name: cerebras/zai-glm-4.7
     litellm_params:
-      model: cerebras/llama3.1-70b
-      api_key: ${CEREBRAS_API_KEY}
+      model: cerebras/zai-glm-4.7
+      api_key: os.environ/CEREBRAS_API_KEY
+  - model_name: cerebras/gemma-4-31b
+    litellm_params:
+      model: cerebras/gemma-4-31b
+      api_key: os.environ/CEREBRAS_API_KEY
 
   # ===========================================================================
-  # MISTRAL — free tier, bueno para código
+  # MISTRAL â€” free tier, bueno para cÃ³digo
   # ===========================================================================
   - model_name: mistral/large
     litellm_params:
       model: mistral/mistral-large-latest
-      api_key: ${MISTRAL_API_KEY}
+      api_key: os.environ/MISTRAL_API_KEY
   - model_name: mistral/codestral
     litellm_params:
       model: mistral/codestral-latest
-      api_key: ${MISTRAL_API_KEY}
+      api_key: os.environ/MISTRAL_API_KEY
 
   # ===========================================================================
-  # COHERE — RAG, embeddings, comandos
+  # COHERE â€” RAG, embeddings, comandos
   # ===========================================================================
   - model_name: cohere/command-r-plus
     litellm_params:
       model: cohere/command-r-plus
-      api_key: ${COHERE_API_KEY}
+      api_key: os.environ/COHERE_API_KEY
 
   # ===========================================================================
-  # HUGGINGFACE — experimentos, modelos raros
+  # HUGGINGFACE â€” experimentos, modelos raros
   # ===========================================================================
   - model_name: hf/mistral-7b
     litellm_params:
       model: huggingface/mistralai/Mistral-7B-Instruct-v0.3
-      api_key: ${HUGGINGFACE_API_KEY}
+      api_key: os.environ/HUGGINGFACE_API_KEY
 
   # ===========================================================================
-  # OPENROUTER — el súper mercado: 100+ modelos con 1 llave
+  # OPENROUTER â€” el sÃºper mercado: 100+ modelos con 1 llave
   # ===========================================================================
   - model_name: openrouter/auto
     litellm_params:
       model: openrouter/auto
-      api_key: ${OPENROUTER_API_KEY}
+      api_key: os.environ/OPENROUTER_API_KEY
   - model_name: openrouter/anthropic/claude-3.5-sonnet
     litellm_params:
       model: openrouter/anthropic/claude-3.5-sonnet
-      api_key: ${OPENROUTER_API_KEY}
+      api_key: os.environ/OPENROUTER_API_KEY
 
   # ===========================================================================
-  # OPENAI — pago, calidad tope (solo para lo difícil)
+  # OPENAI â€” pago, calidad tope (solo para lo difÃ­cil)
   # ===========================================================================
   - model_name: openai/gpt-4o
     litellm_params:
       model: openai/gpt-4o
-      api_key: ${OPENAI_API_KEY}
+      api_key: os.environ/OPENAI_API_KEY
   - model_name: openai/gpt-4o-mini
     litellm_params:
       model: openai/gpt-4o-mini
-      api_key: ${OPENAI_API_KEY}
+      api_key: os.environ/OPENAI_API_KEY
 
   # ===========================================================================
-  # ANTHROPIC — pago, calidad tope (Claude, rivalsal de OpenAI para lo difícil)
+  # ANTHROPIC â€” pago, calidad tope (Claude, rivalsal de OpenAI para lo difÃ­cil)
   # Clave revelada por Erik via curl 5-jul-2026 (no estaba en ningun .env)
   # Modelos: claude-sonnet-4-6 (verificado responde), opus (verificar acceso)
   # ===========================================================================
   - model_name: anthropic/claude-sonnet-4-6
     litellm_params:
       model: anthropic/claude-sonnet-4-6
-      api_key: ${ANTHROPIC_API_KEY}
+      api_key: os.environ/ANTHROPIC_API_KEY
   - model_name: anthropic/claude-haiku
     litellm_params:
       model: anthropic/claude-3-5-haiku-20241022
-      api_key: ${ANTHROPIC_API_KEY}
+      api_key: os.environ/ANTHROPIC_API_KEY
 
   # ===========================================================================
   # OLLAMA LOCAL (respaldo 24/7 sin censura)
@@ -163,19 +168,19 @@ model_list:
       api_base: http://central:11434
 
 # =============================================================================
-# Grupos de routing (alias cómodos para los consumidores)
+# Grupos de routing (alias cÃ³modos para los consumidores)
 # =============================================================================
 router_groups:
   - group_alias: chat-rapido
     models:
       - groq/llama-3.1-8b-instant
-      - cerebras/llama-3.1-8b
+      - cerebras/gpt-oss-120b
       - gemini/2.0-flash
   - group_alias: chat-inteligente
     models:
       - groq/llama-3.3-70b
       - nvidia/qwen3-next-80b
-      - cerebras/llama-3.1-70b
+      - cerebras/gemma-4-31b
   - group_alias: codigo
     models:
       - deepseek/coder
@@ -216,18 +221,18 @@ litellm_settings:
   request_timeout: 60
   fallbacks:
     - groq/llama-3.1-8b-instant:
-        - cerebras/llama-3.1-8b
+        - cerebras/gpt-oss-120b
         - ollama/llama3.1-8b
     - groq/llama-3.3-70b:
         - nvidia/qwen3-next-80b
-        - cerebras/llama-3.1-70b
+        - cerebras/gemma-4-31b
     - anthropic/claude-sonnet-4-6:
         - openai/gpt-4o
         - nvidia/qwen3-next-80b
 
 general_settings:
-  master_key: ${LITELLM_MASTER_KEY}
-  ui_token: ${LITELLM_UI_TOKEN}
+  master_key: os.environ/LITELLM_MASTER_KEY
+  ui_token: os.environ/LITELLM_UI_TOKEN
   # database_url removido para Fase 1: la validacion de esquema de LiteLLM
   # entra en conflicto con --config. La DB se reintroduce en Fase 2 via
   # variable DATABASE_URL del entorno (no via config.yaml).
