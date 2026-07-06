@@ -31,3 +31,10 @@ data/
 gen_*.py
 html_body.txt
 check_*.py
+# Letta artifact
+codigo/letta/openapi.json
+# Temp Word lock
+visual/~$*
+
+# MCP server (Fase 1)
+codigo/mcp/
