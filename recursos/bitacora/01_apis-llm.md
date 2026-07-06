@@ -2,7 +2,7 @@
 
 > **recursospax / bitacora** — Registro maestro de todas las APIs de modelos
 > de lenguaje disponibles para open-pax.
-> Última actualización: **5-jul-2026**
+> Última actualización: **6-jul-2026** (claves regeneradas + verificadas vía LiteLLM)
 
 ---
 
@@ -10,11 +10,11 @@
 
 | # | Proveedor | Tipo | Costo | Clave(s) encontrada(s) | Dónde está | Semáforo |
 |---|---|---|---|---|---|---|
-| 1 | **Groq** | Gratis | $0 | ✅ 1 clave | `letta/.env` + `keys.env` (falta en este último) | 🟡 por probar |
+| 1 | **Groq** | Gratis | $0 | ✅ regenerada | `/opt/cerebropax/.env` | 🟢 verificado vía LiteLLM |
 | 2 | **NVIDIA NIM** | Gratis | $0 | ⚠️ 2 claves distintas | `.nvidia/nvidia.env` + `keys.env` | 🟡 por probar |
-| 3 | **DeepSeek** | Pago prepago | centavos | ⚠️ 2 claves distintas | `keys.env` + `PentAGI/.env` | 🟡 por probar |
-| 4 | **Google Gemini** | Free tier | $0 | ✅ 1 clave | `PentAGI/.env` | 🟡 por probar |
-| 5 | **Cerebras** | Gratis | $0 | ✅ 1 clave | `keys.env` | 🟡 por probar |
+| 3 | **DeepSeek** | Pago prepago | centavos | ✅ regenerada | `/opt/cerebropax/.env` | 🟢 verificado vía LiteLLM |
+| 4 | **Google Gemini** | Free tier | $0 | ✅ 6 claves regeneradas | `/opt/cerebropax/.env` | 🟡 claves válidas, quota 429 (se renueva) |
+| 5 | **Cerebras** | Gratis | $0 | ✅ verificada | `/opt/cerebropax/.env` | 🟢 verificado vía LiteLLM (modelos: gpt-oss-120b, zai-glm-4.7, gemma-4-31b) |
 | 6 | **Mistral** | Free tier | $0 | ✅ 1 clave | `keys.env` | 🟡 por probar |
 | 7 | **Cohere** | Trial | $0 | ✅ 1 clave | `keys.env` | 🟡 por probar |
 | 8 | **HuggingFace** | Gratis | $0 | ✅ 1 clave | `keys.env` | 🟡 por probar |
